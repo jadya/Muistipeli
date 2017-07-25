@@ -1,3 +1,5 @@
+## Aihemäärittely
+
 **Aihe:** Muistipeli
 
 Toteutetaan muistipeli, jossa pelaajat etsivät korttien joukosta samanlaisista korteista muodostuvia pareja. Pelaajat voivat kääntää vuorotellen jokainen vuorollaan kaksi korttia. Jos käännetyt kortit muodostavat parin, ne kääntänyt pelaaja saa pisteen. Pisteen saanut pelaaja saa pitää vuoron itsellään eli kääntää uudestaan kaksi korttia, kunnes nämä kaksi käännettyä korttia eivät enää muodosta paria. Sen jälkeen vuoro siirtyy järjestyksessä seuraavalle pelaajalle.
