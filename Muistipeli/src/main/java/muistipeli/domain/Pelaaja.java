@@ -1,6 +1,6 @@
 
 package muistipeli.domain;
 
-public class PeliKortti {
+public class Pelaaja {
     
 }
