@@ -1,10 +1,10 @@
-## Aihemäärittely
+ ## Aihemäärittely
 
 **Aihe:** Muistipeli
 
 Toteutetaan muistipeli, jossa pelaajat etsivät korttien joukosta samanlaisista korteista muodostuvia pareja. Pelaajat voivat kääntää vuorotellen jokainen vuorollaan kaksi korttia. Jos käännetyt kortit muodostavat parin, ne kääntänyt pelaaja saa pisteen. Pisteen saanut pelaaja saa pitää vuoron itsellään eli kääntää uudestaan kaksi korttia, kunnes nämä kaksi käännettyä korttia eivät enää muodosta paria. Sen jälkeen vuoro siirtyy järjestyksessä seuraavalle pelaajalle.
 
-Pelin alussa pelialustalla on parillinen määrä kortteja selkäpuoli näkyvillä. Jokaisen kortin kääntöpuolella on kuva, ja samanlaisia kuvia on aina kaksi kappaletta. Pelaajan löytäessä korttiparin kyseiseen pariin kuuluvat kaksi korttia poistuvat pelialustalta. Peli päättyy, kun alustalla ei ole enää yhtään korttia. Pelin voittaa se pelaaja, jolla on pelin päätyttyä eniten pisteitä.
+Pelin alussa pelialustalla on parillinen määrä kortteja selkäpuoli näkyvillä. Jokaisen kortin kääntöpuolella on kuva, ja samanlaisia kuvia on aina kaksi kappaletta. Pelaajan löytäessä korttiparin kyseiseen pariin kuuluvat kaksi korttia poistuvat pelialustalta. Peli päättyy, kun alustalla ei ole enää yhtään korttia. Pelin voittaa se pelaaja, jolla on pelin päätyttyä eniten pisteitä. Pelaaja voi myös lopettaa kesken pelin, jolloin peli päättyy.
 
 **Käyttäjät:** Pelaaja
 
