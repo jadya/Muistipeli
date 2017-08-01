@@ -5,4 +5,4 @@ Päivä | Tunnit | Kuvaus
 25.07.2017 | 5 h | Projektin aloittaminen, muutama luokka ja ensimmäiset testit, suunnittelua, aihemäärittelyn kirjoittaminen ja tuntikirjanpidon aloittaminen
 30.07.2017 | 0.5 h | Aihemäärittelyn täydentäminen
 31.07.2017 | 5 h | Ohjelmointia; luokan Vuoro luonti ja luokkien Pelaaja, PeliKortti, Pelialusta, Peli ja Vuoro ohjelmointia, testejä Pelaaja- ja Vuoro-luokille
-01.08.2017 | 2 h | Pelialusta-luokan ohjelmointia
+01.08.2017 | 3 h | Pelialusta- ja Peli-luokkien ohjelmointia, Main:iin lisäyksiä
