@@ -17,19 +17,11 @@ public class Peli {
         }
         this.alusta = new Pelialusta(leveys,korkeus);
         this.pelaajat = new ArrayList<>();
-        this.vuoro = null;
+        this.vuoro = new Vuoro(null);
     }
     
     public void lisaaPelaaja(Pelaaja pelaaja) {
         this.pelaajat.add(pelaaja);
-    }
-    
-    public ArrayList<Pelaaja> getPelaajat() {
-        return this.pelaajat;
-    }
-    
-    public Pelialusta getPelialusta() {
-        return this.alusta;
     }
     
     public void aloitaPeli() {
@@ -47,8 +39,25 @@ public class Peli {
         this.vuoro.setNumero(numero);
     }
     
+    public String tilanne() {
+        String tilanne = "Pisteet \n";
+        for(Pelaaja pelaaja : this.pelaajat) {
+            tilanne += pelaaja.getNimimerkki() + " : " + pelaaja.getPisteet() + "\n";
+        }
+        tilanne += "Vuoro: " + this.pelaajat.get(this.vuoro.getNumero()).getNimimerkki();
+        return tilanne;
+    }
+    
     public Vuoro getVuoro() {
         return this.vuoro;
+    }
+    
+    public ArrayList<Pelaaja> getPelaajat() {
+        return this.pelaajat;
+    }
+    
+    public Pelialusta getPelialusta() {
+        return this.alusta;
     }
     
 }
