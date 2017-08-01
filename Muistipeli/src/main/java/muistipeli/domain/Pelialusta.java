@@ -87,6 +87,10 @@ public class Pelialusta {
         return this.kaantotilanne;
     }
     
+    public ArrayList<PeliKortti> getKortit() {
+        return this.kortit;
+    }
+    
     public void setKorkeus(int korkeus) {
         this.korkeus = korkeus;
     }
@@ -101,6 +105,10 @@ public class Pelialusta {
     
     public void setKaantotilanne(int[][] tilanne) {
         this.kaantotilanne = tilanne;
+    }
+    
+    public void setKortit(ArrayList<PeliKortti> korttiLista) {
+        this.kortit = korttiLista;
     }
     
 }
