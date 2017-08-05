@@ -12,15 +12,15 @@ public class Pelialusta {
     private int[][] kaantotilanne;
     private ArrayList<PeliKortti> kortit;
     
-    public Pelialusta(int korkeus, int leveys) {
-        this.korkeus = korkeus;
+    public Pelialusta(int leveys, int korkeus) {
         this.leveys = leveys;
-        this.korttienSijainnit = new int[korkeus][leveys];
-        this.kaantotilanne = new int[korkeus][leveys];
+        this.korkeus = korkeus;
+        this.korttienSijainnit = new int[leveys][korkeus];
+        this.kaantotilanne = new int[leveys][korkeus];
         for(int i = 0 ; i < this.korkeus ; i++) {
             for(int j = 0 ; j < this.leveys ; j++) {
-                this.korttienSijainnit[i][j] = -99;
-                this.kaantotilanne[i][j] = -99;
+                this.korttienSijainnit[j][i] = -99;
+                this.kaantotilanne[j][i] = -99;
             }
         }
         this.kortit = new ArrayList<>();

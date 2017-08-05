@@ -15,6 +15,12 @@ public class Peli {
         if((leveys*korkeus)%2 != 0) {
             leveys++;
         }
+        if(leveys <= 1) {
+            leveys = 2;
+        }
+        if(korkeus <= 1) {
+            korkeus = 2;
+        }
         this.alusta = new Pelialusta(leveys,korkeus);
         this.pelaajat = new ArrayList<>();
         this.vuoro = new Vuoro(null);

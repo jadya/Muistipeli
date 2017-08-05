@@ -14,20 +14,27 @@ public class PelialustaTest {
     public PelialustaTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
+    @Test
+    public void lisaaKorttiTesti1() {
+        Pelialusta alusta = new Pelialusta(4,4);
+        alusta.lisaaKortti(new PeliKortti(1));
+        assertEquals(alusta.getKortit().size(), 1);
     }
     
-    @AfterClass
-    public static void tearDownClass() {
+    @Test
+    public void lisaaKorttiTesti2() {
+        Pelialusta alusta = new Pelialusta(2,4);
+        alusta.lisaaKortti(new PeliKortti(1));
+        assertEquals(alusta.getKortit().size(), 1);
     }
     
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+    @Test
+    public void lisaaKorttiTesti3() {
+        Pelialusta alusta = new Pelialusta(4,4);
+        for(int i = 0 ; i < 6 ; i++) {
+            alusta.lisaaKortti(new PeliKortti(i));
+        }
+        assertEquals(alusta.getKortit().size(), 6);
     }
     
     @Test
@@ -63,6 +70,18 @@ public class PelialustaTest {
         for(int j = 0 ; j < 100 ; j++) {
             int[] kohta = alusta.arvoKohta();
             assertEquals(kohta[1] < 0,false);
+        }
+    }
+    
+    @Test
+    public void arvoKohtaTesti5() {
+        Pelialusta alusta = new Pelialusta(2,4);
+        for(int j = 0 ; j < 100 ; j++) {
+            int[] kohta = alusta.arvoKohta();
+            assertEquals(kohta[1] < 0,false);
+            assertEquals(kohta[0] < 0, false);
+            assertEquals(kohta[0] < 2, true);
+            assertEquals(kohta[1] < 4, true);
         }
     }
     
