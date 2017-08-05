@@ -16,4 +16,6 @@ Pelin alussa pelialustalla on parillinen määrä kortteja selkäpuoli näkyvill
 - pelin lopettaminen
 	- onnistuu, jos peli on käynnissä ja vuoro pelaajalla
 
+## Luokkakaavio
+
 ![Luokkakaavio](/Dokumentaatio/luokkakaavio.PNG "Luokkakaavio")
