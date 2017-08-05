@@ -1,4 +1,4 @@
- ## Aihemäärittely
+## Aihemäärittely
 
 **Aihe:** Muistipeli
 
@@ -15,3 +15,5 @@ Pelin alussa pelialustalla on parillinen määrä kortteja selkäpuoli näkyvill
 	- onnistuu, jos peli on käynnissä ja vuoro on pelaajalla sekä käännettyjä kortteja 	alustalla yksi tai ei yhtään
 - pelin lopettaminen
 	- onnistuu, jos peli on käynnissä ja vuoro pelaajalla
+
+![Luokkakaavio](/Dokumentaatio/luokkakaavio.png "Luokkakaavio")
