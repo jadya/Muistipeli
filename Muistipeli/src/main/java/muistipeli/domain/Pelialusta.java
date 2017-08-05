@@ -27,15 +27,17 @@ public class Pelialusta {
     }
     
     public void lisaaKortti(PeliKortti kortti) {
-        int[] kohta = this.arvoKohta();
-        while(this.korttienSijainnit[kohta[0]][kohta[1]] != -99) {
-            kohta = this.arvoKohta();
+        if(!this.taynna()) {
+            int[] kohta = this.arvoKohta();
+            while(this.korttienSijainnit[kohta[0]][kohta[1]] != -99) {
+                kohta = this.arvoKohta();
+            }
+            kortti.setX(kohta[0]);
+            kortti.setY(kohta[1]);
+            this.kortit.add(kortti);
+            this.korttienSijainnit[kohta[0]][kohta[1]] = kortti.getKuvanNumero();
+            this.kaantotilanne[kohta[0]][kohta[1]] = 0;
         }
-        kortti.setX(kohta[0]);
-        kortti.setY(kohta[1]);
-        this.kortit.add(kortti);
-        this.korttienSijainnit[kohta[0]][kohta[1]] = kortti.getKuvanNumero();
-        this.kaantotilanne[kohta[0]][kohta[1]] = 0;
     }
     
     public void poistaKortti(PeliKortti kortti) {
@@ -54,8 +56,8 @@ public class Pelialusta {
     public int[] arvoKohta() {
         int[] kohta = new int[2];
         Random random = new Random();
-        kohta[0] = random.nextInt(leveys) - 1;
-        kohta[1] = random.nextInt(korkeus) - 1;
+        kohta[0] = random.nextInt(leveys);
+        kohta[1] = random.nextInt(korkeus);
         return kohta;
     }
     
@@ -108,7 +110,9 @@ public class Pelialusta {
     }
     
     public void setKortit(ArrayList<PeliKortti> korttiLista) {
-        this.kortit = korttiLista;
+        if(korttiLista.size() <= this.korkeus*this.leveys) {
+            this.kortit = korttiLista;
+        }
     }
     
 }

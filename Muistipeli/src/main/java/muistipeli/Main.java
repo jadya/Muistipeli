@@ -1,6 +1,7 @@
 
 package muistipeli;
 
+import java.util.Arrays;
 import muistipeli.domain.Pelaaja;
 import muistipeli.logiikka.Peli;
 
@@ -13,6 +14,9 @@ public class Main {
         peli.lisaaPelaaja(new Pelaaja("b", 2));
         peli.aloitaPeli();
         System.out.println(peli.tilanne());
+        for(int i = 0 ; i < 20 ; i++) {
+            System.out.println(Arrays.toString(peli.getPelialusta().arvoKohta()));
+        }
     }
     
 }
