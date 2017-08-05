@@ -67,6 +67,59 @@ public class PeliTest {
         peli.lisaaPelaaja(new Pelaaja("p2",2));
         peli.aloitaPeli();
         assertEquals(peli.getVuoro().getPelaaja(), pelaaja);
+        assertEquals(peli.getVuoro().getNumero(),0);
+    }
+    
+    @Test
+    public void vaihdaVuoroTesti1() {
+        Peli peli = new Peli(4,4);
+        peli.lisaaPelaaja(new Pelaaja("p",1));
+        Pelaaja p2 = new Pelaaja("p2",2);
+        peli.lisaaPelaaja(p2);
+        peli.aloitaPeli();
+        peli.vaihdaVuoro();
+        assertEquals(peli.getVuoro().getNumero(), 1);
+        assertEquals(peli.getVuoro().getPelaaja(),p2);
+    }
+    
+    @Test
+    public void vaihdaVuoroTesti2() {
+        Peli peli = new Peli(4,4);
+        Pelaaja p1 = new Pelaaja("p1",1);
+        peli.lisaaPelaaja(p1);
+        Pelaaja p2 = new Pelaaja("p2",2);
+        peli.lisaaPelaaja(p2);
+        peli.aloitaPeli();
+        peli.vaihdaVuoro();
+        peli.vaihdaVuoro();
+        assertEquals(peli.getVuoro().getNumero(), 0);
+        assertEquals(peli.getVuoro().getPelaaja(),p1);
+    }
+    
+    @Test
+    public void vaihdaVuoroTesti3() {
+        Peli peli = new Peli(4,4);
+        Pelaaja p1 = new Pelaaja("p1",1);
+        peli.lisaaPelaaja(p1);
+        Pelaaja p2 = new Pelaaja("p2",2);
+        peli.lisaaPelaaja(p2);
+        peli.aloitaPeli();
+        peli.vaihdaVuoro();
+        peli.vaihdaVuoro();
+        peli.vaihdaVuoro();
+        assertEquals(peli.getVuoro().getNumero(), 1);
+        assertEquals(peli.getVuoro().getPelaaja(),p2);
+    }
+    
+    @Test
+    public void tilanneTesti1() {
+        Peli peli = new Peli(4,4);
+        Pelaaja p1 = new Pelaaja("p1",1);
+        peli.lisaaPelaaja(p1);
+        Pelaaja p2 = new Pelaaja("p2",2);
+        peli.lisaaPelaaja(p2);
+        peli.aloitaPeli();
+        assertEquals(peli.tilanne(), "Pisteet \n" + "p1 : 0\n" + "p2 : 0\n" + "Vuoro: p1");
     }
     
 }
