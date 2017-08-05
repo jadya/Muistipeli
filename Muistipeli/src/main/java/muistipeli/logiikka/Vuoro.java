@@ -11,6 +11,7 @@ public class Vuoro {
     
     public Vuoro(Pelaaja pelaaja) {
         this.pelaaja = pelaaja;
+        this.numero = 0;
     }
     
     public Pelaaja getPelaaja() {

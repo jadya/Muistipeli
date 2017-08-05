@@ -11,25 +11,7 @@ import static org.junit.Assert.*;
 public class PelaajaTest {
     
     public PelaajaTest() {
-        Pelaaja pelaaja = new Pelaaja("pelaaja1",1);
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
         
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-        
-    }
-    
-    @After
-    public void tearDown() {
     }
     
     @Test
