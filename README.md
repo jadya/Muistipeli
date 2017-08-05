@@ -4,6 +4,6 @@
 
 ### Dokumentaatio
 
-- [aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
+- [aiheen kuvaus](Dokumentaatio/aiheenKuvausJaRakenne.md)
 
-- [tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
+- [tuntikirjanpito](Dokumentaatio/tuntikirjanpito.md)
