@@ -7,3 +7,4 @@ Päivä | Tunnit | Kuvaus
 31.07.2017 | 5 h | Ohjelmointia; luokan Vuoro luonti ja luokkien Pelaaja, PeliKortti, Pelialusta, Peli ja Vuoro ohjelmointia, testejä Pelaaja- ja Vuoro-luokille
 01.08.2017 | 3 h | Pelialusta- ja Peli-luokkien ohjelmointia, Main:iin lisäyksiä
 05.08.2017 | 7 h | Ohjelmointia ja testejä, PIT- ja Checkstyle-raporttien generointi, README.md:n päivittäminen, luokkakaavion piirtäminen
+08.08.2017 | 5 h | Ohjelmointia ja testejä, pelistä ensimmäinen pelattava versio
