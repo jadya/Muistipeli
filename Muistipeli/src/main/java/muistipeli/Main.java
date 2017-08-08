@@ -28,7 +28,7 @@ public class Main {
 //            System.out.println("");
 //        }
         
-        while(peli.kaynnissa()) {
+        while(peli.kaynnissa() && !peli.getPelialusta().tyhja()) {
             for(int f = 0 ; f < peli.getPelialusta().getKorkeus() ; f++) {
                 for(int j = 0 ; j < peli.getPelialusta().getLeveys() ; j++) {
                     System.out.print(peli.nakyma()[j][f] + " ");
