@@ -1,6 +1,6 @@
 
 package muistipeli.gui;
 
-public class Kayttojarjestelma {
+public class Kayttoliittyma {
     
 }
