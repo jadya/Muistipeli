@@ -18,8 +18,8 @@ public class PelialustaTest {
     public void PelialustaTesti1() {
         Pelialusta alusta = new Pelialusta(4,2);
         assertEquals(alusta.getKortit().size(), 0);
-        assertEquals(alusta.getLeveys() == 4, true);
-        assertEquals(alusta.getKorkeus() == 2, true);
+        assertTrue(alusta.getLeveys() == 4);
+        assertTrue(alusta.getKorkeus() == 2);
     }
     
     @Test
@@ -28,8 +28,8 @@ public class PelialustaTest {
         alusta.setLeveys(500);
         alusta.setKorkeus(4);
         assertEquals(alusta.getKortit().size(), 0);
-        assertEquals(alusta.getLeveys() == 500, true);
-        assertEquals(alusta.getKorkeus() == 4, true);
+        assertTrue(alusta.getLeveys() == 500);
+        assertTrue(alusta.getKorkeus() == 4);
     }
     
     @Test
@@ -84,7 +84,7 @@ public class PelialustaTest {
                 kortti = kortti2;
             }
         }
-        assertEquals(alusta.getKortit().contains(kortti), true);
+        assertTrue(alusta.getKortit().contains(kortti));
     }
     
     @Test
@@ -94,10 +94,10 @@ public class PelialustaTest {
         PeliKortti kortti2 = new PeliKortti(2);
         alusta.lisaaKortti(kortti);
         alusta.lisaaKortti(kortti2);
-        assertEquals(alusta.getKorttienSijainnit()[kortti.getX()][kortti.getY()] == 1, true);
-        assertEquals(alusta.getKorttienSijainnit()[kortti2.getX()][kortti2.getY()] == 2, true);
-        assertEquals(alusta.getKaantotilanne()[kortti.getX()][kortti.getY()] == 0, true);
-        assertEquals(alusta.getKaantotilanne()[kortti2.getX()][kortti2.getY()] == 0, true);
+        assertTrue(alusta.getKorttienSijainnit()[kortti.getX()][kortti.getY()] == 1);
+        assertTrue(alusta.getKorttienSijainnit()[kortti2.getX()][kortti2.getY()] == 2);
+        assertTrue(alusta.getKaantotilanne()[kortti.getX()][kortti.getY()] == 0);
+        assertTrue(alusta.getKaantotilanne()[kortti2.getX()][kortti2.getY()] == 0);
     }
     
     @Test
@@ -125,7 +125,7 @@ public class PelialustaTest {
         
         alusta.poistaKortti(kortti3);
         assertEquals(alusta.getKortit().size(), 7);
-        assertEquals(kortti3 == null, false);
+        assertTrue(kortti3 != null);
     }
     
     @Test
@@ -160,8 +160,39 @@ public class PelialustaTest {
         PeliKortti kortti = new PeliKortti(1);
         alusta.lisaaKortti(kortti);
         alusta.poistaKortti(kortti);
-        assertEquals(alusta.getKorttienSijainnit()[kortti.getX()][kortti.getY()] == -99, true);
-        assertEquals(alusta.getKaantotilanne()[kortti.getX()][kortti.getY()] == -99, true);
+        assertTrue(alusta.getKorttienSijainnit()[kortti.getX()][kortti.getY()] == -99);
+        assertTrue(alusta.getKaantotilanne()[kortti.getX()][kortti.getY()] == -99);
+    }
+    
+    @Test
+    public void korttiTesti1() {
+        Pelialusta alusta = new Pelialusta(4,4);
+        for(int i = 0 ; i < 16 ; i++) {
+            PeliKortti kortti = new PeliKortti(i);
+            alusta.lisaaKortti(kortti);
+        }
+        assertTrue(alusta.kortti(0, 0) != null);
+    }
+    
+    @Test
+    public void korttiTesti2() {
+        Pelialusta alusta = new Pelialusta(4,4);
+        for(int i = 0 ; i < 16 ; i++) {
+            PeliKortti kortti = new PeliKortti(i);
+            alusta.lisaaKortti(kortti);
+        }
+        assertTrue(alusta.kortti(3, 3) != null);
+    }
+    
+    @Test
+    public void korttiTesti3() {
+        Pelialusta alusta = new Pelialusta(4,4);
+        for(int i = 0 ; i < 16 ; i++) {
+            PeliKortti kortti = new PeliKortti(i);
+            alusta.lisaaKortti(kortti);
+        }
+        alusta.poistaKortti(alusta.kortti(0,0));
+        assertTrue(alusta.kortti(0, 0) == null);
     }
     
     @Test
@@ -170,7 +201,7 @@ public class PelialustaTest {
         PeliKortti kortti = new PeliKortti(1);
         alusta.lisaaKortti(kortti);
         alusta.kaannaKortti(kortti.getX(), kortti.getY());
-        assertEquals(alusta.getKaantotilanne()[kortti.getX()][kortti.getY()] == 1, true);
+        assertTrue(alusta.getKaantotilanne()[kortti.getX()][kortti.getY()] == 1);
     }
     
     @Test
@@ -180,7 +211,7 @@ public class PelialustaTest {
         alusta.lisaaKortti(kortti);
         alusta.kaannaKortti(kortti.getX(), kortti.getY());
         alusta.kaannaKortti(kortti.getX(), kortti.getY());
-        assertEquals(alusta.getKaantotilanne()[kortti.getX()][kortti.getY()] == 0, true);
+        assertTrue(alusta.getKaantotilanne()[kortti.getX()][kortti.getY()] == 0);
     }
     
     @Test
@@ -189,8 +220,46 @@ public class PelialustaTest {
         PeliKortti kortti = new PeliKortti(4);
         alusta.lisaaKortti(kortti);
         alusta.kaannaKortti(kortti.getX(), kortti.getY());
-        assertEquals(alusta.getKorttienSijainnit()[kortti.getX()][kortti.getY()] == 4, true);
-        assertEquals(alusta.getKaantotilanne()[kortti.getX()][kortti.getY()] == 1, true);
+        assertTrue(alusta.getKorttienSijainnit()[kortti.getX()][kortti.getY()] == 4);
+        assertTrue(alusta.getKaantotilanne()[kortti.getX()][kortti.getY()] == 1);
+    }
+    
+    @Test
+    public void tarkistaPariTesti1() {
+        Pelialusta alusta = new Pelialusta(4,4);
+        for(int i = 0 ; i < 16 ; i++) {
+            PeliKortti kortti = new PeliKortti(4);
+            alusta.lisaaKortti(kortti);
+        }
+        int[][] tilanne = new int[4][4];
+        for(int i = 0 ; i < 4 ; i++) {
+            for(int j = 0 ; j < 4 ; j++) {
+                tilanne[i][j] = 0;
+            }
+        }
+        tilanne[0][0] = 1;
+        tilanne[1][1] = 1;
+        alusta.setKaantotilanne(tilanne);
+        assertTrue(alusta.tarkistaPari());
+    }
+    
+    @Test
+    public void tarkistaPariTesti2() {
+        Pelialusta alusta = new Pelialusta(4,4);
+        for(int i = 1 ; i <= 16 ; i++) {
+            PeliKortti kortti = new PeliKortti(i);
+            alusta.lisaaKortti(kortti);
+        }
+        int[][] tilanne = new int[4][4];
+        for(int i = 0 ; i < 4 ; i++) {
+            for(int j = 0 ; j < 4 ; j++) {
+                tilanne[i][j] = 0;
+            }
+        }
+        tilanne[0][0] = 1;
+        tilanne[1][1] = 1;
+        alusta.setKaantotilanne(tilanne);
+        assertFalse(alusta.tarkistaPari());
     }
     
     @Test
@@ -234,10 +303,10 @@ public class PelialustaTest {
         Pelialusta alusta = new Pelialusta(2,4);
         for(int j = 0 ; j < 100 ; j++) {
             int[] kohta = alusta.arvoKohta();
-            assertEquals(kohta[1] < 0,false);
-            assertEquals(kohta[0] < 0, false);
-            assertEquals(kohta[0] < 2, true);
-            assertEquals(kohta[1] < 4, true);
+            assertFalse(kohta[1] < 0);
+            assertFalse(kohta[0] < 0);
+            assertTrue(kohta[0] < 2);
+            assertTrue(kohta[1] < 4);
         }
     }
     
@@ -246,17 +315,17 @@ public class PelialustaTest {
         Pelialusta alusta = new Pelialusta(4,2);
         for(int j = 0 ; j < 100 ; j++) {
             int[] kohta = alusta.arvoKohta();
-            assertEquals(kohta[0] < 0,false);
-            assertEquals(kohta[1] < 0, false);
-            assertEquals(kohta[1] < 2, true);
-            assertEquals(kohta[0] < 4, true);
+            assertFalse(kohta[0] < 0);
+            assertFalse(kohta[1] < 0);
+            assertTrue(kohta[1] < 2);
+            assertTrue(kohta[0] < 4);
         }
     }
     
     @Test
     public void taynnaTesti1() {
         Pelialusta alusta = new Pelialusta(4,4);
-        assertEquals(alusta.taynna(),false);
+        assertFalse(alusta.taynna());
     }
     
     @Test
@@ -286,13 +355,13 @@ public class PelialustaTest {
         for(int i = 0 ; i < 16 ; i++) {
             alusta.lisaaKortti(new PeliKortti(i));
         }
-        assertEquals(alusta.taynna(),true);
+        assertTrue(alusta.taynna());
     }
     
     @Test
     public void tyhjaTesti1() {
         Pelialusta alusta = new Pelialusta(4,4);
-        assertEquals(alusta.tyhja(),true);
+        assertTrue(alusta.tyhja());
     }
     
     @Test
@@ -316,7 +385,7 @@ public class PelialustaTest {
         kortit.add(kortti2);
         kortit.add(kortti3);
         alusta.setKortit(kortit);
-        assertEquals(alusta.tyhja(),false);
+        assertFalse(alusta.tyhja());
     }
     
     @Test
@@ -324,7 +393,7 @@ public class PelialustaTest {
         Pelialusta alusta = new Pelialusta(4,4);
         PeliKortti kortti = new PeliKortti(1);
         alusta.lisaaKortti(kortti);
-        assertEquals(alusta.tyhja(),false);
+        assertFalse(alusta.tyhja());
     }
     
     @Test

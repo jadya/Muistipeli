@@ -2,6 +2,7 @@
 package muistipeli.logiikka;
 
 import muistipeli.domain.Pelaaja;
+import muistipeli.domain.PeliKortti;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -112,6 +113,40 @@ public class PeliTest {
     }
     
     @Test
+    public void nakymaTesti1() {
+        Peli peli = new Peli(4,4);
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                assertEquals(peli.nakyma()[i][j], -99);
+            }
+        }
+    }
+    
+    @Test
+    public void nakymaTesti2() {
+        Peli peli = new Peli(4,4);
+        for(int i = 0 ; i < 16 ; i++) {
+            int luku = Math.abs(16 -2*i);
+            if(luku == 0) {
+                luku += 16;
+            }
+            peli.getPelialusta().lisaaKortti(new PeliKortti(luku));
+        }
+        peli.getPelialusta().kaannaKortti(3, 3);
+        peli.getPelialusta().kaannaKortti(2, 2);
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if((i==3 && j==3) || (i==2 && j==2)) {
+                    assertEquals(peli.nakyma()[j][i] == -99, false);
+                    assertEquals(peli.nakyma()[j][i] == 0, false);
+                } else {
+                    assertEquals(peli.nakyma()[j][i], 0);
+                }
+            }
+        }
+    }
+    
+    @Test
     public void tilanneTesti1() {
         Peli peli = new Peli(4,4);
         Pelaaja p1 = new Pelaaja("p1",1);
@@ -120,6 +155,33 @@ public class PeliTest {
         peli.lisaaPelaaja(p2);
         peli.aloitaPeli();
         assertEquals(peli.tilanne(), "Pisteet \n" + "p1 : 0\n" + "p2 : 0\n" + "Vuoro: p1");
+    }
+    
+    @Test
+    public void kaynnissaTesti1() {
+        Peli peli = new Peli(4,4);
+        Pelaaja p1 = new Pelaaja("p1",1);
+        peli.lisaaPelaaja(p1);
+        peli.aloitaPeli();
+        assertTrue(peli.kaynnissa());
+    }
+    
+    @Test
+    public void kaynnissaTesti2() {
+        Peli peli = new Peli(4,4);
+        Pelaaja p1 = new Pelaaja("p1",1);
+        peli.lisaaPelaaja(p1);
+        assertFalse(peli.kaynnissa());
+    }
+    
+    @Test
+    public void lopetaTesti1() {
+        Peli peli = new Peli(4,4);
+        Pelaaja p1 = new Pelaaja("p1",1);
+        peli.lisaaPelaaja(p1);
+        peli.aloitaPeli();
+        peli.lopeta();
+        assertFalse(peli.kaynnissa());
     }
     
 }

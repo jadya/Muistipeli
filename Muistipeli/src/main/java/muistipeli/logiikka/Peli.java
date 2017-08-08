@@ -2,6 +2,7 @@ package muistipeli.logiikka;
 
 import java.util.ArrayList;
 import muistipeli.domain.Pelaaja;
+import muistipeli.domain.PeliKortti;
 import muistipeli.domain.Pelialusta;
 
 public class Peli {
@@ -9,6 +10,7 @@ public class Peli {
     private Pelialusta alusta;
     private ArrayList<Pelaaja> pelaajat;
     private Vuoro vuoro;
+    private boolean kaynnissa;
 
     public Peli(int leveys, int korkeus) {
         if ((leveys * korkeus) % 2 != 0) {
@@ -23,6 +25,7 @@ public class Peli {
         this.alusta = new Pelialusta(leveys, korkeus);
         this.pelaajat = new ArrayList<>();
         this.vuoro = new Vuoro(null);
+        this.kaynnissa = false;
     }
 
     public void lisaaPelaaja(Pelaaja pelaaja) {
@@ -31,7 +34,13 @@ public class Peli {
 
     public void aloitaPeli() {
         this.vuoro.setPelaaja(this.pelaajat.get(0));
-
+        int korttipareja = this.alusta.getKorkeus()*this.alusta.getLeveys()/2;
+        for(int i = 1 ; i <= korttipareja ; i++) {
+            this.alusta.lisaaKortti(new PeliKortti(i));
+            this.alusta.lisaaKortti(new PeliKortti(i));
+        }
+        this.kaynnissa = true;
+        
     }
 
     public void vaihdaVuoro() {
@@ -43,6 +52,22 @@ public class Peli {
         this.vuoro.setPelaaja(this.pelaajat.get(numero));
         this.vuoro.setNumero(numero);
     }
+    
+    public int[][] nakyma() {
+        int leveys = this.alusta.getLeveys();
+        int korkeus = this.alusta.getKorkeus();
+        int[][] nakyma = new int[leveys][korkeus];
+        for (int i = 0; i < korkeus; i++) {
+            for (int j = 0; j < leveys; j++) {
+                if (this.alusta.getKaantotilanne()[j][i] == 1) {
+                    nakyma[j][i] = this.alusta.getKorttienSijainnit()[j][i];
+                } else {
+                    nakyma[j][i] = this.alusta.getKaantotilanne()[j][i];
+                }
+            }
+        }
+        return nakyma;
+    }
 
     public String tilanne() {
         String tilanne = "Pisteet \n";
@@ -51,6 +76,14 @@ public class Peli {
         }
         tilanne += "Vuoro: " + this.pelaajat.get(this.vuoro.getNumero()).getNimimerkki();
         return tilanne;
+    }
+    
+    public boolean kaynnissa() {
+        return this.kaynnissa;
+    }
+    
+    public void lopeta() {
+        this.kaynnissa = false;
     }
 
     public Vuoro getVuoro() {

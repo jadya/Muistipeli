@@ -44,12 +44,54 @@ public class Pelialusta {
         this.kaantotilanne[kortti.getX()][kortti.getY()] = -99;
         this.kortit.remove(kortti);
     }
+    
+    public PeliKortti kortti(int x, int y) {
+        for (PeliKortti kortti : this.kortit) {
+            if(kortti.getX() == x && kortti.getY() == y) {
+                return kortti;
+            }
+        }
+        return null;
+    }
 
     public int kaannaKortti(int x, int y) {
         if (this.kaantotilanne[x][y] != -99) {
             this.kaantotilanne[x][y] = Math.abs(this.kaantotilanne[x][y] - 1);
         }
         return this.korttienSijainnit[x][y];
+    }
+    
+    public boolean tarkistaPari() {
+        int a = -99;
+        int ai = -99;
+        int aj = -99;
+        int b = -99;
+        int bi = -99;
+        int bj = -99;
+        for (int i = 0; i < this.korkeus; i++) {
+            for (int j = 0; j < this.leveys; j++) {
+                if(this.kaantotilanne[j][i] == 1) {
+                    if(a == -99){
+                        a = this.korttienSijainnit[j][i];
+                        ai = i;
+                        aj = j;
+                    } else {
+                        b = this.korttienSijainnit[j][i];
+                        bi = i;
+                        bj = j;
+                    }
+                } 
+            }
+        }
+        if(a == b) {
+            this.poistaKortti(kortti(aj, ai));
+            this.poistaKortti(kortti(bj, bi));
+            return true;
+        } else {
+            this.kaannaKortti(aj, ai);
+            this.kaannaKortti(bj, bi);
+            return false;
+        }
     }
 
     public int[] arvoKohta() {
@@ -107,7 +149,7 @@ public class Pelialusta {
     public void setKaantotilanne(int[][] tilanne) {
         this.kaantotilanne = tilanne;
     }
-
+    
     public void setKortit(ArrayList<PeliKortti> korttiLista) {
         if (korttiLista.size() <= this.korkeus * this.leveys) {
             this.kortit = korttiLista;
