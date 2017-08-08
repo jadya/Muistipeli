@@ -46,6 +46,13 @@ public class PeliTest {
     }
     
     @Test
+    public void peliTesti5() {
+        Peli peli = new Peli(3,1);
+        assertEquals(peli.getPelialusta().getLeveys(), 4);
+        assertEquals(peli.getPelialusta().getKorkeus(), 2);
+    }
+    
+    @Test
     public void lisaaPelaajaTesti1() {
         Peli peli = new Peli(4,4);
         peli.lisaaPelaaja(new Pelaaja("p",1));
@@ -69,6 +76,26 @@ public class PeliTest {
         peli.aloitaPeli();
         assertEquals(peli.getVuoro().getPelaaja(), pelaaja);
         assertEquals(peli.getVuoro().getNumero(),0);
+    }
+    
+    @Test
+    public void aloitaPeliTesti2() {
+        Peli peli = new Peli(4,4);
+        peli.lisaaPelaaja(new Pelaaja("p",1));
+        peli.aloitaPeli();
+        assertEquals(peli.getPelialusta().getKortit().size(), 16);
+    }
+    
+    @Test
+    public void aloitaPeliTesti3() {
+        Peli peli = new Peli(4,4);
+        peli.lisaaPelaaja(new Pelaaja("p",1));
+        peli.aloitaPeli();
+        int summa = 0;
+        for(PeliKortti kortti : peli.getPelialusta().getKortit()) {
+            summa += kortti.getKuvanNumero();
+        }
+        assertEquals(summa, 72);
     }
     
     @Test

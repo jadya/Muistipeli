@@ -15,10 +15,20 @@ public class PelaajaTest {
     }
     
     @Test
-    public void pelaajaTesti() {
+    public void pelaajaTesti1() {
         Pelaaja pelaaja = new Pelaaja("pelaaja1",1);
         assertEquals(pelaaja.getId(),1);
         assertEquals(pelaaja.getNimimerkki(),"pelaaja1");
+        assertEquals(pelaaja.getPisteet(),0);
+    }
+    
+    @Test
+    public void pelaajaTesti2() {
+        Pelaaja pelaaja = new Pelaaja("pelaaja1",1);
+        pelaaja.setId(2);
+        pelaaja.setNimimerkki("p");
+        assertEquals(pelaaja.getId(),2);
+        assertEquals(pelaaja.getNimimerkki(),"p");
         assertEquals(pelaaja.getPisteet(),0);
     }
     
