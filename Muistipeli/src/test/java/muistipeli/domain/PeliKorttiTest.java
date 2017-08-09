@@ -10,11 +10,8 @@ import static org.junit.Assert.*;
 
 public class PeliKorttiTest {
     
-    public PeliKorttiTest() {
-    }
-    
     @Test
-    public void korttiTesti1() {
+    public void konstruktoriJaXnJaYnAsetuksetToimii() {
         PeliKortti kortti = new PeliKortti(123);
         kortti.setX(5);
         kortti.setY(2);
@@ -24,7 +21,7 @@ public class PeliKorttiTest {
     }
     
     @Test
-    public void korttiTesti2() {
+    public void kuvanAsetusToimii() {
         PeliKortti kortti = new PeliKortti(123);
         kortti.setKuva(12);
         assertEquals(kortti.getKuvanNumero(),12);

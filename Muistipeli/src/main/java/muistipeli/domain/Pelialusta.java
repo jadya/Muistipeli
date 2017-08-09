@@ -25,7 +25,7 @@ public class Pelialusta {
         this.kortit = new ArrayList<>();
     }
 
-    public void lisaaKortti(PeliKortti kortti) {
+    public boolean lisaaKortti(PeliKortti kortti) {
         if (!this.taynna()) {
             int[] kohta = this.arvoKohta();
             while (this.korttienSijainnit[kohta[0]][kohta[1]] != -99) {
@@ -36,7 +36,9 @@ public class Pelialusta {
             this.kortit.add(kortti);
             this.korttienSijainnit[kohta[0]][kohta[1]] = kortti.getKuvanNumero();
             this.kaantotilanne[kohta[0]][kohta[1]] = 0;
+            return true;
         }
+        return false;
     }
 
     public void poistaKortti(PeliKortti kortti) {

@@ -10,12 +10,8 @@ import static org.junit.Assert.*;
 
 public class PelaajaTest {
     
-    public PelaajaTest() {
-        
-    }
-    
     @Test
-    public void pelaajaTesti1() {
+    public void konstruktoriToimii() {
         Pelaaja pelaaja = new Pelaaja("pelaaja1",1);
         assertEquals(pelaaja.getId(),1);
         assertEquals(pelaaja.getNimimerkki(),"pelaaja1");
@@ -23,7 +19,7 @@ public class PelaajaTest {
     }
     
     @Test
-    public void pelaajaTesti2() {
+    public void nimimerkinJaIdnAsetuksetToimii() {
         Pelaaja pelaaja = new Pelaaja("pelaaja1",1);
         pelaaja.setId(2);
         pelaaja.setNimimerkki("p");
@@ -33,14 +29,14 @@ public class PelaajaTest {
     }
     
     @Test
-    public void lisaaPisteTesti1() {
+    public void yhdenPisteenLisaysOnnistuu() {
         Pelaaja pelaaja = new Pelaaja("pelaaja1",1);
         pelaaja.lisaaPiste();
         assertEquals(pelaaja.getPisteet(),1);
     }
     
     @Test
-    public void lisaaPisteTesti2() {
+    public void monenPisteenLisaysOnnistuu() {
         Pelaaja pelaaja = new Pelaaja("pelaaja1",1);
         for(int i = 0 ; i < 100 ; i++) {
             pelaaja.lisaaPiste();
@@ -49,10 +45,18 @@ public class PelaajaTest {
     }
     
     @Test
-    public void lisaaPisteTesti3() {
+    public void pisteidenMuuttaminenToimii() {
         Pelaaja pelaaja = new Pelaaja("pelaaja1",1);
         pelaaja.setPisteet(20);
         pelaaja.lisaaPiste();
         assertEquals(pelaaja.getPisteet(),21);
+    }
+    
+    @Test
+    public void pisteidenMuuttaminenToimiiPisteenLisayksenJalkeen() {
+        Pelaaja pelaaja = new Pelaaja("pelaaja1",1);
+        pelaaja.lisaaPiste();
+        pelaaja.setPisteet(20);
+        assertEquals(pelaaja.getPisteet(),20);
     }
 }

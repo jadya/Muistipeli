@@ -12,11 +12,8 @@ import static org.junit.Assert.*;
 
 public class PeliTest {
     
-    public PeliTest() {
-    }
-    
     @Test
-    public void peliTesti1() {
+    public void konstruktoriToimiiSopivillaArvoilla() {
         Peli peli = new Peli(2,6);
         assertEquals(peli.getPelialusta().getLeveys(), 2);
         assertEquals(peli.getPelialusta().getKorkeus(), 6);
@@ -25,42 +22,42 @@ public class PeliTest {
     }
     
     @Test
-    public void peliTesti2() {
+    public void konstruktoriToimiiKunSyotettyLeveysLiianPieni() {
         Peli peli = new Peli(1,6);
         assertEquals(peli.getPelialusta().getLeveys(), 2);
         assertEquals(peli.getPelialusta().getKorkeus(), 6);
     }
     
     @Test
-    public void peliTesti3() {
+    public void konstruktoriToimiiKunSyotetyillaArvoillaEiTuleParillistaMaaraaPaikkoja() {
         Peli peli = new Peli(3,51);
         assertEquals(peli.getPelialusta().getLeveys(), 4);
         assertEquals(peli.getPelialusta().getKorkeus(), 51);
     }
     
     @Test
-    public void peliTesti4() {
+    public void konstruktoriToimiiKunSyotetytArvotLiianPienet() {
         Peli peli = new Peli(1,0);
         assertEquals(peli.getPelialusta().getLeveys(), 2);
         assertEquals(peli.getPelialusta().getKorkeus(), 2);
     }
     
     @Test
-    public void peliTesti5() {
+    public void konstruktoriToimiiKunSyotettyKorkeusLiianPieni() {
         Peli peli = new Peli(3,1);
         assertEquals(peli.getPelialusta().getLeveys(), 4);
         assertEquals(peli.getPelialusta().getKorkeus(), 2);
     }
     
     @Test
-    public void lisaaPelaajaTesti1() {
+    public void yhdenPelaajanLisaaminenOnnistuu() {
         Peli peli = new Peli(4,4);
         peli.lisaaPelaaja(new Pelaaja("p",1));
         assertEquals(peli.getPelaajat().size(), 1);
     }
     
     @Test
-    public void lisaaPelaajaTesti2() {
+    public void useammanPelaajanLisaaminenOnnistuu() {
         Peli peli = new Peli(4,4);
         peli.lisaaPelaaja(new Pelaaja("p",1));
         peli.lisaaPelaaja(new Pelaaja("p2",2));
@@ -68,7 +65,7 @@ public class PeliTest {
     }
     
     @Test
-    public void aloitaPeliTesti1() {
+    public void pelinAlkaessaVuoroOnOikein() {
         Peli peli = new Peli(4,4);
         Pelaaja pelaaja = new Pelaaja("p",1);
         peli.lisaaPelaaja(pelaaja);
@@ -79,7 +76,7 @@ public class PeliTest {
     }
     
     @Test
-    public void aloitaPeliTesti2() {
+    public void pelinAlkaessaKortitOvatAlustallaJaAlustaTaysi() {
         Peli peli = new Peli(4,4);
         peli.lisaaPelaaja(new Pelaaja("p",1));
         peli.aloitaPeli();
@@ -87,19 +84,60 @@ public class PeliTest {
     }
     
     @Test
-    public void aloitaPeliTesti3() {
+    public void pelinAlkaessaJokaiselleKortilleOnPariEikaYlimaaraisiaKorttejaOle() {
         Peli peli = new Peli(4,4);
         peli.lisaaPelaaja(new Pelaaja("p",1));
         peli.aloitaPeli();
         int summa = 0;
+        int a1 = 0;
+        int a2 = 0;
+        int a3 = 0;
+        int a4 = 0;
+        int a5 = 0;
+        int a6 = 0;
+        int a7 = 0;
+        int a8 = 0;
         for(PeliKortti kortti : peli.getPelialusta().getKortit()) {
-            summa += kortti.getKuvanNumero();
+            int k = kortti.getKuvanNumero();
+            summa += k;
+            if(k==1) {
+                a1++;
+            }
+            if(k==2) {
+                a2++;
+            }
+            if(k==3) {
+                a3++;
+            }
+            if(k==4) {
+                a4++;
+            }
+            if(k==5) {
+                a5++;
+            }
+            if(k==6) {
+                a6++;
+            }
+            if(k==7) {
+                a7++;
+            }
+            if(k==8) {
+                a8++;
+            }
         }
         assertEquals(summa, 72);
+        assertEquals(a1,2);
+        assertEquals(a2,2);
+        assertEquals(a3,2);
+        assertEquals(a4,2);
+        assertEquals(a5,2);
+        assertEquals(a6,2);
+        assertEquals(a7,2);
+        assertEquals(a8,2);
     }
     
     @Test
-    public void vaihdaVuoroTesti1() {
+    public void vuoroVaihtuuEnsimmaiseltaPelaajaltaSeuraavalle() {
         Peli peli = new Peli(4,4);
         peli.lisaaPelaaja(new Pelaaja("p",1));
         Pelaaja p2 = new Pelaaja("p2",2);
@@ -111,7 +149,7 @@ public class PeliTest {
     }
     
     @Test
-    public void vaihdaVuoroTesti2() {
+    public void vuoroVaihtuuViimeiseltaPelaajaltaEnsimmaiselle() {
         Peli peli = new Peli(4,4);
         Pelaaja p1 = new Pelaaja("p1",1);
         peli.lisaaPelaaja(p1);
@@ -125,7 +163,7 @@ public class PeliTest {
     }
     
     @Test
-    public void vaihdaVuoroTesti3() {
+    public void vuoronVaihtoOnnistuuPelaajalistanMentyaYmpari() {
         Peli peli = new Peli(4,4);
         Pelaaja p1 = new Pelaaja("p1",1);
         peli.lisaaPelaaja(p1);
@@ -140,7 +178,7 @@ public class PeliTest {
     }
     
     @Test
-    public void nakymaTesti1() {
+    public void uudessaNakymassaEiOleKortteja() {
         Peli peli = new Peli(4,4);
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
@@ -150,7 +188,7 @@ public class PeliTest {
     }
     
     @Test
-    public void nakymaTesti2() {
+    public void kaannetytJaKaantamattomatKortitOvatOikeinNakymassa() {
         Peli peli = new Peli(4,4);
         for(int i = 0 ; i < 16 ; i++) {
             int luku = Math.abs(16 -2*i);
@@ -164,8 +202,8 @@ public class PeliTest {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 if((i==3 && j==3) || (i==2 && j==2)) {
-                    assertEquals(peli.nakyma()[j][i] == -99, false);
-                    assertEquals(peli.nakyma()[j][i] == 0, false);
+                    assertTrue(peli.nakyma()[j][i] != -99);
+                    assertTrue(peli.nakyma()[j][i] != 0);
                 } else {
                     assertEquals(peli.nakyma()[j][i], 0);
                 }
@@ -174,7 +212,7 @@ public class PeliTest {
     }
     
     @Test
-    public void tilanneTesti1() {
+    public void tilanneTulostuuOikein() {
         Peli peli = new Peli(4,4);
         Pelaaja p1 = new Pelaaja("p1",1);
         peli.lisaaPelaaja(p1);
@@ -185,7 +223,7 @@ public class PeliTest {
     }
     
     @Test
-    public void kaynnissaTesti1() {
+    public void peliKaynnistyyAloitettaessa() {
         Peli peli = new Peli(4,4);
         Pelaaja p1 = new Pelaaja("p1",1);
         peli.lisaaPelaaja(p1);
@@ -194,7 +232,7 @@ public class PeliTest {
     }
     
     @Test
-    public void kaynnissaTesti2() {
+    public void peliEiOleKaynnissaJosSitaEiOleAloitettu() {
         Peli peli = new Peli(4,4);
         Pelaaja p1 = new Pelaaja("p1",1);
         peli.lisaaPelaaja(p1);
@@ -202,7 +240,7 @@ public class PeliTest {
     }
     
     @Test
-    public void lopetaTesti1() {
+    public void pelinLopettaminenOnnistuu() {
         Peli peli = new Peli(4,4);
         Pelaaja p1 = new Pelaaja("p1",1);
         peli.lisaaPelaaja(p1);
