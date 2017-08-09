@@ -47,15 +47,15 @@ public class Main {
                     }
                 }
                 i++;
-            }
-            
-            if(peli.kaynnissa()) {
                 for(int f = 0 ; f < peli.getPelialusta().getKorkeus() ; f++) {
                     for(int j = 0 ; j < peli.getPelialusta().getLeveys() ; j++) {
                         System.out.print(peli.nakyma()[j][f] + " ");
                     }
                     System.out.println("");
                 }
+            }
+            
+            if(peli.kaynnissa()) {
                 boolean vuoroSailyy = peli.getPelialusta().tarkistaPari();
                 if(!vuoroSailyy){
                     peli.vaihdaVuoro();
@@ -65,11 +65,10 @@ public class Main {
             }
             System.out.println(peli.tilanne());
         }
-        String pisteetLopussa = "Pisteet \n";
-        for (Pelaaja pelaaja : peli.getPelaajat()) {
-            pisteetLopussa += pelaaja.getNimimerkki() + " : " + pelaaja.getPisteet() + "\n";
+        System.out.println("Voittaja:");
+        for(Pelaaja p : peli.johdossa()) {
+            System.out.println(p.getNimimerkki() + " (" + p.getId() + ") : " + p.getPisteet() + " pistettä");
         }
-        System.out.println(pisteetLopussa);
         
     }
     

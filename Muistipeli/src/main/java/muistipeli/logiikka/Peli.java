@@ -85,6 +85,21 @@ public class Peli {
     public void lopeta() {
         this.kaynnissa = false;
     }
+    
+    public ArrayList<Pelaaja> johdossa() {
+        ArrayList<Pelaaja> enitenPisteita = new ArrayList<>();
+        int pisteet = 0;
+        for(Pelaaja p : this.pelaajat) {
+            if(p.getPisteet() > pisteet) {
+                enitenPisteita = new ArrayList<>();
+                enitenPisteita.add(p);
+                pisteet = p.getPisteet();
+            } else if(p.getPisteet() == pisteet) {
+                enitenPisteita.add(p);
+            }
+        }
+        return enitenPisteita;
+    }
 
     public Vuoro getVuoro() {
         return this.vuoro;
