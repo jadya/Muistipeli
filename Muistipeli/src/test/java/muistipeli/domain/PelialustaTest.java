@@ -222,11 +222,20 @@ public class PelialustaTest {
     }
     
     @Test
-    public void kortinKaantaminenAntaaOikeanKortinNumeron() {
+    public void kortinKaantaminenOnnistuuKunKorttiOnAlustalla() {
         Pelialusta alusta = new Pelialusta(2,4);
         PeliKortti kortti = new PeliKortti(1);
         alusta.lisaaKortti(kortti);
-        assertTrue(alusta.kaannaKortti(kortti.getX(), kortti.getY()) == 1);
+        assertTrue(alusta.kaannaKortti(kortti.getX(), kortti.getY()));
+    }
+    
+    @Test
+    public void KorttiaJotaEiOleEiVoiKaantaa() {
+        Pelialusta alusta = new Pelialusta(2,4);
+        PeliKortti kortti = new PeliKortti(1);
+        alusta.lisaaKortti(kortti);
+        alusta.poistaKortti(kortti);
+        assertFalse(alusta.kaannaKortti(kortti.getX(), kortti.getY()));
     }
     
     @Test

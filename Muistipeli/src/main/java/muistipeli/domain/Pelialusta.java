@@ -56,11 +56,12 @@ public class Pelialusta {
         return null;
     }
 
-    public int kaannaKortti(int x, int y) {
+    public boolean kaannaKortti(int x, int y) {
         if (this.kaantotilanne[x][y] != -99) {
             this.kaantotilanne[x][y] = Math.abs(this.kaantotilanne[x][y] - 1);
+            return true;
         }
-        return this.korttienSijainnit[x][y];
+        return false;
     }
     
     public boolean tarkistaPari() {
