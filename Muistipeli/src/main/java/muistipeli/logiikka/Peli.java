@@ -34,13 +34,13 @@ public class Peli {
 
     public void aloitaPeli() {
         this.vuoro.setPelaaja(this.pelaajat.get(0));
-        int korttipareja = this.alusta.getKorkeus()*this.alusta.getLeveys()/2;
-        for(int i = 1 ; i <= korttipareja ; i++) {
+        int korttipareja = this.alusta.getKorkeus() * this.alusta.getLeveys() / 2;
+        for (int i = 1; i <= korttipareja; i++) {
             this.alusta.lisaaKortti(new PeliKortti(i));
             this.alusta.lisaaKortti(new PeliKortti(i));
         }
         this.kaynnissa = true;
-        
+
     }
 
     public void vaihdaVuoro() {
@@ -52,7 +52,7 @@ public class Peli {
         this.vuoro.setPelaaja(this.pelaajat.get(numero));
         this.vuoro.setNumero(numero);
     }
-    
+
     public int[][] nakyma() {
         int leveys = this.alusta.getLeveys();
         int korkeus = this.alusta.getKorkeus();
@@ -77,24 +77,24 @@ public class Peli {
         tilanne += "Vuoro: " + this.pelaajat.get(this.vuoro.getNumero()).getNimimerkki();
         return tilanne;
     }
-    
+
     public boolean kaynnissa() {
         return this.kaynnissa;
     }
-    
+
     public void lopeta() {
         this.kaynnissa = false;
     }
-    
+
     public ArrayList<Pelaaja> johdossa() {
         ArrayList<Pelaaja> enitenPisteita = new ArrayList<>();
         int pisteet = 0;
-        for(Pelaaja p : this.pelaajat) {
-            if(p.getPisteet() > pisteet) {
+        for (Pelaaja p : this.pelaajat) {
+            if (p.getPisteet() > pisteet) {
                 enitenPisteita = new ArrayList<>();
                 enitenPisteita.add(p);
                 pisteet = p.getPisteet();
-            } else if(p.getPisteet() == pisteet) {
+            } else if (p.getPisteet() == pisteet) {
                 enitenPisteita.add(p);
             }
         }

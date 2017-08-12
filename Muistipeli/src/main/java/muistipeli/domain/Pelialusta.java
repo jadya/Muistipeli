@@ -46,10 +46,10 @@ public class Pelialusta {
         this.kaantotilanne[kortti.getX()][kortti.getY()] = -99;
         this.kortit.remove(kortti);
     }
-    
+
     public PeliKortti kortti(int x, int y) {
         for (PeliKortti kortti : this.kortit) {
-            if(kortti.getX() == x && kortti.getY() == y) {
+            if (kortti.getX() == x && kortti.getY() == y) {
                 return kortti;
             }
         }
@@ -63,7 +63,7 @@ public class Pelialusta {
         }
         return false;
     }
-    
+
     public boolean tarkistaPari() {
         int a = -99;
         int ai = -99;
@@ -73,8 +73,8 @@ public class Pelialusta {
         int bj = -99;
         for (int i = 0; i < this.korkeus; i++) {
             for (int j = 0; j < this.leveys; j++) {
-                if(this.kaantotilanne[j][i] == 1) {
-                    if(a == -99){
+                if (this.kaantotilanne[j][i] == 1) {
+                    if (a == -99) {
                         a = this.korttienSijainnit[j][i];
                         ai = i;
                         aj = j;
@@ -83,10 +83,10 @@ public class Pelialusta {
                         bi = i;
                         bj = j;
                     }
-                } 
+                }
             }
         }
-        if(a == b) {
+        if (a == b) {
             this.poistaKortti(kortti(aj, ai));
             this.poistaKortti(kortti(bj, bi));
             return true;
@@ -116,12 +116,12 @@ public class Pelialusta {
     public int paikkojaJaljella() {
         return this.leveys * this.korkeus - this.kortit.size();
     }
-    
+
     public int kuviaNakyvilla() {
         int maara = 0;
         for (int i = 0; i < this.korkeus; i++) {
             for (int j = 0; j < this.leveys; j++) {
-                if(this.kaantotilanne[j][i]==1) {
+                if (this.kaantotilanne[j][i] == 1) {
                     maara++;
                 }
             }
@@ -164,10 +164,10 @@ public class Pelialusta {
     public void setKaantotilanne(int[][] tilanne) {
         this.kaantotilanne = tilanne;
     }
-    
+
     public void setKortit(ArrayList<PeliKortti> korttiLista) {
         if (korttiLista.size() <= this.korkeus * this.leveys) {
-            for(PeliKortti kortti : korttiLista) {
+            for (PeliKortti kortti : korttiLista) {
                 this.lisaaKortti(kortti);
             }
         }
