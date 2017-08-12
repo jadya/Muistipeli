@@ -249,4 +249,78 @@ public class PeliTest {
         assertFalse(peli.kaynnissa());
     }
     
+    @Test
+    public void oikeaPelaajaJohdossa() {
+        Peli peli = new Peli(4,4);
+        Pelaaja p1 = new Pelaaja("p1",1);
+        Pelaaja p2 = new Pelaaja("p2",2);
+        Pelaaja p3 = new Pelaaja("p3",3);
+        Pelaaja p4 = new Pelaaja("p4",4);
+        peli.lisaaPelaaja(p1);
+        peli.lisaaPelaaja(p2);
+        peli.lisaaPelaaja(p3);
+        peli.lisaaPelaaja(p4);
+        peli.aloitaPeli();
+        p1.lisaaPiste();
+        p1.lisaaPiste();
+        p2.lisaaPiste();
+        p3.lisaaPiste();
+        p3.lisaaPiste();
+        p3.lisaaPiste();
+        p4.lisaaPiste();
+        p2.lisaaPiste();
+        peli.lopeta();
+        assertEquals(peli.johdossa().get(0), p3);
+        assertEquals(peli.johdossa().size(), 1);
+    }
+    
+    @Test
+    public void oikeatPelaajatJohdossa() {
+        Peli peli = new Peli(4,4);
+        Pelaaja p1 = new Pelaaja("p1",1);
+        Pelaaja p2 = new Pelaaja("p2",2);
+        Pelaaja p3 = new Pelaaja("p3",3);
+        Pelaaja p4 = new Pelaaja("p4",4);
+        peli.lisaaPelaaja(p1);
+        peli.lisaaPelaaja(p2);
+        peli.lisaaPelaaja(p3);
+        peli.lisaaPelaaja(p4);
+        peli.aloitaPeli();
+        p1.lisaaPiste();
+        p1.lisaaPiste();
+        p1.lisaaPiste();
+        p3.lisaaPiste();
+        p3.lisaaPiste();
+        p3.lisaaPiste();
+        p4.lisaaPiste();
+        p2.lisaaPiste();
+        peli.lopeta();
+        assertTrue(peli.johdossa().contains(p1));
+        assertTrue(peli.johdossa().contains(p3));
+        assertEquals(peli.johdossa().size(), 2);
+    }
+    
+    @Test
+    public void oikeatPelaajatJohdossaKeskenPelin() {
+        Peli peli = new Peli(4,4);
+        Pelaaja p1 = new Pelaaja("p1",1);
+        Pelaaja p2 = new Pelaaja("p2",2);
+        Pelaaja p3 = new Pelaaja("p3",3);
+        Pelaaja p4 = new Pelaaja("p4",4);
+        peli.lisaaPelaaja(p1);
+        peli.lisaaPelaaja(p2);
+        peli.lisaaPelaaja(p3);
+        peli.lisaaPelaaja(p4);
+        peli.aloitaPeli();
+        p1.lisaaPiste();
+        p1.lisaaPiste();
+        p3.lisaaPiste();
+        p3.lisaaPiste();
+        p4.lisaaPiste();
+        p2.lisaaPiste();
+        assertTrue(peli.johdossa().contains(p1));
+        assertTrue(peli.johdossa().contains(p3));
+        assertEquals(peli.johdossa().size(), 2);
+    }
+    
 }

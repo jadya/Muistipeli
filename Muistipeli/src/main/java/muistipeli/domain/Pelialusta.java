@@ -116,6 +116,18 @@ public class Pelialusta {
     public int paikkojaJaljella() {
         return this.leveys * this.korkeus - this.kortit.size();
     }
+    
+    public int kuviaNakyvilla() {
+        int maara = 0;
+        for (int i = 0; i < this.korkeus; i++) {
+            for (int j = 0; j < this.leveys; j++) {
+                if(this.kaantotilanne[j][i]==1) {
+                    maara++;
+                }
+            }
+        }
+        return maara;
+    }
 
     public int getKorkeus() {
         return this.korkeus;
@@ -155,7 +167,9 @@ public class Pelialusta {
     
     public void setKortit(ArrayList<PeliKortti> korttiLista) {
         if (korttiLista.size() <= this.korkeus * this.leveys) {
-            this.kortit = korttiLista;
+            for(PeliKortti kortti : korttiLista) {
+                this.lisaaKortti(kortti);
+            }
         }
     }
 
