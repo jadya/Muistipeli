@@ -10,3 +10,5 @@ Päivä | Tunnit | Kuvaus
 08.08.2017 | 5.5 h | Ohjelmointia ja testejä, pelistä ensimmäinen pelattava versio
 09.08.2017 | 5 h | Korttipaikka-luokan luonti, ohjelmointia, testien parantelua ja uusia testejä
 12.08.2017 | 4 h | Pelialustan ja käyttöliittymän ohjelmointia, testejä, uudet PIT- ja Checkstyle-raportit, README.md:n päivittäminen, luokkakaavion tarkentaminen
+15.08.2017 | 3 h | Kuvien piirtäminen kortteihin ja käyttöliittymän ohjelmointia
+16.08.2017 | 1 h | Käyttöliittymän ohjelmointia
