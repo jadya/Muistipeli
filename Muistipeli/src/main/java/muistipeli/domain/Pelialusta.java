@@ -10,6 +10,7 @@ public class Pelialusta {
     private int[][] korttienSijainnit;
     private int[][] kaantotilanne;
     private ArrayList<PeliKortti> kortit;
+    private ArrayList<PeliKortti> poistetutKortit;
 
     public Pelialusta(int leveys, int korkeus) {
         this.leveys = leveys;
@@ -23,6 +24,7 @@ public class Pelialusta {
             }
         }
         this.kortit = new ArrayList<>();
+        this.poistetutKortit = new ArrayList<>();
     }
 
     public boolean lisaaKortti(PeliKortti kortti) {
@@ -44,10 +46,11 @@ public class Pelialusta {
     public void poistaKortti(PeliKortti kortti) {
         this.korttienSijainnit[kortti.getX()][kortti.getY()] = -99;
         this.kaantotilanne[kortti.getX()][kortti.getY()] = -99;
+        this.poistetutKortit.add(kortti);
         this.kortit.remove(kortti);
     }
 
-    public PeliKortti kortti(int x, int y) {
+    public PeliKortti getKortti(int x, int y) {
         for (PeliKortti kortti : this.kortit) {
             if (kortti.getX() == x && kortti.getY() == y) {
                 return kortti;
@@ -87,8 +90,8 @@ public class Pelialusta {
             }
         }
         if (a == b) {
-            this.poistaKortti(kortti(aj, ai));
-            this.poistaKortti(kortti(bj, bi));
+            this.poistaKortti(getKortti(aj, ai));
+            this.poistaKortti(getKortti(bj, bi));
             return true;
         } else {
             this.kaannaKortti(aj, ai);
@@ -147,6 +150,10 @@ public class Pelialusta {
 
     public ArrayList<PeliKortti> getKortit() {
         return this.kortit;
+    }
+    
+    public ArrayList<PeliKortti> getPoistetutKortit() {
+        return this.poistetutKortit;
     }
 
     public void setKorkeus(int korkeus) {

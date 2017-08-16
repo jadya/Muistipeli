@@ -17,8 +17,11 @@ public class Korttipaikka extends JButton implements ActionListener {
     private ArrayList<ImageIcon> kuvat;
     private final ImageIcon kuva;
     private final ImageIcon selka;
-
-    public Korttipaikka(PeliKortti pelikortti, Pelialusta pelialusta) {
+    private final ImageIcon tyhja;
+    private boolean onTyhja;
+    private final Kayttoliittyma kayttoliittyma;
+    
+    public Korttipaikka(Kayttoliittyma kl, PeliKortti pelikortti, Pelialusta pelialusta) {
         this.kortti = pelikortti;
         this.x = pelikortti.getX();
         this.y = pelikortti.getY();
@@ -26,8 +29,11 @@ public class Korttipaikka extends JButton implements ActionListener {
         String sijainti = "kuvat/kuva"+pelikortti.getKuvanNumero()+".png";
         this.kuva = new ImageIcon(sijainti);
         this.selka = new ImageIcon("kuvat/selka.png");
+        this.tyhja = new ImageIcon("kuvat/tyhja.png");
         this.setIcon(selka);
+        this.onTyhja = false;
         this.addActionListener(this);
+        this.kayttoliittyma = kl;
     }
 
     @Override
@@ -35,7 +41,25 @@ public class Korttipaikka extends JButton implements ActionListener {
         if (this.alusta.getKaantotilanne()[x][y] == 0 && this.alusta.kuviaNakyvilla() < 2) {
             this.alusta.kaannaKortti(x, y);
             this.setIcon(kuva);
+        } else if (this.alusta.kuviaNakyvilla() == 2) {
+            kayttoliittyma.getPeli().kierros();
+            kayttoliittyma.poistaYlimaaraisetKorttipaikat();
+            kayttoliittyma.uusiKierros();
+            
         }
+    }
+    
+    public void setSelka() {
+        this.setIcon(selka);
+    }
+    
+    public void setTyhja() {
+        this.onTyhja = true;
+        this.setIcon(tyhja);
+    }
+    
+    public boolean getTyhja() {
+        return this.onTyhja;
     }
 
     public PeliKortti getKortti() {

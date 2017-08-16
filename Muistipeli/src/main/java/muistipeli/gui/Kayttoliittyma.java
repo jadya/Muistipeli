@@ -23,7 +23,7 @@ public class Kayttoliittyma implements Runnable{
         this.nakyma = null;
         
     }
-
+    
     @Override
     public void run() {
         frame = new JFrame("Muistipeli");
@@ -41,13 +41,38 @@ public class Kayttoliittyma implements Runnable{
         panel.setLayout(new GridLayout(leveys, korkeus));
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
-                Korttipaikka korttipaikka = new Korttipaikka(this.peli.getPelialusta().kortti(j, i), this.peli.getPelialusta());
+                Korttipaikka korttipaikka = new Korttipaikka(this,this.peli.getPelialusta().getKortti(j, i), this.peli.getPelialusta());
                 korttipaikat.add(korttipaikka);
                 panel.add(korttipaikka);
             }
         }
         this.frame.add(panel, BorderLayout.CENTER);
         this.nakyma = new Pelinakyma();
+    }
+    
+    public void kaynnistaPeli() {
+        while(peli.kaynnissa()) {
+            if(peli.getPelialusta().kuviaNakyvilla() == 2) {
+                uusiKierros();
+            }
+        }
+    }
+    
+    public void uusiKierros() {
+        for(Korttipaikka k : this.korttipaikat) {
+            if(!k.getTyhja()) {
+                k.setSelka();
+            } 
+        }
+        System.out.println(this.peli.tilanne()); //GUI
+    }
+    
+    public void poistaYlimaaraisetKorttipaikat() {
+        for(Korttipaikka k : this.korttipaikat) {
+            if(this.peli.getPelialusta().getPoistetutKortit().contains(k.getKortti())) {
+                k.setTyhja();
+            }
+        }
     }
 
     public void setPeli(Peli peli) {
@@ -60,6 +85,15 @@ public class Kayttoliittyma implements Runnable{
     
     public Pelinakyma getNakyma() {
         return this.nakyma;
+    }
+    
+    public Korttipaikka getKorttipaikka(int x, int y) {
+        for(Korttipaikka kp : this.korttipaikat) {
+            if(kp.getX() == x && kp.getY() == y) {
+                return kp;
+            }
+        }
+        return null;
     }
 
 }

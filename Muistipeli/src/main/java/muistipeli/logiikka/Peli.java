@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import muistipeli.domain.Pelaaja;
 import muistipeli.domain.PeliKortti;
 import muistipeli.domain.Pelialusta;
+import muistipeli.gui.Kayttoliittyma;
 
 public class Peli {
 
@@ -11,6 +12,7 @@ public class Peli {
     private ArrayList<Pelaaja> pelaajat;
     private Vuoro vuoro;
     private boolean kaynnissa;
+    private Kayttoliittyma kayttoliittyma;
 
     public Peli(int leveys, int korkeus) {
         if ((leveys * korkeus) % 2 != 0) {
@@ -26,6 +28,7 @@ public class Peli {
         this.pelaajat = new ArrayList<>();
         this.vuoro = new Vuoro(null);
         this.kaynnissa = false;
+        this.kayttoliittyma = null;
     }
 
     public void lisaaPelaaja(Pelaaja pelaaja) {
@@ -40,9 +43,18 @@ public class Peli {
             this.alusta.lisaaKortti(new PeliKortti(i));
         }
         this.kaynnissa = true;
-
+        
     }
-
+    
+    public void kierros() {
+        if(alusta.tarkistaPari()){
+            vuoro.getPelaaja().lisaaPiste();
+        } else {
+            vaihdaVuoro();
+        }
+        
+    }
+    
     public void vaihdaVuoro() {
         int numero = this.vuoro.getNumero();
         numero++;
@@ -112,5 +124,6 @@ public class Peli {
     public Pelialusta getPelialusta() {
         return this.alusta;
     }
+    
 
 }

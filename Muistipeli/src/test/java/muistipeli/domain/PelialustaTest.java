@@ -205,7 +205,7 @@ public class PelialustaTest {
             PeliKortti kortti = new PeliKortti(i);
             alusta.lisaaKortti(kortti);
         }
-        assertTrue(alusta.kortti(0, 0) != null);
+        assertTrue(alusta.getKortti(0, 0) != null);
     }
     
     @Test
@@ -215,7 +215,7 @@ public class PelialustaTest {
             PeliKortti kortti = new PeliKortti(i);
             alusta.lisaaKortti(kortti);
         }
-        assertTrue(alusta.kortti(3, 3) != null);
+        assertTrue(alusta.getKortti(3, 3) != null);
     }
     
     @Test
@@ -225,8 +225,8 @@ public class PelialustaTest {
             PeliKortti kortti = new PeliKortti(i);
             alusta.lisaaKortti(kortti);
         }
-        alusta.poistaKortti(alusta.kortti(0,0));
-        assertTrue(alusta.kortti(0, 0) == null);
+        alusta.poistaKortti(alusta.getKortti(0,0));
+        assertTrue(alusta.getKortti(0, 0) == null);
     }
     
     @Test
