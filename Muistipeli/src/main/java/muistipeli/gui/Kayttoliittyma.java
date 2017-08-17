@@ -131,9 +131,19 @@ public class Kayttoliittyma implements Runnable{
         c.add(new JLabel("Muistipeli"), BorderLayout.NORTH);
         c.add(new Kaynnistys(this,"Uusi peli"), BorderLayout.SOUTH);
         JPanel panel = new JPanel();
-        int rivit = 2 + this.peli.getPelaajat().size();
+        int rivit = 3 + this.peli.getPelaajat().size() + this.peli.johdossa().size();
         panel.setLayout(new GridLayout(rivit, 1));
         panel.add(new JLabel("Peli ohi"));
+        if(this.peli.johdossa().size()==1) {
+            panel.add(new JLabel("Voittaja: "));
+            panel.add(new JLabel(peli.johdossa().get(0).toString()));
+        }
+        if(this.peli.johdossa().size()>1) {
+            panel.add(new JLabel("Voittajat: "));
+            for(int i = 0 ; i<peli.johdossa().size() ; i++) {
+                panel.add(new JLabel(peli.johdossa().get(i).toString()));
+            }
+        }
         panel.add(new JLabel("Tulokset:"));
         for(Pelaaja p : this.peli.getPelaajat()) {
             panel.add(new JLabel(p.toString()));
