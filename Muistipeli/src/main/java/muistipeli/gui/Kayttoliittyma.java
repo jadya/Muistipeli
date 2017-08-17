@@ -129,6 +129,7 @@ public class Kayttoliittyma implements Runnable{
             c.remove(i);
         }
         c.add(new JLabel("Muistipeli"), BorderLayout.NORTH);
+        c.add(new Kaynnistys(this,"Uusi peli"), BorderLayout.SOUTH);
         JPanel panel = new JPanel();
         int rivit = 2 + this.peli.getPelaajat().size();
         panel.setLayout(new GridLayout(rivit, 1));
@@ -138,11 +139,9 @@ public class Kayttoliittyma implements Runnable{
             panel.add(new JLabel(p.toString()));
         }
         c.add(panel, BorderLayout.CENTER);
-        c.add(new Kaynnistys(this,"Uusi peli"), BorderLayout.SOUTH);
     }
     
     public void siirryPistenakymaan() {
-        
         Container c = frame.getContentPane();
         for(int i = 0 ; i< c.getComponentCount();i++) {
             c.remove(i);
