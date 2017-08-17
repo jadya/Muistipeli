@@ -41,4 +41,9 @@ public class Pelaaja {
         this.pisteet = pistemaara;
     }
     
+    @Override
+    public String toString() {
+        return this.nimimerkki + " (" + this.id + ") : " + this.pisteet + " pistettä";
+    }
+    
 }

@@ -9,11 +9,12 @@ import muistipeli.logiikka.Peli;
 public class Main {
 
     public static void main(String[] args) {
-        Peli peli = new Peli(4,4);
-        peli.lisaaPelaaja(new Pelaaja("a", 1));
-        peli.lisaaPelaaja(new Pelaaja("b", 2));
-        peli.aloitaPeli();
-        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(peli); 
+//        Peli peli = new Peli(4,4);
+//        peli.lisaaPelaaja(new Pelaaja("a", 1));
+//        peli.lisaaPelaaja(new Pelaaja("b", 2));
+//        peli.aloitaPeli();
+//        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(peli); 
+        Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
         SwingUtilities.invokeLater(kayttoliittyma);
         
 //        System.out.println("Muistipeli");
