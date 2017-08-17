@@ -12,3 +12,4 @@ Päivä | Tunnit | Kuvaus
 12.08.2017 | 4 h | Pelialustan ja käyttöliittymän ohjelmointia, testejä, uudet PIT- ja Checkstyle-raportit, README.md:n päivittäminen, luokkakaavion tarkentaminen
 15.08.2017 | 3 h | Kuvien piirtäminen kortteihin ja käyttöliittymän ohjelmointia
 16.08.2017 | 4 h | Käyttöliittymän ohjelmointia
+17.08.2017 | 6 h | Käyttöliittymän ohjelmointia
