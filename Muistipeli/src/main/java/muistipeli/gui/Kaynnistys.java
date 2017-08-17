@@ -22,7 +22,6 @@ public class Kaynnistys extends JButton implements ActionListener {
         if(this.toiminto.equals("Lopeta peli")) {
             this.kayttoliittyma.getPeli().lopeta();
             this.kayttoliittyma.siirryPistenakymaan();
-            //this.setToiminto("Uusi peli");
         }
         if(this.toiminto.equals("Aloita peli")) {
             this.kayttoliittyma.siirryPelinakymaan();
