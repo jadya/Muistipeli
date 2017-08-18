@@ -13,4 +13,4 @@ Päivä | Tunnit | Kuvaus
 15.08.2017 | 3 h | Kuvien piirtäminen kortteihin ja käyttöliittymän ohjelmointia
 16.08.2017 | 4 h | Käyttöliittymän ohjelmointia
 17.08.2017 | 6 h | Käyttöliittymän ohjelmointia
-18.08.2017 | 2 h | Käyttöliittymän kuvien parantelu
+18.08.2017 | 4 h | Käyttöliittymän kuvien parantelu ja käyttöliittymän ohjelmointia
