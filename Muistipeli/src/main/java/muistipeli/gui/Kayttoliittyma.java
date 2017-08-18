@@ -53,7 +53,8 @@ public class Kayttoliittyma implements Runnable{
         //c.add(new JLabel("Muistipeli"), BorderLayout.NORTH);
         c.add(new Kaynnistys(this,"Lopeta peli"), BorderLayout.SOUTH);
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(leveys, korkeus));
+        panel.setLayout(new GridLayout(korkeus, leveys));
+        //panel.setLayout(new GridLayout(leveys, korkeus));
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
                 Korttipaikka korttipaikka = new Korttipaikka(this,this.peli.getPelialusta().getKortti(j, i), this.peli.getPelialusta());
@@ -116,7 +117,7 @@ public class Kayttoliittyma implements Runnable{
             c.remove(i);
         }
         
-        this.rakennaPelinakyma(this.getNakyma().getLeveys(),this.getNakyma().getKorkeus(),frame.getContentPane());
+        this.rakennaPelinakyma(peli.getPelialusta().getLeveys(),peli.getPelialusta().getKorkeus(),frame.getContentPane());
         SwingUtilities.updateComponentTreeUI(frame);
     }
     
@@ -184,8 +185,6 @@ public class Kayttoliittyma implements Runnable{
         frame.invalidate();
         frame.validate();
         frame.repaint();
-        //SwingUtilities.updateComponentTreeUI(frame);
-        System.out.println(this.peli.tilanne()); //GUI
     }
     
     public void poistaYlimaaraisetKorttipaikat() {
