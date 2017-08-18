@@ -20,11 +20,11 @@ public class Kayttoliittyma implements Runnable{
     private Pelinakyma pelinakyma;
     private VuoronNayttaja vuoronNayttaja;
 
-    public Kayttoliittyma(Peli peli) {
-        this.korttipaikat = new ArrayList<>();
-        this.peli = peli;
-        this.pelinakyma = null;
-    }
+//    public Kayttoliittyma(Peli peli) {
+//        this.korttipaikat = new ArrayList<>();
+//        this.peli = peli;
+//        this.pelinakyma = null;
+//    }
     
     public Kayttoliittyma() {
         this.korttipaikat = new ArrayList<>();
@@ -50,11 +50,9 @@ public class Kayttoliittyma implements Runnable{
         }
         this.vuoronNayttaja = new VuoronNayttaja(this.peli);
         c.add(this.vuoronNayttaja, BorderLayout.NORTH);
-        //c.add(new JLabel("Muistipeli"), BorderLayout.NORTH);
         c.add(new Kaynnistys(this,"Lopeta peli"), BorderLayout.SOUTH);
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(korkeus, leveys));
-        //panel.setLayout(new GridLayout(leveys, korkeus));
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
                 Korttipaikka korttipaikka = new Korttipaikka(this,this.peli.getPelialusta().getKortti(j, i), this.peli.getPelialusta());
@@ -111,6 +109,8 @@ public class Kayttoliittyma implements Runnable{
     public void siirryPelinakymaan() {
         this.valmistelePeli();
         this.peli.aloitaPeli();
+        this.pelinakyma.setKorkeus(peli.getPelialusta().getKorkeus());
+        this.pelinakyma.setLeveys(peli.getPelialusta().getLeveys());
         
         Container c = frame.getContentPane();
         for(int i = 0 ; i< c.getComponentCount();i++) {
