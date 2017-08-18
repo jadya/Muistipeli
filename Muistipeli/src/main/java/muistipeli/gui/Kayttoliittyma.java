@@ -18,18 +18,19 @@ public class Kayttoliittyma implements Runnable{
     private ArrayList<Korttipaikka> korttipaikat;
     private Peli peli;
     private Pelinakyma pelinakyma;
+    private VuoronNayttaja vuoronNayttaja;
 
     public Kayttoliittyma(Peli peli) {
         this.korttipaikat = new ArrayList<>();
         this.peli = peli;
         this.pelinakyma = null;
-        
     }
     
     public Kayttoliittyma() {
         this.korttipaikat = new ArrayList<>();
         this.peli = null;
         this.pelinakyma = null;
+        this.vuoronNayttaja = null;
     }
     
     @Override
@@ -47,7 +48,9 @@ public class Kayttoliittyma implements Runnable{
         for(int i = 0 ; i< c.getComponentCount();i++) {
             c.remove(i);
         }
-        c.add(new JLabel("Muistipeli"), BorderLayout.NORTH);
+        this.vuoronNayttaja = new VuoronNayttaja(this.peli);
+        c.add(this.vuoronNayttaja, BorderLayout.NORTH);
+        //c.add(new JLabel("Muistipeli"), BorderLayout.NORTH);
         c.add(new Kaynnistys(this,"Lopeta peli"), BorderLayout.SOUTH);
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(leveys, korkeus));
@@ -178,6 +181,10 @@ public class Kayttoliittyma implements Runnable{
                 k.setSelka();
             } 
         }
+        frame.invalidate();
+        frame.validate();
+        frame.repaint();
+        //SwingUtilities.updateComponentTreeUI(frame);
         System.out.println(this.peli.tilanne()); //GUI
     }
     
@@ -217,5 +224,9 @@ public class Kayttoliittyma implements Runnable{
     public JFrame getFrame() {
         return this.frame;
     }
-
+    
+    public VuoronNayttaja getVuoronNayttaja() {
+        return this.vuoronNayttaja;
+    }
+    
 }

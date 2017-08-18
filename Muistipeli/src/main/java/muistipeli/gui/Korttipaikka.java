@@ -44,6 +44,7 @@ public class Korttipaikka extends JButton implements ActionListener {
         } else if (this.alusta.kuviaNakyvilla() == 2) {
             kayttoliittyma.getPeli().kierros();
             kayttoliittyma.poistaYlimaaraisetKorttipaikat();
+            kayttoliittyma.getVuoronNayttaja().paivitaVuoro();
             kayttoliittyma.uusiKierros();
             
         }
