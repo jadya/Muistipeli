@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 8,
+      <title>File: 14,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -46,6 +46,20 @@ under the License.
           <tbody>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#muistipeli.gui.VuoronNayttaja.java">muistipeli/gui/VuoronNayttaja.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#muistipeli.domain.Pelialusta.java">muistipeli/domain/Pelialusta.java</a>
                 </td>
                 <td>
@@ -60,7 +74,77 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#muistipeli.gui.ValintaPainike.java">muistipeli/gui/ValintaPainike.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#muistipeli.domain.PeliKortti.java">muistipeli/domain/PeliKortti.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#muistipeli.gui.Kayttoliittyma.java">muistipeli/gui/Kayttoliittyma.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#muistipeli.gui.Kaynnistys.java">muistipeli/gui/Kaynnistys.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#muistipeli.domain.Pelaaja.java">muistipeli/domain/Pelaaja.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#muistipeli.gui.NakymanVaihtaja.java">muistipeli/gui/NakymanVaihtaja.java</a>
                 </td>
                 <td>
                   0
@@ -130,7 +214,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#muistipeli.domain.PeliKortti.java">muistipeli/domain/PeliKortti.java</a>
+                  <a href="${project.url}/checkstyle.html#muistipeli.logiikka.Nakyma.java">muistipeli/logiikka/Nakyma.java</a>
                 </td>
                 <td>
                   0
@@ -144,7 +228,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#muistipeli.gui.Kayttoliittyma.java">muistipeli/gui/Kayttoliittyma.java</a>
+                  <a href="${project.url}/checkstyle.html#muistipeli.gui.Pelinakyma.java">muistipeli/gui/Pelinakyma.java</a>
                 </td>
                 <td>
                   0
