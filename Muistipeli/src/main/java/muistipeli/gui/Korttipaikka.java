@@ -20,13 +20,13 @@ public class Korttipaikka extends JButton implements ActionListener {
     private final ImageIcon tyhja;
     private boolean onTyhja;
     private final Kayttoliittyma kayttoliittyma;
-    
+
     public Korttipaikka(Kayttoliittyma kl, PeliKortti pelikortti, Pelialusta pelialusta) {
         this.kortti = pelikortti;
         this.x = pelikortti.getX();
         this.y = pelikortti.getY();
         this.alusta = pelialusta;
-        String sijainti = "kuvat/kuva"+pelikortti.getKuvanNumero()+".png";
+        String sijainti = "kuvat/kuva" + pelikortti.getKuvanNumero() + ".png";
         this.kuva = new ImageIcon(sijainti);
         this.selka = new ImageIcon("kuvat/selka.png");
         this.tyhja = new ImageIcon("kuvat/tyhja.png");
@@ -46,19 +46,19 @@ public class Korttipaikka extends JButton implements ActionListener {
             kayttoliittyma.poistaYlimaaraisetKorttipaikat();
             kayttoliittyma.getVuoronNayttaja().paivitaVuoro();
             kayttoliittyma.uusiKierros();
-            
+
         }
     }
-    
+
     public void setSelka() {
         this.setIcon(selka);
     }
-    
+
     public void setTyhja() {
         this.onTyhja = true;
         this.setIcon(tyhja);
     }
-    
+
     public boolean getTyhja() {
         return this.onTyhja;
     }
@@ -70,6 +70,5 @@ public class Korttipaikka extends JButton implements ActionListener {
     public void setKortti(PeliKortti pelikortti) {
         this.kortti = pelikortti;
     }
-    
 
 }

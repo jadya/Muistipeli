@@ -17,7 +17,7 @@ public class Pelaaja {
     }
     
     /**
-     * Metodi lisää yhden pisteen pelaajalle.
+     * Metodi lisää pelaajalle yhden pisteen.
      */
     public void lisaaPiste() {
         this.pisteet++;

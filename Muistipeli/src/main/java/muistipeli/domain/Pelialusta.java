@@ -29,13 +29,13 @@ public class Pelialusta {
         this.kortit = new ArrayList<>();
         this.poistetutKortit = new ArrayList<>();
     }
-    
+
     /**
-     * Metodi lisää annetun kortin pelialustalle, mikäli alusta ei ole täysi, 
-     * ja palauttaa kortin asettumista pelialustalle kuvaavan totuusarvon.
+     * Metodi lisää annetun kortin pelialustalle, mikäli alusta ei ole täysi, ja
+     * palauttaa kortin asettumista pelialustalle kuvaavan totuusarvon.
      *
-     * @param   kortti   Pelialustalle lisättävä pelikortti
-     * 
+     * @param kortti Pelialustalle lisättävä pelikortti
+     *
      * @return totuusarvo kortin lisäämisen onnistumiselle
      */
     public boolean lisaaKortti(PeliKortti kortti) {
@@ -53,15 +53,15 @@ public class Pelialusta {
         }
         return false;
     }
-    
+
     /**
-     * Metodi poistaa annetun kortin pelialustalta, mikäli kyseinen kortti on 
+     * Metodi poistaa annetun kortin pelialustalta, mikäli kyseinen kortti on
      * alustalla.
      *
-     * @param   kortti   Poistettava kortti
+     * @param kortti Poistettava kortti
      */
     public void poistaKortti(PeliKortti kortti) {
-        if(this.kortit.contains(kortti)) {
+        if (this.kortit.contains(kortti)) {
             this.korttienSijainnit[kortti.getX()][kortti.getY()] = -99;
             this.kaantotilanne[kortti.getX()][kortti.getY()] = -99;
             this.poistetutKortit.add(kortti);
@@ -69,6 +69,14 @@ public class Pelialusta {
         }
     }
 
+    /**
+     * Metodi antaa kysytyissä koordinaateissa pelialustalla sijaitsevan kortin.
+     *
+     * @param x Halutun kortin x-koordinaatti pelialustalla
+     * @param y Halutun kortin y-koordinaatti pelialustalla
+     *
+     * @return annetussa paikassa sijaitseva kortti
+     */
     public PeliKortti getKortti(int x, int y) {
         for (PeliKortti kortti : this.kortit) {
             if (kortti.getX() == x && kortti.getY() == y) {
@@ -78,6 +86,15 @@ public class Pelialusta {
         return null;
     }
 
+    /**
+     * Metodi kääntää kysytyissä koordinaateissa pelialustalla sijaitsevan
+     * kortin, jos kyseisissä koordinaateissa sijaitsee kortti.
+     *
+     * @param x Käännettävän kortin x-koordinaatti pelialustalla
+     * @param y Käännettävän kortin y-koordinaatti pelialustalla
+     *
+     * @return totuusarvo kortin löytymiselle annetuista koordinaateista
+     */
     public boolean kaannaKortti(int x, int y) {
         if (this.kaantotilanne[x][y] != -99) {
             this.kaantotilanne[x][y] = Math.abs(this.kaantotilanne[x][y] - 1);
@@ -86,6 +103,12 @@ public class Pelialusta {
         return false;
     }
 
+    /**
+     * Metodi kertoo, onko pelialustalla käännettynä kaksi samanlaisella kuvalla
+     * varustettua korttia.
+     *
+     * @return totuusarvo väitteelle näkyvillä on kaksi samaa kuvaa
+     */
     public boolean tarkistaPari() {
         int a = -99;
         int ai = -99;
@@ -119,6 +142,11 @@ public class Pelialusta {
         }
     }
 
+    /**
+     * Metodi arpoo satunnaisen kohdan pelialustalta.
+     *
+     * @return arvotun kohdan x- ja y-koordinaatti taulukossa
+     */
     public int[] arvoKohta() {
         int[] kohta = new int[2];
         Random random = new Random();
@@ -127,18 +155,41 @@ public class Pelialusta {
         return kohta;
     }
 
+    /**
+     * Metodi kertoo, onko pelialusta täynnä eli onko pelialustan kaikissa
+     * kohdissa kortti.
+     *
+     * @return totuusarvo väitteelle pelialusta on täynnä
+     */
     public boolean taynna() {
         return this.kortit.size() == this.korkeus * this.leveys;
     }
 
+    /**
+     * Metodi kertoo, onko pelialusta tyhjä eli ovatko pelialustan kaikki kohdat
+     * vapaana.
+     *
+     * @return totuusarvo väitteelle pelialusta on tyhjä
+     */
     public boolean tyhja() {
         return this.kortit.isEmpty();
     }
 
+    /**
+     * Metodi kertoo kuinka monta paikkaa pelialustalla on vapaana.
+     *
+     * @return vapaiden paikkojen määrä
+     */
     public int paikkojaJaljella() {
         return this.leveys * this.korkeus - this.kortit.size();
     }
 
+    /**
+     * Metodi kertoo kuinka monta pelialustalla olevista korteista on
+     * käännetttnä niin, että niiden kuvat ovat näkyvillä.
+     *
+     * @return näkyvillä olevien kuvien määrä
+     */
     public int kuviaNakyvilla() {
         int maara = 0;
         for (int i = 0; i < this.korkeus; i++) {
@@ -170,7 +221,7 @@ public class Pelialusta {
     public ArrayList<PeliKortti> getKortit() {
         return this.kortit;
     }
-    
+
     public ArrayList<PeliKortti> getPoistetutKortit() {
         return this.poistetutKortit;
     }
@@ -191,6 +242,12 @@ public class Pelialusta {
         this.kaantotilanne = tilanne;
     }
 
+    /**
+     * Metodi asettaa annetun listan kortit pelialustalle listan pituuden
+     * ollessa korkeintaan pelialustan suuruinen.
+     *
+     * @param korttiLista lista pelialustalle lisättävistä korteista
+     */
     public void setKortit(ArrayList<PeliKortti> korttiLista) {
         if (korttiLista.size() <= this.korkeus * this.leveys) {
             for (PeliKortti kortti : korttiLista) {

@@ -34,6 +34,11 @@ public class Peli {
         this.kayttoliittyma = null;
     }
 
+    /**
+     * Metodi lisää annetun pelaajan peliin.
+     *
+     * @param pelaaja peliin lisättävä pelaaja
+     */
     public void lisaaPelaaja(Pelaaja pelaaja) {
         this.pelaajat.add(pelaaja);
     }
@@ -46,18 +51,21 @@ public class Peli {
             this.alusta.lisaaKortti(new PeliKortti(i));
         }
         this.kaynnissa = true;
-        
+
     }
-    
+
     public void kierros() {
-        if(alusta.tarkistaPari()){
+        if (alusta.tarkistaPari()) {
             vuoro.getPelaaja().lisaaPiste();
         } else {
             vaihdaVuoro();
         }
-        
+
     }
-    
+
+    /**
+     * Metodi vaihtaa vuoroon seuraavan pelaajan.
+     */
     public void vaihdaVuoro() {
         int numero = this.vuoro.getNumero();
         numero++;
@@ -101,6 +109,11 @@ public class Peli {
         this.kaynnissa = false;
     }
 
+    /**
+     * Metodi kertoo, keillä pelaajista on eniten pisteitä.
+     *
+     * @return lista pelaajista, joilla on eniten pisteitä
+     */
     public ArrayList<Pelaaja> johdossa() {
         ArrayList<Pelaaja> enitenPisteita = new ArrayList<>();
         int pisteet = 0;
@@ -127,6 +140,5 @@ public class Peli {
     public Pelialusta getPelialusta() {
         return this.alusta;
     }
-    
 
 }
