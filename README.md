@@ -8,6 +8,6 @@ Muistipelissä pelaajat etsivät korttien joukosta kääntämällä samanlaisist
 
 - [tuntikirjanpito](Dokumentaatio/tuntikirjanpito.md)
 
--  [pit-raportti](https://htmlpreview.github.io/?https://github.com/jadya/Muistipeli/blob/master/Dokumentaatio/pit/201708121741/index.html) 
+-  [pit-raportti](https://htmlpreview.github.io/?https://github.com/jadya/Muistipeli/blob/master/Dokumentaatio/pit/201708191921/index.html) 
 
 - [checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/jadya/Muistipeli/blob/master/Dokumentaatio/checkstyle/checkstyle.html) 
