@@ -1,7 +1,9 @@
 
-package muistipeli.domain;
+package muistipeli.logiikka;
 
 import java.util.ArrayList;
+import muistipeli.domain.PeliKortti;
+import muistipeli.domain.Pelialusta;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
