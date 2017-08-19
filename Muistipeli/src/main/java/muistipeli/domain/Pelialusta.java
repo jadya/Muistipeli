@@ -3,6 +3,9 @@ package muistipeli.domain;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Luokka tarjoaa muistipelin pelialustan käsittelyyn tarvittavia metodeita.
+ */
 public class Pelialusta {
 
     private int leveys;
@@ -26,7 +29,15 @@ public class Pelialusta {
         this.kortit = new ArrayList<>();
         this.poistetutKortit = new ArrayList<>();
     }
-
+    
+    /**
+     * Metodi lisää annetun kortin pelialustalle, mikäli alusta ei ole täysi, 
+     * ja palauttaa kortin asettumista pelialustalle kuvaavan totuusarvon.
+     *
+     * @param   kortti   Pelialustalle lisättävä pelikortti
+     * 
+     * @return totuusarvo kortin lisäämisen onnistumiselle
+     */
     public boolean lisaaKortti(PeliKortti kortti) {
         if (!this.taynna()) {
             int[] kohta = this.arvoKohta();
@@ -42,12 +53,20 @@ public class Pelialusta {
         }
         return false;
     }
-
+    
+    /**
+     * Metodi poistaa annetun kortin pelialustalta, mikäli kyseinen kortti on 
+     * alustalla.
+     *
+     * @param   kortti   Poistettava kortti
+     */
     public void poistaKortti(PeliKortti kortti) {
-        this.korttienSijainnit[kortti.getX()][kortti.getY()] = -99;
-        this.kaantotilanne[kortti.getX()][kortti.getY()] = -99;
-        this.poistetutKortit.add(kortti);
-        this.kortit.remove(kortti);
+        if(this.kortit.contains(kortti)) {
+            this.korttienSijainnit[kortti.getX()][kortti.getY()] = -99;
+            this.kaantotilanne[kortti.getX()][kortti.getY()] = -99;
+            this.poistetutKortit.add(kortti);
+            this.kortit.remove(kortti);
+        }
     }
 
     public PeliKortti getKortti(int x, int y) {

@@ -6,6 +6,9 @@ import muistipeli.domain.PeliKortti;
 import muistipeli.domain.Pelialusta;
 import muistipeli.gui.Kayttoliittyma;
 
+/**
+ * Luokka tarjoaa pelilogiikkaan liittyviä metodeita.
+ */
 public class Peli {
 
     private Pelialusta alusta;

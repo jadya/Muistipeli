@@ -1,6 +1,10 @@
 
 package muistipeli.domain;
 
+
+/**
+ * Luokka tarjoaa muistipelin kortteihin liittyviä metodeita.
+ */
 public class PeliKortti {
     
     private int kuva;

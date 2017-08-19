@@ -3,7 +3,9 @@ package muistipeli.logiikka;
 
 import muistipeli.domain.Pelaaja;
 
-
+/**
+ * Luokka tarjoaa muistipelin vuoroon liittyviä metodeita.
+ */
 public class Vuoro {
     
     private Pelaaja pelaaja;

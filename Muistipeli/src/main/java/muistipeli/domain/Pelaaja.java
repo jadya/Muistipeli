@@ -1,6 +1,9 @@
 
 package muistipeli.domain;
 
+/**
+ * Luokka tarjoaa muistipelin pelaajiin liittyviä metodeita.
+ */
 public class Pelaaja {
     
     private String nimimerkki;
@@ -13,6 +16,9 @@ public class Pelaaja {
         this.pisteet = 0;
     }
     
+    /**
+     * Metodi lisää yhden pisteen pelaajalle.
+     */
     public void lisaaPiste() {
         this.pisteet++;
     }
