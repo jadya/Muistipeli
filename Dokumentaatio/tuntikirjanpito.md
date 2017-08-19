@@ -14,4 +14,4 @@ Päivä | Tunnit | Kuvaus
 16.08.2017 | 4 h | Käyttöliittymän ohjelmointia
 17.08.2017 | 6 h | Käyttöliittymän ohjelmointia
 18.08.2017 | 4 h | Käyttöliittymän kuvien parantelu ja käyttöliittymän ohjelmointia
-19.08.2017 | 2 h | JavaDoc:in aloittaminen ja ohjelmointia
+19.08.2017 | 4 h | JavaDoc:in aloittaminen, testejä ja ohjelmointia
