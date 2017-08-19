@@ -2,6 +2,7 @@ package muistipeli.domain;
 
 import java.util.ArrayList;
 import java.util.Random;
+import muistipeli.logiikka.Nakyma;
 
 /**
  * Luokka tarjoaa muistipelin pelialustan käsittelyyn tarvittavia metodeita.
@@ -14,6 +15,7 @@ public class Pelialusta {
     private int[][] kaantotilanne;
     private ArrayList<PeliKortti> kortit;
     private ArrayList<PeliKortti> poistetutKortit;
+    private Nakyma nakyma;
 
     public Pelialusta(int leveys, int korkeus) {
         this.leveys = leveys;
@@ -28,6 +30,7 @@ public class Pelialusta {
         }
         this.kortit = new ArrayList<>();
         this.poistetutKortit = new ArrayList<>();
+        this.nakyma = new Nakyma(this);
     }
 
     /**
@@ -104,45 +107,6 @@ public class Pelialusta {
     }
 
     /**
-     * Metodi kertoo, onko pelialustalla käännettynä kaksi samanlaisella kuvalla
-     * varustettua korttia.
-     *
-     * @return totuusarvo väitteelle näkyvillä on kaksi samaa kuvaa
-     */
-    public boolean tarkistaPari() {
-        int a = -99;
-        int ai = -99;
-        int aj = -99;
-        int b = -99;
-        int bi = -99;
-        int bj = -99;
-        for (int i = 0; i < this.korkeus; i++) {
-            for (int j = 0; j < this.leveys; j++) {
-                if (this.kaantotilanne[j][i] == 1) {
-                    if (a == -99) {
-                        a = this.korttienSijainnit[j][i];
-                        ai = i;
-                        aj = j;
-                    } else {
-                        b = this.korttienSijainnit[j][i];
-                        bi = i;
-                        bj = j;
-                    }
-                }
-            }
-        }
-        if (a == b) {
-            this.poistaKortti(getKortti(aj, ai));
-            this.poistaKortti(getKortti(bj, bi));
-            return true;
-        } else {
-            this.kaannaKortti(aj, ai);
-            this.kaannaKortti(bj, bi);
-            return false;
-        }
-    }
-
-    /**
      * Metodi arpoo satunnaisen kohdan pelialustalta.
      *
      * @return arvotun kohdan x- ja y-koordinaatti taulukossa
@@ -174,34 +138,7 @@ public class Pelialusta {
     public boolean tyhja() {
         return this.kortit.isEmpty();
     }
-
-    /**
-     * Metodi kertoo kuinka monta paikkaa pelialustalla on vapaana.
-     *
-     * @return vapaiden paikkojen määrä
-     */
-    public int paikkojaJaljella() {
-        return this.leveys * this.korkeus - this.kortit.size();
-    }
-
-    /**
-     * Metodi kertoo kuinka monta pelialustalla olevista korteista on
-     * käännetttnä niin, että niiden kuvat ovat näkyvillä.
-     *
-     * @return näkyvillä olevien kuvien määrä
-     */
-    public int kuviaNakyvilla() {
-        int maara = 0;
-        for (int i = 0; i < this.korkeus; i++) {
-            for (int j = 0; j < this.leveys; j++) {
-                if (this.kaantotilanne[j][i] == 1) {
-                    maara++;
-                }
-            }
-        }
-        return maara;
-    }
-
+    
     public int getKorkeus() {
         return this.korkeus;
     }
@@ -255,5 +192,8 @@ public class Pelialusta {
             }
         }
     }
-
+    
+    public Nakyma getNakyma() {
+        return this.nakyma;
+    }
 }

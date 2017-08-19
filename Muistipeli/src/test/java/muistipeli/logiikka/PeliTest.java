@@ -323,4 +323,47 @@ public class PeliTest {
         assertEquals(peli.johdossa().size(), 2);
     }
     
+    @Test
+    public void vuoroEiVaihduKierroksellaJollaPariLoytyy() {
+        Peli p = new Peli(2,2);
+        Pelaaja eka = new Pelaaja("eka", 1);
+        Pelaaja toka = new Pelaaja("toka", 2);
+        p.lisaaPelaaja(eka);
+        p.lisaaPelaaja(toka);
+        p.aloitaPeli();
+        p.getPelialusta().kaannaKortti(0, 0);
+        if(p.getPelialusta().getKortti(1, 1).getKuvanNumero() == p.getPelialusta().getKortti(0, 0).getKuvanNumero()) {
+            p.getPelialusta().kaannaKortti(1, 1);
+        } else if(p.getPelialusta().getKortti(0, 1).getKuvanNumero() == p.getPelialusta().getKortti(0, 0).getKuvanNumero()) {
+            p.getPelialusta().kaannaKortti(0, 1);
+        } else {
+            p.getPelialusta().kaannaKortti(1, 0);
+        }
+        p.kierros();
+        assertEquals(p.getVuoro().getPelaaja(), eka);
+        assertEquals(eka.getPisteet(), 1);
+        assertEquals(toka.getPisteet(), 0);
+    }
+    
+    @Test
+    public void kierrosVaihtaaVuoronJosPariaEiLoydy() {
+        Peli p = new Peli(2,2);
+        Pelaaja eka = new Pelaaja("eka", 1);
+        Pelaaja toka = new Pelaaja("toka", 2);
+        p.lisaaPelaaja(eka);
+        p.lisaaPelaaja(toka);
+        p.aloitaPeli();
+        p.getPelialusta().kaannaKortti(0, 0);
+        if(p.getPelialusta().getKortti(1, 1).getKuvanNumero() != p.getPelialusta().getKortti(0, 0).getKuvanNumero()) {
+            p.getPelialusta().kaannaKortti(1, 1);
+        } else if(p.getPelialusta().getKortti(0, 1).getKuvanNumero() != p.getPelialusta().getKortti(0, 0).getKuvanNumero()) {
+            p.getPelialusta().kaannaKortti(0, 1);
+        } else {
+            p.getPelialusta().kaannaKortti(1, 0);
+        }
+        p.kierros();
+        assertEquals(p.getVuoro().getPelaaja(), toka);
+        assertEquals(eka.getPisteet(), 0);
+        assertEquals(toka.getPisteet(), 0);
+    }
 }

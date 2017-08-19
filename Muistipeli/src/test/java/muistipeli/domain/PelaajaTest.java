@@ -16,6 +16,7 @@ public class PelaajaTest {
         assertEquals(pelaaja.getId(),1);
         assertEquals(pelaaja.getNimimerkki(),"pelaaja1");
         assertEquals(pelaaja.getPisteet(),0);
+        assertEquals(pelaaja.toString(), "pelaaja1 (1) : 0 pistettä");
     }
     
     @Test

@@ -38,10 +38,10 @@ public class Korttipaikka extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (this.alusta.getKaantotilanne()[x][y] == 0 && this.alusta.kuviaNakyvilla() < 2) {
+        if (this.alusta.getKaantotilanne()[x][y] == 0 && this.alusta.getNakyma().kuviaNakyvilla() < 2) {
             this.alusta.kaannaKortti(x, y);
             this.setIcon(kuva);
-        } else if (this.alusta.kuviaNakyvilla() == 2) {
+        } else if (this.alusta.getNakyma().kuviaNakyvilla() == 2) {
             kayttoliittyma.getPeli().kierros();
             kayttoliittyma.poistaYlimaaraisetKorttipaikat();
             kayttoliittyma.getVuoronNayttaja().paivitaVuoro();

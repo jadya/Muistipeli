@@ -55,7 +55,7 @@ public class Peli {
     }
 
     public void kierros() {
-        if (alusta.tarkistaPari()) {
+        if (alusta.getNakyma().tarkistaPari()) {
             vuoro.getPelaaja().lisaaPiste();
         } else {
             vaihdaVuoro();
