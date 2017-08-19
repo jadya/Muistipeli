@@ -6,7 +6,7 @@ import javax.swing.SwingUtilities;
 
 public class NakymanVaihtaja {
     
-    private Kayttoliittyma kayttoliittyma;
+    private final Kayttoliittyma kayttoliittyma;
     
     public NakymanVaihtaja(Kayttoliittyma kayttoliittyma) {
         this.kayttoliittyma = kayttoliittyma;

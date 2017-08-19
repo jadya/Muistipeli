@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import muistipeli.domain.Pelaaja;
 import muistipeli.logiikka.Peli;
