@@ -19,17 +19,14 @@ public class Kayttoliittyma implements Runnable {
     private Peli peli;
     private Pelinakyma pelinakyma;
     private VuoronNayttaja vuoronNayttaja;
-
-//    public Kayttoliittyma(Peli peli) {
-//        this.korttipaikat = new ArrayList<>();
-//        this.peli = peli;
-//        this.pelinakyma = null;
-//    }
+    private NakymanVaihtaja nakymanVaihtaja;
+    
     public Kayttoliittyma() {
         this.korttipaikat = new ArrayList<>();
         this.peli = null;
         this.pelinakyma = null;
         this.vuoronNayttaja = null;
+        this.nakymanVaihtaja = new NakymanVaihtaja(this);
     }
 
     @Override
@@ -104,22 +101,7 @@ public class Kayttoliittyma implements Runnable {
 
         c.add(panel, BorderLayout.CENTER);
     }
-
-    public void siirryPelinakymaan() {
-        this.valmistelePeli();
-        this.peli.aloitaPeli();
-        this.pelinakyma.setKorkeus(peli.getPelialusta().getKorkeus());
-        this.pelinakyma.setLeveys(peli.getPelialusta().getLeveys());
-
-        Container c = frame.getContentPane();
-        for (int i = 0; i < c.getComponentCount(); i++) {
-            c.remove(i);
-        }
-
-        this.rakennaPelinakyma(peli.getPelialusta().getLeveys(), peli.getPelialusta().getKorkeus(), frame.getContentPane());
-        SwingUtilities.updateComponentTreeUI(frame);
-    }
-
+    
     public void valmistelePeli() {
         this.setPeli(new Peli(this.pelinakyma.getLeveys(), this.pelinakyma.getKorkeus()));
         for (int i = 1; i <= this.pelinakyma.getPelaajienMaara(); i++) {
@@ -152,27 +134,6 @@ public class Kayttoliittyma implements Runnable {
             panel.add(new JLabel(p.toString()));
         }
         c.add(panel, BorderLayout.CENTER);
-    }
-
-    public void siirryPistenakymaan() {
-        Container c = frame.getContentPane();
-        for (int i = 0; i < c.getComponentCount(); i++) {
-            c.remove(i);
-        }
-
-        this.rakennaPistenakyma(frame.getContentPane());
-        SwingUtilities.updateComponentTreeUI(frame);
-    }
-
-    public void siirryValikkoon() {
-
-        Container c = frame.getContentPane();
-        for (int i = 0; i < c.getComponentCount(); i++) {
-            c.remove(i);
-        }
-
-        this.rakennaValikko(frame.getContentPane());
-        SwingUtilities.updateComponentTreeUI(frame);
     }
 
     public void uusiKierros() {
@@ -226,5 +187,8 @@ public class Kayttoliittyma implements Runnable {
     public VuoronNayttaja getVuoronNayttaja() {
         return this.vuoronNayttaja;
     }
-
+    
+    public NakymanVaihtaja getNakymanVaihtaja() {
+        return this.nakymanVaihtaja;
+    }
 }
