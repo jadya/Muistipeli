@@ -19,7 +19,7 @@ public class Kayttoliittyma implements Runnable {
     private Peli peli;
     private Pelinakyma pelinakyma;
     private VuoronNayttaja vuoronNayttaja;
-    private NakymanVaihtaja nakymanVaihtaja;
+    private final NakymanVaihtaja nakymanVaihtaja;
     
     public Kayttoliittyma() {
         this.korttipaikat = new ArrayList<>();
@@ -28,7 +28,7 @@ public class Kayttoliittyma implements Runnable {
         this.vuoronNayttaja = null;
         this.nakymanVaihtaja = new NakymanVaihtaja(this);
     }
-
+    
     @Override
     public void run() {
         frame = new JFrame("Muistipeli");
