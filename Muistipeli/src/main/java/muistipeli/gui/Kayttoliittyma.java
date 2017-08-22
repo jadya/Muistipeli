@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import muistipeli.domain.Pelaaja;
+import muistipeli.domain.Tekoaly;
 import muistipeli.logiikka.Peli;
 
 public class Kayttoliittyma implements Runnable {
@@ -20,12 +21,15 @@ public class Kayttoliittyma implements Runnable {
     private VuoronNayttaja vuoronNayttaja;
     private final NakymanVaihtaja nakymanVaihtaja;
     
+    private ArrayList<TekoalynVuoro> tekoalyjenVuorot;
+    
     public Kayttoliittyma() {
         this.korttipaikat = new ArrayList<>();
         this.peli = null;
         this.pelinakyma = null;
         this.vuoronNayttaja = null;
         this.nakymanVaihtaja = new NakymanVaihtaja(this);
+        this.tekoalyjenVuorot = new ArrayList<>();
     }
     
     @Override
@@ -103,8 +107,13 @@ public class Kayttoliittyma implements Runnable {
     
     public void valmistelePeli() {
         this.setPeli(new Peli(this.pelinakyma.getLeveys(), this.pelinakyma.getKorkeus()));
-        for (int i = 1; i <= this.pelinakyma.getPelaajienMaara(); i++) {
+        for (int i = 1; i <= this.pelinakyma.getPelaajienMaara() - this.pelinakyma.getTekoalyjenMaara(); i++) {
             peli.lisaaPelaaja(new Pelaaja("pelaaja" + i, i));
+        }
+        for (int i = 1; i <= this.pelinakyma.getTekoalyjenMaara(); i++) {
+            Tekoaly t = new Tekoaly("cpu" + i, this.pelinakyma.getPelaajienMaara()+i,this.peli);
+            peli.lisaaPelaaja(t);
+            this.tekoalyjenVuorot.add(new TekoalynVuoro(this,t));
         }
     }
 
@@ -189,5 +198,9 @@ public class Kayttoliittyma implements Runnable {
     
     public NakymanVaihtaja getNakymanVaihtaja() {
         return this.nakymanVaihtaja;
+    }
+    
+    public ArrayList<TekoalynVuoro> getTekoalyjenVuorot() {
+        return this.tekoalyjenVuorot;
     }
 }

@@ -1,16 +1,18 @@
 package muistipeli;
 
+import java.util.Arrays;
 import java.util.Scanner;
 import javax.swing.SwingUtilities;
 import muistipeli.domain.Pelaaja;
+import muistipeli.domain.Tekoaly;
 import muistipeli.gui.Kayttoliittyma;
 import muistipeli.logiikka.Peli;
 
 public class Main {
 
     public static void main(String[] args) {
-        Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
-        SwingUtilities.invokeLater(kayttoliittyma);
+        
+        SwingUtilities.invokeLater(new Kayttoliittyma());
         
 //        System.out.println("Muistipeli");
 //        Peli peli = new Peli(6, 4);

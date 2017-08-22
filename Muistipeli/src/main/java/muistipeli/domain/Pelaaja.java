@@ -9,11 +9,13 @@ public class Pelaaja implements Comparable<Pelaaja> {
     private String nimimerkki;
     private int id;
     private int pisteet;
+    private boolean onTekoaly;
     
     public Pelaaja(String nimimerkki, int id) {
         this.nimimerkki = nimimerkki;
         this.id = id;
         this.pisteet = 0;
+        this.onTekoaly = false;
     }
     
     /**
@@ -35,6 +37,10 @@ public class Pelaaja implements Comparable<Pelaaja> {
         return this.pisteet;
     }
     
+    public boolean onTekoaly() {
+        return this.onTekoaly;
+    }
+    
     public void setNimimerkki(String nimi) {
         this.nimimerkki = nimi;
     }
@@ -45,6 +51,10 @@ public class Pelaaja implements Comparable<Pelaaja> {
     
     public void setPisteet(int pistemaara) {
         this.pisteet = pistemaara;
+    }
+    
+    public void setOnTekoaly(boolean onko) {
+        this.onTekoaly = onko;
     }
     
     @Override

@@ -5,12 +5,13 @@ public class Pelinakyma {
     private int korkeus;
     private int leveys;
     private int pelaajia;
+    private int tekoalyja;
 
     public Pelinakyma() {
         this.korkeus = 2;
         this.leveys = 2;
         this.pelaajia = 2;
-
+        this.tekoalyja = 0;
     }
 
     public void setKorkeus(int korkeus) {
@@ -24,6 +25,10 @@ public class Pelinakyma {
     public void setPelaajienMaara(int pelaajienMaara) {
         this.pelaajia = pelaajienMaara;
     }
+    
+    public void setTekoalyjenMaara(int maara) {
+        this.tekoalyja = maara;
+    }
 
     public int getKorkeus() {
         return this.korkeus;
@@ -36,5 +41,9 @@ public class Pelinakyma {
     public int getPelaajienMaara() {
         return this.pelaajia;
     }
-
+    
+    public int getTekoalyjenMaara() {
+        return this.tekoalyja;
+    }
+    
 }

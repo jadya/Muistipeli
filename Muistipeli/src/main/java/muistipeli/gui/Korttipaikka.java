@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import muistipeli.domain.PeliKortti;
 import muistipeli.domain.Pelialusta;
+import muistipeli.domain.Tekoaly;
 
 public class Korttipaikka extends JButton implements ActionListener {
 
@@ -46,7 +47,10 @@ public class Korttipaikka extends JButton implements ActionListener {
             kayttoliittyma.poistaYlimaaraisetKorttipaikat();
             kayttoliittyma.getVuoronNayttaja().paivitaVuoro();
             kayttoliittyma.uusiKierros();
-
+            if(kayttoliittyma.getPeli().getVuoro().getPelaaja().onTekoaly()) {
+                TekoalynVuoro vuoro = new TekoalynVuoro(kayttoliittyma, (Tekoaly) kayttoliittyma.getPeli().getVuoro().getPelaaja());
+                vuoro.pelaa();
+            }
         }
     }
 
