@@ -14,20 +14,20 @@ public class TekoalynVuoro {
     }
     
     public void pelaa() {
-        while(this.kayttoliittyma.getPeli().getVuoro().getPelaaja().equals(this.tekoaly)) {
-            etsiPari();
-        }
+        etsiKorttipari();
     }
     
-    public void etsiPari() {
+    public void etsiKorttipari() {
         int[] kohta;
         while(this.kayttoliittyma.getPeli().getPelialusta().getNakyma().kuviaNakyvilla() < 2) {
             kohta = this.tekoaly.teeSiirto();
             while(this.kayttoliittyma.getPeli().getPelialusta().getKaantotilanne()[kohta[0]][kohta[1]] != 0) {
                 kohta = this.tekoaly.teeSiirto();
             }
-        kaannaKortti(kohta[0], kohta[1]);
+            kaannaKortti(kohta[0], kohta[1]);
+            kayttoliittyma.setTekoalyllaVuoroKesken(true);
         }
+        kayttoliittyma.setTekoalyllaVuoroKesken(false);
         paataVuoro();
     }
     
@@ -36,7 +36,9 @@ public class TekoalynVuoro {
     }
     
     public void paataVuoro() {
-        this.kayttoliittyma.getKorttipaikka(0, 0).doClick();
+        if(!this.kayttoliittyma.getKorttipaikat().isEmpty()) {
+            this.kayttoliittyma.getKorttipaikat().get(0).doClick();
+        }
     }
     
     public Tekoaly getTekoaly() {

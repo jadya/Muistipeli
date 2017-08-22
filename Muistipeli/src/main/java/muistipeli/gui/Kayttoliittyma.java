@@ -20,8 +20,7 @@ public class Kayttoliittyma implements Runnable {
     private Pelinakyma pelinakyma;
     private VuoronNayttaja vuoronNayttaja;
     private final NakymanVaihtaja nakymanVaihtaja;
-    
-    private ArrayList<TekoalynVuoro> tekoalyjenVuorot;
+    private boolean tekoalyllaVuoroKesken;
     
     public Kayttoliittyma() {
         this.korttipaikat = new ArrayList<>();
@@ -29,7 +28,7 @@ public class Kayttoliittyma implements Runnable {
         this.pelinakyma = null;
         this.vuoronNayttaja = null;
         this.nakymanVaihtaja = new NakymanVaihtaja(this);
-        this.tekoalyjenVuorot = new ArrayList<>();
+        this.tekoalyllaVuoroKesken = false;
     }
     
     @Override
@@ -111,9 +110,8 @@ public class Kayttoliittyma implements Runnable {
             peli.lisaaPelaaja(new Pelaaja("pelaaja" + i, i));
         }
         for (int i = 1; i <= this.pelinakyma.getTekoalyjenMaara(); i++) {
-            Tekoaly t = new Tekoaly("cpu" + i, this.pelinakyma.getPelaajienMaara()+i,this.peli);
+            Tekoaly t = new Tekoaly("cpu" + i, this.pelinakyma.getPelaajienMaara()-this.pelinakyma.getTekoalyjenMaara()+i,this.peli);
             peli.lisaaPelaaja(t);
-            this.tekoalyjenVuorot.add(new TekoalynVuoro(this,t));
         }
     }
 
@@ -177,7 +175,7 @@ public class Kayttoliittyma implements Runnable {
 
     public Korttipaikka getKorttipaikka(int x, int y) {
         for (Korttipaikka kp : this.korttipaikat) {
-            if (kp.getX() == x && kp.getY() == y) {
+            if (kp.getXkoord() == x && kp.getYkoord() == y) {
                 return kp;
             }
         }
@@ -200,7 +198,15 @@ public class Kayttoliittyma implements Runnable {
         return this.nakymanVaihtaja;
     }
     
-    public ArrayList<TekoalynVuoro> getTekoalyjenVuorot() {
-        return this.tekoalyjenVuorot;
+    public void setTekoalyllaVuoroKesken(boolean kesken) {
+        this.tekoalyllaVuoroKesken = kesken;
+    }
+    
+    public boolean getTekoalyllaVuoroKesken() {
+        return this.tekoalyllaVuoroKesken;
+    }
+    
+    public ArrayList<Korttipaikka> getKorttipaikat() {
+        return this.korttipaikat;
     }
 }

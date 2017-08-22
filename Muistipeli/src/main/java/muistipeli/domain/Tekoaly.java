@@ -26,7 +26,7 @@ public class Tekoaly extends Pelaaja {
     }
     
     public int[] teeSiirto() {
-        int[] kaannettavanKortinKohta = new int[2];
+        int[] kaannettavanKortinKohta;
         if(!this.seuraavatSiirrot.isEmpty()) {
             kaannettavanKortinKohta = this.etsiMuistista(seuraavatSiirrot.get(0));
             this.seuraavatSiirrot.remove(0);

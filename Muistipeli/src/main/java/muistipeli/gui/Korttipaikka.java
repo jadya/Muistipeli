@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 import muistipeli.domain.PeliKortti;
 import muistipeli.domain.Pelialusta;
 import muistipeli.domain.Tekoaly;
@@ -12,8 +13,8 @@ import muistipeli.domain.Tekoaly;
 public class Korttipaikka extends JButton implements ActionListener {
 
     private PeliKortti kortti;
-    private int x;
-    private int y;
+    private int xKoord;
+    private int yKoord;
     private final Pelialusta alusta;
     private ArrayList<ImageIcon> kuvat;
     private final ImageIcon kuva;
@@ -24,8 +25,8 @@ public class Korttipaikka extends JButton implements ActionListener {
 
     public Korttipaikka(Kayttoliittyma kl, PeliKortti pelikortti, Pelialusta pelialusta) {
         this.kortti = pelikortti;
-        this.x = pelikortti.getX();
-        this.y = pelikortti.getY();
+        this.xKoord = pelikortti.getX();
+        this.yKoord = pelikortti.getY();
         this.alusta = pelialusta;
         String sijainti = "kuvat/kuva" + pelikortti.getKuvanNumero() + ".png";
         this.kuva = new ImageIcon(sijainti);
@@ -39,15 +40,16 @@ public class Korttipaikka extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (this.alusta.getKaantotilanne()[x][y] == 0 && this.alusta.getNakyma().kuviaNakyvilla() < 2) {
-            this.alusta.kaannaKortti(x, y);
+        if (this.alusta.getKaantotilanne()[xKoord][yKoord] == 0 && this.alusta.getNakyma().kuviaNakyvilla() < 2) {
+            this.alusta.kaannaKortti(xKoord, yKoord);
             this.setIcon(kuva);
         } else if (this.alusta.getNakyma().kuviaNakyvilla() == 2) {
             kayttoliittyma.getPeli().kierros();
             kayttoliittyma.poistaYlimaaraisetKorttipaikat();
             kayttoliittyma.getVuoronNayttaja().paivitaVuoro();
             kayttoliittyma.uusiKierros();
-            if(kayttoliittyma.getPeli().getVuoro().getPelaaja().onTekoaly()) {
+            SwingUtilities.updateComponentTreeUI(kayttoliittyma.getFrame());
+            if(kayttoliittyma.getPeli().getVuoro().getPelaaja().onTekoaly() && kayttoliittyma.getTekoalyllaVuoroKesken() == false) {
                 TekoalynVuoro vuoro = new TekoalynVuoro(kayttoliittyma, (Tekoaly) kayttoliittyma.getPeli().getVuoro().getPelaaja());
                 vuoro.pelaa();
             }
@@ -73,6 +75,14 @@ public class Korttipaikka extends JButton implements ActionListener {
 
     public void setKortti(PeliKortti pelikortti) {
         this.kortti = pelikortti;
+    }
+    
+    public int getXkoord() {
+        return this.xKoord;
+    }
+    
+    public int getYkoord() {
+        return this.yKoord;
     }
 
 }
