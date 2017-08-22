@@ -2,6 +2,7 @@ package muistipeli.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Collections;
 import javax.swing.JButton;
 
 public class Kaynnistys extends JButton implements ActionListener {
@@ -20,6 +21,7 @@ public class Kaynnistys extends JButton implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (this.toiminto.equals("Lopeta peli")) {
             this.kayttoliittyma.getPeli().lopeta();
+            Collections.sort(this.kayttoliittyma.getPeli().getPelaajat());
             this.kayttoliittyma.getNakymanVaihtaja().siirryPistenakymaan();
         }
         if (this.toiminto.equals("Aloita peli")) {

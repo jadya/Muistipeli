@@ -4,7 +4,7 @@ package muistipeli.domain;
 /**
  * Luokka tarjoaa muistipelin pelaajiin liittyviä metodeita.
  */
-public class Pelaaja {
+public class Pelaaja implements Comparable<Pelaaja> {
     
     private String nimimerkki;
     private int id;
@@ -50,6 +50,11 @@ public class Pelaaja {
     @Override
     public String toString() {
         return this.nimimerkki + " (" + this.id + ") : " + this.pisteet + " pistettä";
+    }
+
+    @Override
+    public int compareTo(Pelaaja o) {
+        return o.pisteet * 1000 - o.id - this.pisteet *1000 + this.id;
     }
     
 }
