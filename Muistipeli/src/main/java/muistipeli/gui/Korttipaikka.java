@@ -47,9 +47,11 @@ public class Korttipaikka extends JButton implements ActionListener {
             kayttoliittyma.getPeli().kierros();
             kayttoliittyma.poistaYlimaaraisetKorttipaikat();
             kayttoliittyma.getVuoronNayttaja().paivitaVuoro();
-            kayttoliittyma.uusiKierros();
+            if(!this.kayttoliittyma.getPeli().getPelialusta().tyhja()) {
+                kayttoliittyma.uusiKierros();
+            }
             SwingUtilities.updateComponentTreeUI(kayttoliittyma.getFrame());
-            if(kayttoliittyma.getPeli().getVuoro().getPelaaja().onTekoaly() && kayttoliittyma.getTekoalyllaVuoroKesken() == false) {
+            if(!this.kayttoliittyma.getPeli().getPelialusta().tyhja() && kayttoliittyma.getPeli().getVuoro().getPelaaja().onTekoaly() && kayttoliittyma.getTekoalyllaVuoroKesken() == false) {
                 TekoalynVuoro vuoro = new TekoalynVuoro(kayttoliittyma, (Tekoaly) kayttoliittyma.getPeli().getVuoro().getPelaaja());
                 vuoro.pelaa();
             }

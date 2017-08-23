@@ -3,6 +3,7 @@ package muistipeli.domain;
 import java.util.ArrayList;
 import java.util.Random;
 import muistipeli.logiikka.Nakyma;
+import muistipeli.logiikka.Peli;
 
 /**
  * Luokka tarjoaa muistipelin pelialustan käsittelyyn tarvittavia metodeita.
@@ -16,8 +17,9 @@ public class Pelialusta {
     private ArrayList<PeliKortti> kortit;
     private ArrayList<PeliKortti> poistetutKortit;
     private Nakyma nakyma;
+    private Peli peli;
 
-    public Pelialusta(int leveys, int korkeus) {
+    public Pelialusta(Peli peli, int leveys, int korkeus) {
         this.leveys = leveys;
         this.korkeus = korkeus;
         this.korttienSijainnit = new int[leveys][korkeus];
@@ -31,6 +33,7 @@ public class Pelialusta {
         this.kortit = new ArrayList<>();
         this.poistetutKortit = new ArrayList<>();
         this.nakyma = new Nakyma(this);
+        this.peli = peli;
     }
 
     /**
@@ -195,5 +198,9 @@ public class Pelialusta {
     
     public Nakyma getNakyma() {
         return this.nakyma;
+    }
+    
+    public Peli getPeli() {
+        return this.peli;
     }
 }

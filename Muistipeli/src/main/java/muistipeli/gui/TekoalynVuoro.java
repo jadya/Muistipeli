@@ -28,7 +28,7 @@ public class TekoalynVuoro {
             kayttoliittyma.setTekoalyllaVuoroKesken(true);
         }
         kayttoliittyma.setTekoalyllaVuoroKesken(false);
-        paataVuoro();
+        //paataVuoro();
     }
     
     public void kaannaKortti(int x, int y) {
@@ -36,9 +36,10 @@ public class TekoalynVuoro {
     }
     
     public void paataVuoro() {
-        if(!this.kayttoliittyma.getKorttipaikat().isEmpty()) {
-            this.kayttoliittyma.getKorttipaikat().get(0).doClick();
-        }
+        //if(!this.kayttoliittyma.getKorttipaikat().isEmpty()) {
+            //this.kayttoliittyma.getKorttipaikat().get(0).doClick();
+        //}
+        this.kayttoliittyma.getKorttipaikka(0, 0).doClick();
     }
     
     public Tekoaly getTekoaly() {

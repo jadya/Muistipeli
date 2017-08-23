@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import muistipeli.domain.Pelaaja;
 import muistipeli.domain.PeliKortti;
 import muistipeli.domain.Pelialusta;
+import muistipeli.domain.Tekoaly;
 import muistipeli.gui.Kayttoliittyma;
 
 /**
@@ -13,6 +14,7 @@ public class Peli {
 
     private Pelialusta alusta;
     private ArrayList<Pelaaja> pelaajat;
+    private ArrayList<Tekoaly> tekoalyt;
     private Vuoro vuoro;
     private boolean kaynnissa;
     private Kayttoliittyma kayttoliittyma;
@@ -27,8 +29,9 @@ public class Peli {
         if (korkeus <= 1) {
             korkeus = 2;
         }
-        this.alusta = new Pelialusta(leveys, korkeus);
+        this.alusta = new Pelialusta(this,leveys, korkeus);
         this.pelaajat = new ArrayList<>();
+        this.tekoalyt = new ArrayList<>();
         this.vuoro = new Vuoro(null);
         this.kaynnissa = false;
         this.kayttoliittyma = null;
@@ -41,6 +44,9 @@ public class Peli {
      */
     public void lisaaPelaaja(Pelaaja pelaaja) {
         this.pelaajat.add(pelaaja);
+        if(pelaaja.onTekoaly()) {
+            this.tekoalyt.add((Tekoaly)pelaaja);
+        }
     }
 
     public void aloitaPeli() {
@@ -139,6 +145,10 @@ public class Peli {
 
     public Pelialusta getPelialusta() {
         return this.alusta;
+    }
+    
+    public ArrayList<Tekoaly> getTekoalyt() {
+        return this.tekoalyt;
     }
 
 }

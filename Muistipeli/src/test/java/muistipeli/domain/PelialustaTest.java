@@ -13,7 +13,7 @@ public class PelialustaTest {
     
     @Test
     public void konstruktoriToimii() {
-        Pelialusta alusta = new Pelialusta(4,2);
+        Pelialusta alusta = new Pelialusta(null,4,2);
         assertEquals(alusta.getKortit().size(), 0);
         assertTrue(alusta.getLeveys() == 4);
         assertTrue(alusta.getKorkeus() == 2);
@@ -27,7 +27,7 @@ public class PelialustaTest {
     
     @Test
     public void koonMuuttaminenToimii() {
-        Pelialusta alusta = new Pelialusta(4,2);
+        Pelialusta alusta = new Pelialusta(null,4,2);
         alusta.setLeveys(500);
         alusta.setKorkeus(4);
         assertEquals(alusta.getKortit().size(), 0);
@@ -37,21 +37,21 @@ public class PelialustaTest {
     
     @Test
     public void kortinLisaaminenOnnistuuNelionMuotoiselleAlustalle() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(null,4,4);
         alusta.lisaaKortti(new PeliKortti(1));
         assertEquals(alusta.getKortit().size(), 1);
     }
     
     @Test
     public void kortinLisaaminenOnnistuu() {
-        Pelialusta alusta = new Pelialusta(2,4);
+        Pelialusta alusta = new Pelialusta(null,2,4);
         alusta.lisaaKortti(new PeliKortti(1));
         assertEquals(alusta.getKortit().size(), 1);
     }
     
     @Test
     public void monenKortinLisaaminenOnnistuu() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(null,4,4);
         for(int i = 0 ; i < 6 ; i++) {
             alusta.lisaaKortti(new PeliKortti(i));
         }
@@ -60,7 +60,7 @@ public class PelialustaTest {
     
     @Test
     public void alustalleVoiLisataAlustanKoonVerranKortteja() {
-        Pelialusta alusta = new Pelialusta(2,4);
+        Pelialusta alusta = new Pelialusta(null,2,4);
         int ylimenevat = 0;
         for(int i = 0 ; i < 8 ; i++) {
             if(!alusta.lisaaKortti(new PeliKortti(i))){
@@ -73,7 +73,7 @@ public class PelialustaTest {
     
     @Test
     public void alustalleEiVoiLaittaaEnempaaKorttejaKuinAlustallaOnPaikkoja() {
-        Pelialusta alusta = new Pelialusta(2,4);
+        Pelialusta alusta = new Pelialusta(null,2,4);
         int ylimenevat = 0;
         for(int i = 0 ; i < 18 ; i++) {
             if(!alusta.lisaaKortti(new PeliKortti(i))){
@@ -86,7 +86,7 @@ public class PelialustaTest {
     
     @Test
     public void kunKorttejaYritetaanLisataLiikaaEnsimmaisetKortitLisataan() {
-        Pelialusta alusta = new Pelialusta(2,4);
+        Pelialusta alusta = new Pelialusta(null,2,4);
         PeliKortti kortti = null;
         for(int i = 0 ; i < 18 ; i++) {
             PeliKortti kortti2 = new PeliKortti(i);
@@ -100,7 +100,7 @@ public class PelialustaTest {
     
     @Test
     public void korttienLisaaminenNakyyTaulukoissa() {
-        Pelialusta alusta = new Pelialusta(2,4);
+        Pelialusta alusta = new Pelialusta(null,2,4);
         PeliKortti kortti = new PeliKortti(1);
         PeliKortti kortti2 = new PeliKortti(2);
         alusta.lisaaKortti(kortti);
@@ -113,7 +113,7 @@ public class PelialustaTest {
     
     @Test
     public void taulukoissaEiNayYlimaaraisiaKortteja() {
-        Pelialusta alusta = new Pelialusta(4,2);
+        Pelialusta alusta = new Pelialusta(null,4,2);
         PeliKortti kortti = new PeliKortti(1);
         PeliKortti kortti2 = new PeliKortti(2);
         alusta.lisaaKortti(kortti);
@@ -136,7 +136,7 @@ public class PelialustaTest {
     
     @Test
     public void yhdenLisatynKortinPoistoOnnistuu() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(null,4,4);
         PeliKortti kortti = new PeliKortti(1);
         alusta.lisaaKortti(kortti);
         alusta.poistaKortti(kortti);
@@ -145,7 +145,7 @@ public class PelialustaTest {
     
     @Test
     public void tietynKortinPoistoAlustaltaOnnistuuKunLisattyMontaKorttia() {
-        Pelialusta alusta = new Pelialusta(2,4);
+        Pelialusta alusta = new Pelialusta(null,2,4);
         PeliKortti kortti3 = null;
         for(int i = 0 ; i < 8 ; i++) {
             if(i==3) {
@@ -164,7 +164,7 @@ public class PelialustaTest {
     
     @Test
     public void yhdenKortinPoistoOnnistuuKunKorttejaLisattyAlustalleKaksi() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(null,4,4);
         PeliKortti kortti = new PeliKortti(1);
         alusta.lisaaKortti(kortti);
         PeliKortti kortti2 = new PeliKortti(1);
@@ -175,7 +175,7 @@ public class PelialustaTest {
     
     @Test
     public void kortinPoistoTaydeltaAlustaltaOnnistuu() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(null,4,4);
         PeliKortti kortti7 = null;
         for(int i = 0 ; i < 16 ; i++) {
             PeliKortti kortti = new PeliKortti(i);
@@ -192,7 +192,7 @@ public class PelialustaTest {
     
     @Test
     public void kortiPoistoNakyyTaulukoissa() {
-        Pelialusta alusta = new Pelialusta(2,4);
+        Pelialusta alusta = new Pelialusta(null,2,4);
         PeliKortti kortti = new PeliKortti(1);
         alusta.lisaaKortti(kortti);
         alusta.poistaKortti(kortti);
@@ -202,7 +202,7 @@ public class PelialustaTest {
     
     @Test
     public void korttiLoytyyAlustaltaTaulukonAlusta() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(null,4,4);
         for(int i = 0 ; i < 16 ; i++) {
             PeliKortti kortti = new PeliKortti(i);
             alusta.lisaaKortti(kortti);
@@ -212,7 +212,7 @@ public class PelialustaTest {
     
     @Test
     public void korttiLoytyyAlustaltaTaulukonLopusta() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(null,4,4);
         for(int i = 0 ; i < 16 ; i++) {
             PeliKortti kortti = new PeliKortti(i);
             alusta.lisaaKortti(kortti);
@@ -222,7 +222,7 @@ public class PelialustaTest {
     
     @Test
     public void poistettuKorttiEiLoydyAlustalta() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(null,4,4);
         for(int i = 0 ; i < 16 ; i++) {
             PeliKortti kortti = new PeliKortti(i);
             alusta.lisaaKortti(kortti);
@@ -233,7 +233,7 @@ public class PelialustaTest {
     
     @Test
     public void kortinKaantaminenOnnistuuKunKorttiOnAlustalla() {
-        Pelialusta alusta = new Pelialusta(2,4);
+        Pelialusta alusta = new Pelialusta(null,2,4);
         PeliKortti kortti = new PeliKortti(1);
         alusta.lisaaKortti(kortti);
         assertTrue(alusta.kaannaKortti(kortti.getX(), kortti.getY()));
@@ -241,7 +241,7 @@ public class PelialustaTest {
     
     @Test
     public void KorttiaJotaEiOleEiVoiKaantaa() {
-        Pelialusta alusta = new Pelialusta(2,4);
+        Pelialusta alusta = new Pelialusta(null,2,4);
         PeliKortti kortti = new PeliKortti(1);
         alusta.lisaaKortti(kortti);
         alusta.poistaKortti(kortti);
@@ -250,7 +250,7 @@ public class PelialustaTest {
     
     @Test
     public void kortinKaantaminenOnnistuu() {
-        Pelialusta alusta = new Pelialusta(2,4);
+        Pelialusta alusta = new Pelialusta(null,2,4);
         PeliKortti kortti = new PeliKortti(1);
         alusta.lisaaKortti(kortti);
         alusta.kaannaKortti(kortti.getX(), kortti.getY());
@@ -259,7 +259,7 @@ public class PelialustaTest {
     
     @Test
     public void kortinSelkaOnNakyvillaKahdenKaannonJalkeen() {
-        Pelialusta alusta = new Pelialusta(2,4);
+        Pelialusta alusta = new Pelialusta(null,2,4);
         PeliKortti kortti = new PeliKortti(1);
         alusta.lisaaKortti(kortti);
         alusta.kaannaKortti(kortti.getX(), kortti.getY());
@@ -269,7 +269,7 @@ public class PelialustaTest {
     
     @Test
     public void korttiPysyyKaannettaessaPaikoillaan() {
-        Pelialusta alusta = new Pelialusta(2,4);
+        Pelialusta alusta = new Pelialusta(null,2,4);
         PeliKortti kortti = new PeliKortti(4);
         alusta.lisaaKortti(kortti);
         alusta.kaannaKortti(kortti.getX(), kortti.getY());
@@ -279,7 +279,7 @@ public class PelialustaTest {
     
     @Test
     public void arvotunKohdanXKoordinaattiOnTarpeeksiPieni() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(null,4,4);
         for(int i = 0 ; i < 100 ; i++) {
             int[] kohta = alusta.arvoKohta();
             assertEquals(kohta[0] > 3,false);
@@ -288,7 +288,7 @@ public class PelialustaTest {
     
     @Test
     public void arvotunKohdanYKoordinaattiOnTarpeeksiPieni() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(null,4,4);
         for(int i = 0 ; i < 100 ; i++) {
             int[] kohta = alusta.arvoKohta();
             assertEquals(kohta[1] > 3,false);
@@ -297,7 +297,7 @@ public class PelialustaTest {
     
     @Test
     public void arvotunKohdanXKoordinaattiOnTarpeeksiSuuri() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(null,4,4);
         for(int j = 0 ; j < 100 ; j++) {
             int[] kohta = alusta.arvoKohta();
             assertEquals(kohta[0] < 0,false);
@@ -306,7 +306,7 @@ public class PelialustaTest {
     
     @Test
     public void arvotunKohdanYKoordinaattiOnTarpeeksiSuuri() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(null,4,4);
         for(int j = 0 ; j < 100 ; j++) {
             int[] kohta = alusta.arvoKohta();
             assertEquals(kohta[1] < 0,false);
@@ -315,7 +315,7 @@ public class PelialustaTest {
     
     @Test
     public void kohdanArvontaToimiiKunAlustanKorkeusOnSuurempiKuinLeveys() {
-        Pelialusta alusta = new Pelialusta(2,4);
+        Pelialusta alusta = new Pelialusta(null,2,4);
         for(int j = 0 ; j < 100 ; j++) {
             int[] kohta = alusta.arvoKohta();
             assertFalse(kohta[1] < 0);
@@ -327,7 +327,7 @@ public class PelialustaTest {
     
     @Test
     public void kohdanArvontaToimiiKunAlustanLeveysOnSuurempiKuinKorkeus() {
-        Pelialusta alusta = new Pelialusta(4,2);
+        Pelialusta alusta = new Pelialusta(null,4,2);
         for(int j = 0 ; j < 100 ; j++) {
             int[] kohta = alusta.arvoKohta();
             assertFalse(kohta[0] < 0);
@@ -339,13 +339,13 @@ public class PelialustaTest {
     
     @Test
     public void tyhjaAlustaEiOleTaysi() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(null,4,4);
         assertFalse(alusta.taynna());
     }
     
     @Test
     public void alustaEiOleTaysiKunSillaOnYksiKortti() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(null,4,4);
         PeliKortti kortti = new PeliKortti(1);
         ArrayList<PeliKortti> kortit = new ArrayList<>();
         kortit.add(kortti);
@@ -355,7 +355,7 @@ public class PelialustaTest {
     
     @Test
     public void alustaEiOleTaynnaJosSilleOnYritettyLisataLiikaaKortteja() {
-        Pelialusta alusta = new Pelialusta(4,3);
+        Pelialusta alusta = new Pelialusta(null,4,3);
         ArrayList<PeliKortti> kortit = new ArrayList<>();
         for(int i = 0 ; i < 19 ; i++) {
             kortit.add(new PeliKortti(i));
@@ -366,7 +366,7 @@ public class PelialustaTest {
     
     @Test
     public void alustaOnTaynnaKunSenKaikillaPaikoillaOnKortti() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(null,4,4);
         for(int i = 0 ; i < 16 ; i++) {
             alusta.lisaaKortti(new PeliKortti(i));
         }
@@ -375,13 +375,13 @@ public class PelialustaTest {
     
     @Test
     public void uusiAlustaOnTyhja() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(null,4,4);
         assertTrue(alusta.tyhja());
     }
     
     @Test
     public void alustaJollaOnKorttiEiOleTyhja() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(null,4,4);
         PeliKortti kortti = new PeliKortti(1);
         ArrayList<PeliKortti> kortit = new ArrayList<>();
         kortit.add(kortti);
@@ -391,7 +391,7 @@ public class PelialustaTest {
     
     @Test
     public void alustaJollaOnMontaKorttiaEiOleTyhja() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(null,4,4);
         PeliKortti kortti = new PeliKortti(1);
         PeliKortti kortti2 = new PeliKortti(2);
         PeliKortti kortti3 = new PeliKortti(3);
@@ -405,7 +405,7 @@ public class PelialustaTest {
     
     @Test
     public void alustaJolleOnLisattyKorttiEiOleTyhja() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(null,4,4);
         PeliKortti kortti = new PeliKortti(1);
         alusta.lisaaKortti(kortti);
         assertFalse(alusta.tyhja());
@@ -413,7 +413,7 @@ public class PelialustaTest {
     
     @Test
     public void korttienAsetusToimii() {
-        Pelialusta alusta = new Pelialusta(3,4);
+        Pelialusta alusta = new Pelialusta(null,3,4);
         ArrayList<PeliKortti> kortit = new ArrayList<>();
         for(int i = 0 ; i < 12 ; i++) {
             kortit.add(new PeliKortti(i));
@@ -424,7 +424,7 @@ public class PelialustaTest {
     
     @Test
     public void korttienSijaintienAsetusToimii() {
-        Pelialusta alusta = new Pelialusta(2,2);
+        Pelialusta alusta = new Pelialusta(null,2,2);
         int[][] sijainnit = new int[2][2];
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {

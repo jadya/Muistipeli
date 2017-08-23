@@ -18,7 +18,7 @@ public class NakymaTest {
     
     @Test
     public void kaannettyPariLoytyyAlustaaTarkistettaessaJaPoistuuAlustalta() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(new Peli(4,4),4,4);
         for(int i = 0 ; i < 16 ; i++) {
             PeliKortti kortti = new PeliKortti(4);
             alusta.lisaaKortti(kortti);
@@ -41,7 +41,7 @@ public class NakymaTest {
     
     @Test
     public void kortitJotkaEivatMuodostaPariaEivatNaytaPariltaAlustaaTarkistettaessa() {
-        Pelialusta alusta = new Pelialusta(4,4);
+        Pelialusta alusta = new Pelialusta(new Peli(4,4),4,4);
         for(int i = 1 ; i <= 16 ; i++) {
             PeliKortti kortti = new PeliKortti(i);
             alusta.lisaaKortti(kortti);
@@ -64,7 +64,7 @@ public class NakymaTest {
     
     @Test
     public void alussaKuviaOnNakyvillaNolla() {
-        Pelialusta alusta = new Pelialusta(3,4);
+        Pelialusta alusta = new Pelialusta(null,3,4);
         ArrayList<PeliKortti> kortit = new ArrayList<>();
         for(int i = 0 ; i < 12 ; i++) {
             kortit.add(new PeliKortti(i));
@@ -75,7 +75,7 @@ public class NakymaTest {
     
     @Test
     public void kuviaOnNakyvillaOikeaMaara() {
-        Pelialusta alusta = new Pelialusta(3,4);
+        Pelialusta alusta = new Pelialusta(null,3,4);
         ArrayList<PeliKortti> kortit = new ArrayList<>();
         for(int i = 0 ; i < 12 ; i++) {
             kortit.add(new PeliKortti(i));
@@ -89,7 +89,7 @@ public class NakymaTest {
     
     @Test
     public void kuviaOnNakyvillaOikeaMaaraUseammanKaannonJalkeen() {
-        Pelialusta alusta = new Pelialusta(3,4);
+        Pelialusta alusta = new Pelialusta(null,3,4);
         ArrayList<PeliKortti> kortit = new ArrayList<>();
         for(int i = 0 ; i < 12 ; i++) {
             kortit.add(new PeliKortti(i));

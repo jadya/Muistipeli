@@ -73,13 +73,14 @@ public class Tekoaly extends Pelaaja {
         }
     }
     
-    public void poistaMuistista(PeliKortti kortti) {
-        this.muisti[kortti.getX()][kortti.getY()] = -99;
-        if(this.tiedostetutKuvat.contains(kortti.getKuvanNumero())) {
-            this.tiedostetutKuvat.remove(tiedostetutKuvat.indexOf(kortti.getKuvanNumero()));
+    public void poistaMuistista(int x, int y, int kuva) {
+        System.out.println("x: " + x + " y: " +y + " k: " +kuva);
+        this.muisti[x][y] = -99;
+        if(this.tiedostetutKuvat.contains(kuva)) {
+            this.tiedostetutKuvat.remove(tiedostetutKuvat.indexOf(kuva));
         } 
-        if (this.seuraavatSiirrot.contains(kortti.getKuvanNumero())) {
-            this.seuraavatSiirrot.remove(seuraavatSiirrot.indexOf(kortti.getKuvanNumero()));
+        if (this.seuraavatSiirrot.contains(kuva)) {
+            this.seuraavatSiirrot.remove(seuraavatSiirrot.indexOf(kuva));
         }
     }
     
