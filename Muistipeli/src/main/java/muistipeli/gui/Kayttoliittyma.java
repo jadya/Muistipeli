@@ -21,6 +21,7 @@ public class Kayttoliittyma implements Runnable {
     private VuoronNayttaja vuoronNayttaja;
     private final NakymanVaihtaja nakymanVaihtaja;
     private boolean tekoalyllaVuoroKesken;
+    private TekoalynVuoro tekoalynVuoro;
     
     public Kayttoliittyma() {
         this.korttipaikat = new ArrayList<>();
@@ -29,6 +30,7 @@ public class Kayttoliittyma implements Runnable {
         this.vuoronNayttaja = null;
         this.nakymanVaihtaja = new NakymanVaihtaja(this);
         this.tekoalyllaVuoroKesken = false;
+        this.tekoalynVuoro = null;
     }
     
     @Override
@@ -43,6 +45,7 @@ public class Kayttoliittyma implements Runnable {
     }
 
     public void rakennaPelinakyma(int leveys, int korkeus, Container c) {
+        this.tekoalyllaVuoroKesken = false;
         for (int i = 0; i < c.getComponentCount(); i++) {
             c.remove(i);
         }
@@ -69,7 +72,7 @@ public class Kayttoliittyma implements Runnable {
         c.add(new JLabel("Muistipeli"), BorderLayout.NORTH);
         c.add(new Kaynnistys(this, "Aloita peli"), BorderLayout.SOUTH);
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(6, 1));
+        panel.setLayout(new GridLayout(8, 1));
 
         JLabel korkeudenValinta = new JLabel("Valitse pelialustan korkeus:");
         panel.add(korkeudenValinta);
@@ -100,6 +103,16 @@ public class Kayttoliittyma implements Runnable {
             pelaajat.add(new ValintaPainike(this, i, "pelaajien maara"));
         }
         panel.add(pelaajat);
+        
+        JLabel tekoalynValinta = new JLabel("Tekoalyjen maara pelaajista:");
+        panel.add(tekoalynValinta);
+
+        JPanel tekoalyt = new JPanel();
+        tekoalyt.setLayout(new GridLayout(1, 9));
+        for (int i = 0; i <= 1; i++) {
+            tekoalyt.add(new ValintaPainike(this, i, "tekoalyjen maara"));
+        }
+        panel.add(tekoalyt);
 
         c.add(panel, BorderLayout.CENTER);
     }
@@ -112,6 +125,9 @@ public class Kayttoliittyma implements Runnable {
         for (int i = 1; i <= this.pelinakyma.getTekoalyjenMaara(); i++) {
             Tekoaly t = new Tekoaly("cpu" + i, this.pelinakyma.getPelaajienMaara()-this.pelinakyma.getTekoalyjenMaara()+i,this.peli);
             peli.lisaaPelaaja(t);
+        }
+        if(this.pelinakyma.getTekoalyjenMaara() > 0) {
+            this.tekoalynVuoro = new TekoalynVuoro(this,null);
         }
     }
 
@@ -208,5 +224,9 @@ public class Kayttoliittyma implements Runnable {
     
     public ArrayList<Korttipaikka> getKorttipaikat() {
         return this.korttipaikat;
+    }
+    
+    public TekoalynVuoro getTekoalynVuoro() {
+        return this.tekoalynVuoro;
     }
 }

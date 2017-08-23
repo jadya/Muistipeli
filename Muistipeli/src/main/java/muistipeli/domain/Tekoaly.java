@@ -27,16 +27,19 @@ public class Tekoaly extends Pelaaja {
     
     public int[] teeSiirto() {
         int[] kaannettavanKortinKohta;
-        if(!this.seuraavatSiirrot.isEmpty()) {
-            kaannettavanKortinKohta = this.etsiMuistista(seuraavatSiirrot.get(0));
-            this.seuraavatSiirrot.remove(0);
-        } else {
+//        if(!this.seuraavatSiirrot.isEmpty()) {
+//            kaannettavanKortinKohta = this.etsiMuistista(seuraavatSiirrot.get(0));
+//            if(this.peli.getPelialusta().getNakyma().kuviaNakyvilla() > 0) {
+//                System.out.println("kuvia: " + this.peli.getPelialusta().getNakyma().kuviaNakyvilla());
+//                this.seuraavatSiirrot.remove(0);
+//            }
+//        } else {
             kaannettavanKortinKohta = satunnainenKohta();
-            if(this.tiedostetutKuvat.contains(peli.getPelialusta().getKortti(kaannettavanKortinKohta[0], kaannettavanKortinKohta[1]).getKuvanNumero())){
-                this.seuraavatSiirrot.add(peli.getPelialusta().getKortti(kaannettavanKortinKohta[0], kaannettavanKortinKohta[1]).getKuvanNumero());
-            }
-            
-        }
+//            if(peli.getPelialusta().getKortti(kaannettavanKortinKohta[0], kaannettavanKortinKohta[1])!=null && this.tiedostetutKuvat.contains(peli.getPelialusta().getKortti(kaannettavanKortinKohta[0], kaannettavanKortinKohta[1]).getKuvanNumero())){
+//                this.seuraavatSiirrot.add(peli.getPelialusta().getKortti(kaannettavanKortinKohta[0], kaannettavanKortinKohta[1]).getKuvanNumero());
+//            }
+//            
+//        }
         return kaannettavanKortinKohta;
     }
     
@@ -56,7 +59,6 @@ public class Tekoaly extends Pelaaja {
                 if(this.muisti[j][i]==kuva) {
                     kohta[0] = j;
                     kohta[1] = i;
-                    this.muisti[j][i]=-99;
                 }
             }
         }
@@ -75,20 +77,14 @@ public class Tekoaly extends Pelaaja {
     
     public void poistaMuistista(int x, int y, int kuva) {
         System.out.println("x: " + x + " y: " +y + " k: " +kuva);
-        this.muisti[x][y] = -99;
-        if(this.tiedostetutKuvat.contains(kuva)) {
-            this.tiedostetutKuvat.remove(tiedostetutKuvat.indexOf(kuva));
-        } 
-        if (this.seuraavatSiirrot.contains(kuva)) {
-            this.seuraavatSiirrot.remove(seuraavatSiirrot.indexOf(kuva));
-        }
-    }
-    
-    public void mieti() {
-        try {
-            Thread.sleep(100);
-        } catch (Exception e) {
-            
+        if(this.tiedostetutKuvat.contains(kuva) || this.seuraavatSiirrot.contains(kuva)) {
+            this.muisti[x][y] = -99;
+            if(this.tiedostetutKuvat.contains(kuva)) {
+                this.tiedostetutKuvat.remove(tiedostetutKuvat.indexOf(kuva));
+            } 
+            if (this.seuraavatSiirrot.contains(kuva)) {
+                this.seuraavatSiirrot.remove(seuraavatSiirrot.indexOf(kuva));
+            }
         }
     }
     

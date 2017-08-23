@@ -5,7 +5,7 @@ import muistipeli.domain.Tekoaly;
 
 public class TekoalynVuoro {
     
-    private final Tekoaly tekoaly;
+    private Tekoaly tekoaly;
     private final Kayttoliittyma kayttoliittyma;
     
     public TekoalynVuoro(Kayttoliittyma kayttoliittyma, Tekoaly tekoaly) {
@@ -19,16 +19,17 @@ public class TekoalynVuoro {
     
     public void etsiKorttipari() {
         int[] kohta;
-        while(this.kayttoliittyma.getPeli().getPelialusta().getNakyma().kuviaNakyvilla() < 2) {
+        if(this.kayttoliittyma.getPeli().getPelialusta().getNakyma().kuviaNakyvilla() < 2) {
             kohta = this.tekoaly.teeSiirto();
             while(this.kayttoliittyma.getPeli().getPelialusta().getKaantotilanne()[kohta[0]][kohta[1]] != 0) {
                 kohta = this.tekoaly.teeSiirto();
             }
             kaannaKortti(kohta[0], kohta[1]);
             kayttoliittyma.setTekoalyllaVuoroKesken(true);
+        } else {
+            kayttoliittyma.setTekoalyllaVuoroKesken(false);
+            //paataVuoro();
         }
-        kayttoliittyma.setTekoalyllaVuoroKesken(false);
-        //paataVuoro();
     }
     
     public void kaannaKortti(int x, int y) {
@@ -36,14 +37,15 @@ public class TekoalynVuoro {
     }
     
     public void paataVuoro() {
-        //if(!this.kayttoliittyma.getKorttipaikat().isEmpty()) {
-            //this.kayttoliittyma.getKorttipaikat().get(0).doClick();
-        //}
         this.kayttoliittyma.getKorttipaikka(0, 0).doClick();
     }
     
     public Tekoaly getTekoaly() {
         return this.tekoaly;
+    }
+    
+    public void setTekoaly(Tekoaly t) {
+        this.tekoaly = t;
     }
     
 }

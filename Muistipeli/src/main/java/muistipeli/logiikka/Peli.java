@@ -12,12 +12,12 @@ import muistipeli.gui.Kayttoliittyma;
  */
 public class Peli {
 
-    private Pelialusta alusta;
-    private ArrayList<Pelaaja> pelaajat;
-    private ArrayList<Tekoaly> tekoalyt;
-    private Vuoro vuoro;
+    private final Pelialusta alusta;
+    private final ArrayList<Pelaaja> pelaajat;
+    private final ArrayList<Tekoaly> tekoalyt;
+    private final Vuoro vuoro;
     private boolean kaynnissa;
-    private Kayttoliittyma kayttoliittyma;
+    private final Kayttoliittyma kayttoliittyma;
 
     public Peli(int leveys, int korkeus) {
         if ((leveys * korkeus) % 2 != 0) {
@@ -61,7 +61,7 @@ public class Peli {
     }
 
     public void kierros() {
-        if (alusta.getNakyma().tarkistaPari()) {
+        if (alusta.getNakyma().kuviaNakyvilla() == 2 && alusta.getNakyma().tarkistaPari()) {
             vuoro.getPelaaja().lisaaPiste();
         } else {
             vaihdaVuoro();

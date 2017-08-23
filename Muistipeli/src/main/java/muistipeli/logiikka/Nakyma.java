@@ -44,18 +44,18 @@ public class Nakyma {
         if (a == b) {
             alusta.poistaKortti(alusta.getKortti(aj, ai));
             alusta.poistaKortti(alusta.getKortti(bj, bi));
-            for(Tekoaly p : this.alusta.getPeli().getTekoalyt()) {
-                p.poistaMuistista(aj,ai,a);
-                p.poistaMuistista(bj,bi,b);
-            }
+//            for(Tekoaly p : this.alusta.getPeli().getTekoalyt()) {
+//                p.poistaMuistista(aj,ai,a);
+//                p.poistaMuistista(bj,bi,b);
+//            }
             return true;
         } else {
             alusta.kaannaKortti(aj, ai);
             alusta.kaannaKortti(bj, bi);
-            for(Tekoaly p : this.alusta.getPeli().getTekoalyt()) {
-                p.lisaaMuistiin(alusta.getKortti(aj, ai));
-                p.lisaaMuistiin(alusta.getKortti(bj, bi));
-            }
+//            for(Tekoaly p : this.alusta.getPeli().getTekoalyt()) {
+//                p.lisaaMuistiin(alusta.getKortti(aj, ai));
+//                p.lisaaMuistiin(alusta.getKortti(bj, bi));
+//            }
             return false;
         }
     }

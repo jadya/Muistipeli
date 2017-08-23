@@ -51,11 +51,12 @@ public class Korttipaikka extends JButton implements ActionListener {
                 kayttoliittyma.uusiKierros();
             }
             SwingUtilities.updateComponentTreeUI(kayttoliittyma.getFrame());
-            if(!this.kayttoliittyma.getPeli().getPelialusta().tyhja() && kayttoliittyma.getPeli().getVuoro().getPelaaja().onTekoaly() && kayttoliittyma.getTekoalyllaVuoroKesken() == false) {
-                TekoalynVuoro vuoro = new TekoalynVuoro(kayttoliittyma, (Tekoaly) kayttoliittyma.getPeli().getVuoro().getPelaaja());
-                vuoro.pelaa();
-            }
         }
+        if(!this.kayttoliittyma.getPeli().getPelialusta().tyhja() && kayttoliittyma.getPeli().getVuoro().getPelaaja().onTekoaly()) {
+            this.kayttoliittyma.getTekoalynVuoro().setTekoaly((Tekoaly)kayttoliittyma.getPeli().getVuoro().getPelaaja());
+            this.kayttoliittyma.getTekoalynVuoro().pelaa();
+        } 
+        SwingUtilities.updateComponentTreeUI(kayttoliittyma.getFrame());
     }
 
     public void setSelka() {
