@@ -50,9 +50,6 @@ public class NakymanVaihtaja {
         this.kayttoliittyma.getFrame().setVisible(false);
         this.kayttoliittyma = new Kayttoliittyma();
         SwingUtilities.invokeLater(kayttoliittyma);
-        //kayttoliittyma2.getFrame().dispatchEvent(new WindowEvent(kayttoliittyma2.getFrame(), WindowEvent.WINDOW_CLOSING));
-//        this.kayttoliittyma2 = kayttoliittyma;
-//        this.kayttoliittyma2 = null;
         
 //        kayttoliittyma.rakennaValikko(kayttoliittyma.getFrame().getContentPane());
 //        SwingUtilities.updateComponentTreeUI(kayttoliittyma.getFrame());
