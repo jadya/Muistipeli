@@ -16,4 +16,4 @@ Päivä | Tunnit | Kuvaus
 18.08.2017 | 4 h | Käyttöliittymän kuvien parantelu ja käyttöliittymän ohjelmointia
 19.08.2017 | 5 h | JavaDoc:in aloittaminen, testejä ja ohjelmointia, uudet PIT- ja Checkstyle-raportit, README:n päivittäminen, luokkakaavion päivittäminen
 22.08.2017 | 7 h | Suunnittelua ja ohjelmointia, pelaajien järjestämistoiminnon ja tekoälyn lisäys, luokkakaavion päivittäminen
-23.08.2017 | 5.5 h | Ohjelmointia
+23.08.2017 | 8.5 h | Ohjelmointia, tekoälymahdollisuuden lisääminen käyttöliittymään
