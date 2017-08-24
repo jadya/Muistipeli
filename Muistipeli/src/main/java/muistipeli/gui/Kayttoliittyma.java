@@ -19,7 +19,7 @@ public class Kayttoliittyma implements Runnable {
     private Peli peli;
     private Pelinakyma pelinakyma;
     private VuoronNayttaja vuoronNayttaja;
-    private final NakymanVaihtaja nakymanVaihtaja;
+    private NakymanVaihtaja nakymanVaihtaja;
     private boolean tekoalyllaVuoroKesken;
     private TekoalynVuoro tekoalynVuoro;
     
@@ -175,6 +175,16 @@ public class Kayttoliittyma implements Runnable {
                 k.setTyhja();
             }
         }
+    }
+    
+    public void nollaa() {
+        this.korttipaikat = new ArrayList<>();
+        this.peli = null;
+        this.pelinakyma = null;
+        this.vuoronNayttaja = null;
+        this.nakymanVaihtaja = new NakymanVaihtaja(this);
+        this.tekoalyllaVuoroKesken = false;
+        this.tekoalynVuoro = null;
     }
 
     public void setPeli(Peli peli) {

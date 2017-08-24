@@ -47,12 +47,12 @@ public class NakymanVaihtaja {
             c.remove(i);
         }
         
-        this.kayttoliittyma.getFrame().setVisible(false);
-        this.kayttoliittyma = new Kayttoliittyma();
-        SwingUtilities.invokeLater(kayttoliittyma);
-        
-//        kayttoliittyma.rakennaValikko(kayttoliittyma.getFrame().getContentPane());
-//        SwingUtilities.updateComponentTreeUI(kayttoliittyma.getFrame());
+//        this.kayttoliittyma.getFrame().setVisible(false);
+//        this.kayttoliittyma = new Kayttoliittyma();
+//        SwingUtilities.invokeLater(kayttoliittyma);
+        this.kayttoliittyma.nollaa();
+        kayttoliittyma.rakennaValikko(kayttoliittyma.getFrame().getContentPane());
+        SwingUtilities.updateComponentTreeUI(kayttoliittyma.getFrame());
     }
     
 }
