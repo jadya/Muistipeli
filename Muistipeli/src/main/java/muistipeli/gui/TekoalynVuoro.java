@@ -28,16 +28,11 @@ public class TekoalynVuoro {
             kayttoliittyma.setTekoalyllaVuoroKesken(true);
         } else {
             kayttoliittyma.setTekoalyllaVuoroKesken(false);
-            //paataVuoro();
         }
     }
     
     public void kaannaKortti(int x, int y) {
         this.kayttoliittyma.getKorttipaikka(x, y).doClick();
-    }
-    
-    public void paataVuoro() {
-        this.kayttoliittyma.getKorttipaikka(0, 0).doClick();
     }
     
     public Tekoaly getTekoaly() {
