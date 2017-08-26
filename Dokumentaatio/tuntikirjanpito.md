@@ -18,3 +18,4 @@ Päivä | Tunnit | Kuvaus
 22.08.2017 | 7 h | Suunnittelua ja ohjelmointia, pelaajien järjestämistoiminnon ja tekoälyn lisäys, luokkakaavion päivittäminen
 23.08.2017 | 8.5 h | Ohjelmointia, tekoälymahdollisuuden lisääminen käyttöliittymään
 24.08.2017 | 1 h | Ohjelmointia
+26.08.2017 | 5 h | Tekoälyn kehittäminen, JavaDoc-lisäys Checkstyleen, JavaDocin kirjoittamista, testejä ja ohjelmointia
