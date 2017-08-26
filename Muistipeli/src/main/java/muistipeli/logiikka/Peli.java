@@ -18,7 +18,12 @@ public class Peli {
     private final Vuoro vuoro;
     private boolean kaynnissa;
     private final Kayttoliittyma kayttoliittyma;
-
+    
+    /**
+     * Konstruktori alkuarvojen asettamiseen.
+     * @param leveys Pelin pelialustalle leveys
+     * @param korkeus Pelin pelialustalle korkeus
+     */
     public Peli(int leveys, int korkeus) {
         if ((leveys * korkeus) % 2 != 0) {
             leveys++;
@@ -39,7 +44,6 @@ public class Peli {
 
     /**
      * Metodi lisää annetun pelaajan peliin.
-     *
      * @param pelaaja peliin lisättävä pelaaja
      */
     public void lisaaPelaaja(Pelaaja pelaaja) {
@@ -48,7 +52,11 @@ public class Peli {
             this.tekoalyt.add((Tekoaly) pelaaja);
         }
     }
-
+    
+    /**
+     * Metodi aloittaa pelin asettamalla vuoroon ensimmäisen pelaajan, jakamalla
+     * kortit pelialustalle ja asettamalla kaynnissa-atribuutin arvoon true.
+     */
     public void aloitaPeli() {
         this.vuoro.setPelaaja(this.pelaajat.get(0));
         int korttipareja = this.alusta.getKorkeus() * this.alusta.getLeveys() / 2;
@@ -57,16 +65,18 @@ public class Peli {
             this.alusta.lisaaKortti(new PeliKortti(i));
         }
         this.kaynnissa = true;
-
     }
-
+    
+    /**
+     * Metodi lisää pisteen vuorossa olevalle pelaajalle, jos pelialustalla on 
+     * korttipari näkyvillä, tai kutsuu vaihdaVuoro-metodia, jos ei ole.
+     */
     public void kierros() {
         if (alusta.getNakyma().kuviaNakyvilla() == 2 && alusta.getNakyma().tarkistaPari()) {
             vuoro.getPelaaja().lisaaPiste();
         } else {
             vaihdaVuoro();
         }
-
     }
 
     /**
@@ -81,7 +91,11 @@ public class Peli {
         this.vuoro.setPelaaja(this.pelaajat.get(numero));
         this.vuoro.setNumero(numero);
     }
-
+    
+    /**
+     * Metodi palauttaa pelinäkymän kokonaislukutaulukkomuodossa.
+     * @return kokonaislukutaulukko, joka kuvaa näkymää pelialustalla
+     */
     public int[][] nakyma() {
         int leveys = this.alusta.getLeveys();
         int korkeus = this.alusta.getKorkeus();
@@ -97,27 +111,31 @@ public class Peli {
         }
         return nakyma;
     }
-
+    
+    /**
+     * Metodi palauttaa pelin senhetkisen tilannekuvauksen.
+     * @return pelaajien pisteet ja vuorossa olevan pelaajan nimimerkki
+     */
     public String tilanne() {
         String tilanne = "Pisteet \n";
-        for (Pelaaja pelaaja : this.pelaajat) {
-            tilanne += pelaaja.getNimimerkki() + " : " + pelaaja.getPisteet() + "\n";
-        }
+        tilanne = this.pelaajat.stream().map((pelaaja) -> pelaaja.getNimimerkki() + " : " + pelaaja.getPisteet() + "\n").reduce(tilanne, String::concat);
         tilanne += "Vuoro: " + this.pelaajat.get(this.vuoro.getNumero()).getNimimerkki();
         return tilanne;
     }
 
-    public boolean kaynnissa() {
+    public boolean getKaynnissa() {
         return this.kaynnissa;
     }
-
+    
+    /**
+     * Metodi lopettaa pelin asettamalla kaynnissa atribuutin arvoon false.
+     */
     public void lopeta() {
         this.kaynnissa = false;
     }
 
     /**
      * Metodi kertoo, keillä pelaajista on eniten pisteitä.
-     *
      * @return lista pelaajista, joilla on eniten pisteitä
      */
     public ArrayList<Pelaaja> johdossa() {

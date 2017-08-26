@@ -11,6 +11,10 @@ public class Vuoro {
     private Pelaaja pelaaja;
     private int numero;
     
+    /**
+     * Konstruktori asettaa alkuarvot vuorolle.
+     * @param pelaaja vuoroon laitettava pelaaja
+     */
     public Vuoro(Pelaaja pelaaja) {
         this.pelaaja = pelaaja;
         this.numero = 0;

@@ -227,7 +227,7 @@ public class PeliTest {
         Pelaaja p1 = new Pelaaja("p1", 1);
         peli.lisaaPelaaja(p1);
         peli.aloitaPeli();
-        assertTrue(peli.kaynnissa());
+        assertTrue(peli.getKaynnissa());
     }
 
     @Test
@@ -235,7 +235,7 @@ public class PeliTest {
         Peli peli = new Peli(4, 4);
         Pelaaja p1 = new Pelaaja("p1", 1);
         peli.lisaaPelaaja(p1);
-        assertFalse(peli.kaynnissa());
+        assertFalse(peli.getKaynnissa());
     }
 
     @Test
@@ -245,7 +245,7 @@ public class PeliTest {
         peli.lisaaPelaaja(p1);
         peli.aloitaPeli();
         peli.lopeta();
-        assertFalse(peli.kaynnissa());
+        assertFalse(peli.getKaynnissa());
     }
 
     @Test
