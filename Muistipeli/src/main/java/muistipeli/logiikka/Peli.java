@@ -29,7 +29,7 @@ public class Peli {
         if (korkeus <= 1) {
             korkeus = 2;
         }
-        this.alusta = new Pelialusta(this,leveys, korkeus);
+        this.alusta = new Pelialusta(this, leveys, korkeus);
         this.pelaajat = new ArrayList<>();
         this.tekoalyt = new ArrayList<>();
         this.vuoro = new Vuoro(null);
@@ -44,8 +44,8 @@ public class Peli {
      */
     public void lisaaPelaaja(Pelaaja pelaaja) {
         this.pelaajat.add(pelaaja);
-        if(pelaaja.onTekoaly()) {
-            this.tekoalyt.add((Tekoaly)pelaaja);
+        if (pelaaja.getOnTekoaly()) {
+            this.tekoalyt.add((Tekoaly) pelaaja);
         }
     }
 
@@ -146,7 +146,7 @@ public class Peli {
     public Pelialusta getPelialusta() {
         return this.alusta;
     }
-    
+
     public ArrayList<Tekoaly> getTekoalyt() {
         return this.tekoalyt;
     }

@@ -11,7 +11,10 @@ public class PeliKortti {
     private int x;
     private int y;
     
-    
+    /**
+     * Konstruktori alustaa PeliKortti-olion.
+     * @param kuvanNumero luotavan kortin kuvaa vastaava numero
+     */
     public PeliKortti(int kuvanNumero) {
         this.kuva = kuvanNumero;
         this.x = -99;

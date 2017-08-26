@@ -47,15 +47,15 @@ public class Korttipaikka extends JButton implements ActionListener {
             kayttoliittyma.getPeli().kierros();
             kayttoliittyma.poistaYlimaaraisetKorttipaikat();
             kayttoliittyma.getVuoronNayttaja().paivitaVuoro();
-            if(!this.kayttoliittyma.getPeli().getPelialusta().tyhja()) {
+            if (!this.kayttoliittyma.getPeli().getPelialusta().tyhja()) {
                 kayttoliittyma.uusiKierros();
             }
             SwingUtilities.updateComponentTreeUI(kayttoliittyma.getFrame());
         }
-        if(!this.kayttoliittyma.getPeli().getPelialusta().tyhja() && kayttoliittyma.getPeli().getVuoro().getPelaaja().onTekoaly()) {
-            this.kayttoliittyma.getTekoalynVuoro().setTekoaly((Tekoaly)kayttoliittyma.getPeli().getVuoro().getPelaaja());
+        if (!this.kayttoliittyma.getPeli().getPelialusta().tyhja() && kayttoliittyma.getPeli().getVuoro().getPelaaja().getOnTekoaly()) {
+            this.kayttoliittyma.getTekoalynVuoro().setTekoaly((Tekoaly) kayttoliittyma.getPeli().getVuoro().getPelaaja());
             this.kayttoliittyma.getTekoalynVuoro().pelaa();
-        } 
+        }
         SwingUtilities.updateComponentTreeUI(kayttoliittyma.getFrame());
     }
 
@@ -79,11 +79,11 @@ public class Korttipaikka extends JButton implements ActionListener {
     public void setKortti(PeliKortti pelikortti) {
         this.kortti = pelikortti;
     }
-    
+
     public int getXkoord() {
         return this.xKoord;
     }
-    
+
     public int getYkoord() {
         return this.yKoord;
     }

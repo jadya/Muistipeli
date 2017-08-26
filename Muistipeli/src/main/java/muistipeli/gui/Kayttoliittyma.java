@@ -22,7 +22,7 @@ public class Kayttoliittyma implements Runnable {
     private NakymanVaihtaja nakymanVaihtaja;
     private boolean tekoalyllaVuoroKesken;
     private TekoalynVuoro tekoalynVuoro;
-    
+
     public Kayttoliittyma() {
         this.korttipaikat = new ArrayList<>();
         this.peli = null;
@@ -32,16 +32,14 @@ public class Kayttoliittyma implements Runnable {
         this.tekoalyllaVuoroKesken = false;
         this.tekoalynVuoro = null;
     }
-    
+
     @Override
     public void run() {
         frame = new JFrame("Muistipeli");
         frame.setSize(700, 700);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
         frame.setVisible(true);
         rakennaValikko(frame.getContentPane());
-
     }
 
     public void rakennaPelinakyma(int leveys, int korkeus, Container c) {
@@ -73,61 +71,37 @@ public class Kayttoliittyma implements Runnable {
         c.add(new Kaynnistys(this, "Aloita peli"), BorderLayout.SOUTH);
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(8, 1));
-
-        JLabel korkeudenValinta = new JLabel("Valitse pelialustan korkeus:");
-        panel.add(korkeudenValinta);
-
-        JPanel korkeus = new JPanel();
-        korkeus.setLayout(new GridLayout(1, 9));
-        for (int i = 2; i <= 10; i++) {
-            korkeus.add(new ValintaPainike(this, i, "korkeus"));
-        }
-        panel.add(korkeus);
-
-        JLabel leveydenValinta = new JLabel("Valitse pelialustan leveys:");
-        panel.add(leveydenValinta);
-
-        JPanel leveys = new JPanel();
-        leveys.setLayout(new GridLayout(1, 9));
-        for (int i = 2; i <= 10; i++) {
-            leveys.add(new ValintaPainike(this, i, "leveys"));
-        }
-        panel.add(leveys);
-
-        JLabel pelaajaMaaranValinta = new JLabel("Valitse pelaajien maara:");
-        panel.add(pelaajaMaaranValinta);
-
-        JPanel pelaajat = new JPanel();
-        pelaajat.setLayout(new GridLayout(1, 9));
-        for (int i = 2; i <= 10; i++) {
-            pelaajat.add(new ValintaPainike(this, i, "pelaajien maara"));
-        }
-        panel.add(pelaajat);
-        
-        JLabel tekoalynValinta = new JLabel("Tekoalyjen maara pelaajista:");
-        panel.add(tekoalynValinta);
-
-        JPanel tekoalyt = new JPanel();
-        tekoalyt.setLayout(new GridLayout(1, 9));
-        for (int i = 0; i <= 1; i++) {
-            tekoalyt.add(new ValintaPainike(this, i, "tekoalyjen maara"));
-        }
-        panel.add(tekoalyt);
-
+        panel.add(new JLabel("Valitse pelialustan korkeus:"));
+        panel.add(luoValintapaneeli("korkeus", 2, 10));
+        panel.add(new JLabel("Valitse pelialustan leveys:"));
+        panel.add(luoValintapaneeli("leveys", 2, 10));
+        panel.add(new JLabel("Valitse pelaajien maara:"));
+        panel.add(luoValintapaneeli("pelaajien maara", 2, 10));
+        panel.add(new JLabel("Tekoalyjen maara pelaajista:"));
+        panel.add(luoValintapaneeli("tekoalyjen maara", 0, 1));
         c.add(panel, BorderLayout.CENTER);
     }
-    
+
+    public JPanel luoValintapaneeli(String valinnanKohde, int alku, int loppu) {
+        JPanel p = new JPanel();
+        p.setLayout(new GridLayout(1, loppu - alku + 1));
+        for (int i = alku; i <= loppu; i++) {
+            p.add(new ValintaPainike(this, i, valinnanKohde));
+        }
+        return p;
+    }
+
     public void valmistelePeli() {
-        this.setPeli(new Peli(this.pelinakyma.getLeveys(), this.pelinakyma.getKorkeus()));
+        this.peli = new Peli(this.pelinakyma.getLeveys(), this.pelinakyma.getKorkeus());
         for (int i = 1; i <= this.pelinakyma.getPelaajienMaara() - this.pelinakyma.getTekoalyjenMaara(); i++) {
             peli.lisaaPelaaja(new Pelaaja("pelaaja" + i, i));
         }
         for (int i = 1; i <= this.pelinakyma.getTekoalyjenMaara(); i++) {
-            Tekoaly t = new Tekoaly("cpu" + i, this.pelinakyma.getPelaajienMaara()-this.pelinakyma.getTekoalyjenMaara()+i,this.peli);
+            Tekoaly t = new Tekoaly("cpu" + i, this.pelinakyma.getPelaajienMaara() - this.pelinakyma.getTekoalyjenMaara() + i, this.peli);
             peli.lisaaPelaaja(t);
         }
-        if(this.pelinakyma.getTekoalyjenMaara() > 0) {
-            this.tekoalynVuoro = new TekoalynVuoro(this,null);
+        if (this.pelinakyma.getTekoalyjenMaara() > 0) {
+            this.tekoalynVuoro = new TekoalynVuoro(this, null);
         }
     }
 
@@ -138,45 +112,34 @@ public class Kayttoliittyma implements Runnable {
         c.add(new JLabel("Muistipeli"), BorderLayout.NORTH);
         c.add(new Kaynnistys(this, "Uusi peli"), BorderLayout.SOUTH);
         JPanel panel = new JPanel();
-        int rivit = 3 + this.peli.getPelaajat().size() + this.peli.johdossa().size();
-        panel.setLayout(new GridLayout(rivit, 1));
+        panel.setLayout(new GridLayout(3 + this.peli.getPelaajat().size() + this.peli.johdossa().size(), 1));
         panel.add(new JLabel("Peli ohi"));
-        if (this.peli.johdossa().size() == 1) {
-            panel.add(new JLabel("Voittaja: "));
-            panel.add(new JLabel(peli.johdossa().get(0).toString()));
-        }
         if (this.peli.johdossa().size() > 1) {
             panel.add(new JLabel("Voittajat: "));
             for (int i = 0; i < peli.johdossa().size(); i++) {
                 panel.add(new JLabel(peli.johdossa().get(i).toString()));
             }
+        } else if (this.peli.johdossa().size() == 1) {
+            panel.add(new JLabel("Voittaja: "));
+            panel.add(new JLabel(peli.johdossa().get(0).toString()));
         }
         panel.add(new JLabel("Tulokset:"));
-        for (Pelaaja p : this.peli.getPelaajat()) {
+        this.peli.getPelaajat().stream().forEach((p) -> {
             panel.add(new JLabel(p.toString()));
-        }
+        });
         c.add(panel, BorderLayout.CENTER);
     }
 
     public void uusiKierros() {
-        for (Korttipaikka k : this.korttipaikat) {
-            if (!k.getTyhja()) {
-                k.setSelka();
-            }
-        }
-        frame.invalidate();
-        frame.validate();
-        frame.repaint();
+        this.nakymanVaihtaja.valmisteleKierros();
     }
 
     public void poistaYlimaaraisetKorttipaikat() {
-        for (Korttipaikka k : this.korttipaikat) {
-            if (this.peli.getPelialusta().getPoistetutKortit().contains(k.getKortti())) {
-                k.setTyhja();
-            }
-        }
+        this.korttipaikat.stream().filter((k) -> (this.peli.getPelialusta().getPoistetutKortit().contains(k.getKortti()))).forEach((k) -> {
+            k.setTyhja();
+        });
     }
-    
+
     public void nollaa() {
         this.korttipaikat = new ArrayList<>();
         this.peli = null;
@@ -187,16 +150,8 @@ public class Kayttoliittyma implements Runnable {
         this.tekoalynVuoro = null;
     }
 
-    public void setPeli(Peli peli) {
-        this.peli = peli;
-    }
-
     public Peli getPeli() {
         return this.peli;
-    }
-
-    public Pelinakyma getNakyma() {
-        return this.pelinakyma;
     }
 
     public Korttipaikka getKorttipaikka(int x, int y) {
@@ -219,23 +174,23 @@ public class Kayttoliittyma implements Runnable {
     public VuoronNayttaja getVuoronNayttaja() {
         return this.vuoronNayttaja;
     }
-    
+
     public NakymanVaihtaja getNakymanVaihtaja() {
         return this.nakymanVaihtaja;
     }
-    
+
     public void setTekoalyllaVuoroKesken(boolean kesken) {
         this.tekoalyllaVuoroKesken = kesken;
     }
-    
+
     public boolean getTekoalyllaVuoroKesken() {
         return this.tekoalyllaVuoroKesken;
     }
-    
+
     public ArrayList<Korttipaikka> getKorttipaikat() {
         return this.korttipaikat;
     }
-    
+
     public TekoalynVuoro getTekoalynVuoro() {
         return this.tekoalynVuoro;
     }

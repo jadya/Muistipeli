@@ -1,4 +1,3 @@
-
 package muistipeli.logiikka;
 
 import java.util.ArrayList;
@@ -12,20 +11,20 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class NakymaTest {
-    
+
     public NakymaTest() {
     }
-    
+
     @Test
     public void kaannettyPariLoytyyAlustaaTarkistettaessaJaPoistuuAlustalta() {
-        Pelialusta alusta = new Pelialusta(new Peli(4,4),4,4);
-        for(int i = 0 ; i < 16 ; i++) {
+        Pelialusta alusta = new Pelialusta(new Peli(4, 4), 4, 4);
+        for (int i = 0; i < 16; i++) {
             PeliKortti kortti = new PeliKortti(4);
             alusta.lisaaKortti(kortti);
         }
         int[][] tilanne = new int[4][4];
-        for(int i = 0 ; i < 4 ; i++) {
-            for(int j = 0 ; j < 4 ; j++) {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
                 tilanne[i][j] = 0;
             }
         }
@@ -38,17 +37,17 @@ public class NakymaTest {
         assertEquals(alusta.getKorttienSijainnit()[0][0], -99);
         assertEquals(alusta.getKorttienSijainnit()[1][1], -99);
     }
-    
+
     @Test
     public void kortitJotkaEivatMuodostaPariaEivatNaytaPariltaAlustaaTarkistettaessa() {
-        Pelialusta alusta = new Pelialusta(new Peli(4,4),4,4);
-        for(int i = 1 ; i <= 16 ; i++) {
+        Pelialusta alusta = new Pelialusta(new Peli(4, 4), 4, 4);
+        for (int i = 1; i <= 16; i++) {
             PeliKortti kortti = new PeliKortti(i);
             alusta.lisaaKortti(kortti);
         }
         int[][] tilanne = new int[4][4];
-        for(int i = 0 ; i < 4 ; i++) {
-            for(int j = 0 ; j < 4 ; j++) {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
                 tilanne[i][j] = 0;
             }
         }
@@ -61,37 +60,37 @@ public class NakymaTest {
         assertTrue(alusta.getKorttienSijainnit()[0][0] != -99);
         assertTrue(alusta.getKorttienSijainnit()[1][1] != -99);
     }
-    
+
     @Test
     public void alussaKuviaOnNakyvillaNolla() {
-        Pelialusta alusta = new Pelialusta(null,3,4);
+        Pelialusta alusta = new Pelialusta(null, 3, 4);
         ArrayList<PeliKortti> kortit = new ArrayList<>();
-        for(int i = 0 ; i < 12 ; i++) {
+        for (int i = 0; i < 12; i++) {
             kortit.add(new PeliKortti(i));
         }
         alusta.setKortit(kortit);
-        assertEquals(alusta.getNakyma().kuviaNakyvilla(),0);
+        assertEquals(alusta.getNakyma().kuviaNakyvilla(), 0);
     }
-    
+
     @Test
     public void kuviaOnNakyvillaOikeaMaara() {
-        Pelialusta alusta = new Pelialusta(null,3,4);
+        Pelialusta alusta = new Pelialusta(new Peli(3,4), 3, 4);
         ArrayList<PeliKortti> kortit = new ArrayList<>();
-        for(int i = 0 ; i < 12 ; i++) {
+        for (int i = 0; i < 12; i++) {
             kortit.add(new PeliKortti(i));
         }
         alusta.setKortit(kortit);
         alusta.kaannaKortti(0, 0);
         alusta.kaannaKortti(0, 1);
         alusta.kaannaKortti(2, 3);
-        assertEquals(alusta.getNakyma().kuviaNakyvilla(),3);
+        assertEquals(alusta.getNakyma().kuviaNakyvilla(), 3);
     }
-    
+
     @Test
     public void kuviaOnNakyvillaOikeaMaaraUseammanKaannonJalkeen() {
-        Pelialusta alusta = new Pelialusta(null,3,4);
+        Pelialusta alusta = new Pelialusta(new Peli(3,4), 3, 4);
         ArrayList<PeliKortti> kortit = new ArrayList<>();
-        for(int i = 0 ; i < 12 ; i++) {
+        for (int i = 0; i < 12; i++) {
             kortit.add(new PeliKortti(i));
         }
         alusta.setKortit(kortit);
@@ -99,7 +98,7 @@ public class NakymaTest {
         alusta.kaannaKortti(0, 1);
         alusta.kaannaKortti(0, 0);
         alusta.kaannaKortti(1, 0);
-        assertEquals(alusta.getNakyma().kuviaNakyvilla(),2);
+        assertEquals(alusta.getNakyma().kuviaNakyvilla(), 2);
     }
-    
+
 }

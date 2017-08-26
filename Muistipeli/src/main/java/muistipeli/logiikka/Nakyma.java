@@ -1,21 +1,24 @@
 package muistipeli.logiikka;
 
-import muistipeli.domain.Pelaaja;
 import muistipeli.domain.Pelialusta;
-import muistipeli.domain.Tekoaly;
 
 
 public class Nakyma {
     
     private Pelialusta alusta;
     
+    /**
+     * Konstruktori alustaa Nakyman.
+     * @param alusta Pelialusta, johon nakyma liittyy
+     */
     public Nakyma(Pelialusta alusta) {
         this.alusta = alusta;
     }
     
     /**
      * Metodi kertoo, onko pelialustalla käännettynä kaksi samanlaisella kuvalla
-     * varustettua korttia.
+     * varustettua korttia. Jos on, kyseiset kortit poistetaan, ja jos ei, 
+     * kortit käännetään.
      *
      * @return totuusarvo väitteelle näkyvillä on kaksi samaa kuvaa
      */
@@ -44,18 +47,10 @@ public class Nakyma {
         if (a == b) {
             alusta.poistaKortti(alusta.getKortti(aj, ai));
             alusta.poistaKortti(alusta.getKortti(bj, bi));
-//            for(Tekoaly p : this.alusta.getPeli().getTekoalyt()) {
-//                p.poistaMuistista(aj,ai,a);
-//                p.poistaMuistista(bj,bi,b);
-//            }
             return true;
         } else {
             alusta.kaannaKortti(aj, ai);
             alusta.kaannaKortti(bj, bi);
-//            for(Tekoaly p : this.alusta.getPeli().getTekoalyt()) {
-//                p.lisaaMuistiin(alusta.getKortti(aj, ai));
-//                p.lisaaMuistiin(alusta.getKortti(bj, bi));
-//            }
             return false;
         }
     }
@@ -78,6 +73,4 @@ public class Nakyma {
         return maara;
     }
     
-    
-
 }

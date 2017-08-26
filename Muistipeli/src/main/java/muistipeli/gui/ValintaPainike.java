@@ -20,6 +20,7 @@ public class ValintaPainike extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        
         if (this.kohde.equals("korkeus")) {
             this.kayttoliittyma.getPelinakyma().setKorkeus(numero);
         }
