@@ -72,25 +72,16 @@ public class Kayttoliittyma implements Runnable {
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(8, 1));
         panel.add(new JLabel("Valitse pelialustan korkeus:"));
-        panel.add(luoValintapaneeli("korkeus", 2, 10));
+        panel.add(new ValintaPaneeli(this, "korkeus", 2, 10));
         panel.add(new JLabel("Valitse pelialustan leveys:"));
-        panel.add(luoValintapaneeli("leveys", 2, 10));
+        panel.add(new ValintaPaneeli(this, "leveys", 2, 10));
         panel.add(new JLabel("Valitse pelaajien maara:"));
-        panel.add(luoValintapaneeli("pelaajien maara", 2, 10));
+        panel.add(new ValintaPaneeli(this, "pelaajien maara", 2, 10));
         panel.add(new JLabel("Tekoalyjen maara pelaajista:"));
-        panel.add(luoValintapaneeli("tekoalyjen maara", 0, 1));
+        panel.add(new ValintaPaneeli(this, "tekoalyjen maara", 0, 1));
         c.add(panel, BorderLayout.CENTER);
     }
-
-    public JPanel luoValintapaneeli(String valinnanKohde, int alku, int loppu) {
-        JPanel p = new JPanel();
-        p.setLayout(new GridLayout(1, loppu - alku + 1));
-        for (int i = alku; i <= loppu; i++) {
-            p.add(new ValintaPainike(this, i, valinnanKohde));
-        }
-        return p;
-    }
-
+    
     public void valmistelePeli() {
         this.peli = new Peli(this.pelinakyma.getLeveys(), this.pelinakyma.getKorkeus());
         for (int i = 1; i <= this.pelinakyma.getPelaajienMaara() - this.pelinakyma.getTekoalyjenMaara(); i++) {

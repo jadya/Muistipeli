@@ -9,9 +9,11 @@ public class ValintaPainike extends JButton implements ActionListener {
     private int numero;
     private String kohde;
     private Kayttoliittyma kayttoliittyma;
+    private ValintaPaneeli valintaPaneeli;
 
-    public ValintaPainike(Kayttoliittyma kayttoliittyma, int numero, String kohde) {
+    public ValintaPainike(Kayttoliittyma kayttoliittyma, ValintaPaneeli vp, int numero, String kohde) {
         this.numero = numero;
+        this.valintaPaneeli = vp;
         this.setText("" + numero);
         this.kohde = kohde;
         this.kayttoliittyma = kayttoliittyma;
@@ -33,6 +35,11 @@ public class ValintaPainike extends JButton implements ActionListener {
         if (this.kohde.equals("tekoalyjen maara")) {
             this.kayttoliittyma.getPelinakyma().setTekoalyjenMaara(numero);
         }
+        this.valintaPaneeli.vahvistaValinta(this.numero);
+    }
+    
+    public int getNumero() {
+        return this.numero;
     }
 
 }
