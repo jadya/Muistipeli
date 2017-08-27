@@ -5,7 +5,6 @@ import muistipeli.domain.Pelaaja;
 import muistipeli.domain.PeliKortti;
 import muistipeli.domain.Pelialusta;
 import muistipeli.domain.Tekoaly;
-import muistipeli.gui.Kayttoliittyma;
 
 /**
  * Luokka tarjoaa pelilogiikkaan liittyviä metodeita.
@@ -17,7 +16,6 @@ public class Peli {
     private final ArrayList<Tekoaly> tekoalyt;
     private final Vuoro vuoro;
     private boolean kaynnissa;
-    private final Kayttoliittyma kayttoliittyma;
     
     /**
      * Konstruktori alkuarvojen asettamiseen.
@@ -39,7 +37,6 @@ public class Peli {
         this.tekoalyt = new ArrayList<>();
         this.vuoro = new Vuoro(null);
         this.kaynnissa = false;
-        this.kayttoliittyma = null;
     }
 
     /**

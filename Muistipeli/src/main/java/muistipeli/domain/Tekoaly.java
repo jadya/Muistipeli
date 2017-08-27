@@ -6,11 +6,7 @@ import muistipeli.logiikka.Peli;
 
 public class Tekoaly extends Pelaaja {
 
-    private String nimimerkki;
-    private int id;
-    private int pisteet;
     private ArrayList<PeliKortti> muisti;
-    private boolean onTekoaly;
     private Peli peli;
 
     /**
