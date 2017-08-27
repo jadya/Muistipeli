@@ -32,7 +32,7 @@ public class NakymanVaihtaja {
         for (int i = 0; i < c.getComponentCount(); i++) {
             c.remove(i);
         }
-        kayttoliittyma.rakennaPelinakyma(kayttoliittyma.getPeli().getPelialusta().getLeveys(), kayttoliittyma.getPeli().getPelialusta().getKorkeus(), kayttoliittyma.getFrame().getContentPane());
+        kayttoliittyma.getNakymanRakentaja().rakennaPelinakyma(kayttoliittyma.getPeli().getPelialusta().getLeveys(), kayttoliittyma.getPeli().getPelialusta().getKorkeus(), kayttoliittyma.getFrame().getContentPane());
         SwingUtilities.updateComponentTreeUI(kayttoliittyma.getFrame());
     }
     
@@ -45,7 +45,7 @@ public class NakymanVaihtaja {
         for (int i = 0; i < c.getComponentCount(); i++) {
             c.remove(i);
         }
-        kayttoliittyma.rakennaPistenakyma(kayttoliittyma.getFrame().getContentPane());
+        kayttoliittyma.getNakymanRakentaja().rakennaPistenakyma(kayttoliittyma.getFrame().getContentPane());
         SwingUtilities.updateComponentTreeUI(kayttoliittyma.getFrame());
     }
     
@@ -59,7 +59,7 @@ public class NakymanVaihtaja {
             c.remove(i);
         }
         this.kayttoliittyma.nollaa();
-        kayttoliittyma.rakennaValikko(kayttoliittyma.getFrame().getContentPane());
+        this.kayttoliittyma.getNakymanRakentaja().rakennaValikko(kayttoliittyma.getFrame().getContentPane());
         SwingUtilities.updateComponentTreeUI(kayttoliittyma.getFrame());
     }
     

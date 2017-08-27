@@ -49,7 +49,6 @@ public class ValintaPaneeli extends JPanel {
                 v.setIcon(null);
             }
         });
-
     }
 
 }

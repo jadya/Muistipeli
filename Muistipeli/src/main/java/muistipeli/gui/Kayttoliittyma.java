@@ -1,12 +1,7 @@
 package muistipeli.gui;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import muistipeli.domain.Pelaaja;
 import muistipeli.domain.Tekoaly;
@@ -23,6 +18,7 @@ public class Kayttoliittyma implements Runnable {
     private Pelinakyma pelinakyma;
     private VuoronNayttaja vuoronNayttaja;
     private NakymanVaihtaja nakymanVaihtaja;
+    private NakymanRakentaja nakymanRakentaja;
     private boolean tekoalyllaVuoroKesken;
     private TekoalynVuoro tekoalynVuoro;
     
@@ -35,6 +31,7 @@ public class Kayttoliittyma implements Runnable {
         this.pelinakyma = null;
         this.vuoronNayttaja = null;
         this.nakymanVaihtaja = new NakymanVaihtaja(this);
+        this.nakymanRakentaja = new NakymanRakentaja(this);
         this.tekoalyllaVuoroKesken = false;
         this.tekoalynVuoro = null;
     }
@@ -45,49 +42,13 @@ public class Kayttoliittyma implements Runnable {
         frame.setSize(700, 700);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        rakennaValikko(frame.getContentPane());
-    }
-
-    public void rakennaPelinakyma(int leveys, int korkeus, Container c) {
-        this.tekoalyllaVuoroKesken = false;
-        for (int i = 0; i < c.getComponentCount(); i++) {
-            c.remove(i);
-        }
-        this.vuoronNayttaja = new VuoronNayttaja(this.peli);
-        c.add(this.vuoronNayttaja, BorderLayout.NORTH);
-        c.add(new Kaynnistys(this, "Lopeta peli"), BorderLayout.SOUTH);
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(korkeus, leveys));
-        for (int i = 0; i < korkeus; i++) {
-            for (int j = 0; j < leveys; j++) {
-                Korttipaikka korttipaikka = new Korttipaikka(this, this.peli.getPelialusta().getKortti(j, i), this.peli.getPelialusta());
-                korttipaikat.add(korttipaikka);
-                panel.add(korttipaikka);
-            }
-        }
-        c.add(panel, BorderLayout.CENTER);
-    }
-
-    public void rakennaValikko(Container c) {
-        for (int i = 0; i < c.getComponentCount(); i++) {
-            c.remove(i);
-        }
-        this.pelinakyma = new Pelinakyma();
-        c.add(new JLabel("Muistipeli"), BorderLayout.NORTH);
-        c.add(new Kaynnistys(this, "Aloita peli"), BorderLayout.SOUTH);
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(8, 1));
-        panel.add(new JLabel("Valitse pelialustan korkeus:"));
-        panel.add(new ValintaPaneeli(this, "korkeus", 2, 10));
-        panel.add(new JLabel("Valitse pelialustan leveys:"));
-        panel.add(new ValintaPaneeli(this, "leveys", 2, 10));
-        panel.add(new JLabel("Valitse pelaajien maara:"));
-        panel.add(new ValintaPaneeli(this, "pelaajien maara", 2, 10));
-        panel.add(new JLabel("Tekoalyjen maara pelaajista:"));
-        panel.add(new ValintaPaneeli(this, "tekoalyjen maara", 0, 1));
-        c.add(panel, BorderLayout.CENTER);
+        this.nakymanRakentaja.rakennaValikko(frame.getContentPane());
     }
     
+    /**
+     * Metodi valmistelee pelin luomalla sen ja lisäämällä pelaajat ja 
+     * mahdollisen tekoälyn vuoron.
+     */
     public void valmistelePeli() {
         this.peli = new Peli(this.pelinakyma.getLeveys(), this.pelinakyma.getKorkeus());
         for (int i = 1; i <= this.pelinakyma.getPelaajienMaara() - this.pelinakyma.getTekoalyjenMaara(); i++) {
@@ -101,42 +62,28 @@ public class Kayttoliittyma implements Runnable {
             this.tekoalynVuoro = new TekoalynVuoro(this, null);
         }
     }
-
-    public void rakennaPistenakyma(Container c) {
-        for (int i = 0; i < c.getComponentCount(); i++) {
-            c.remove(i);
-        }
-        c.add(new JLabel("Muistipeli"), BorderLayout.NORTH);
-        c.add(new Kaynnistys(this, "Uusi peli"), BorderLayout.SOUTH);
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(3 + this.peli.getPelaajat().size() + this.peli.johdossa().size(), 1));
-        panel.add(new JLabel("Peli ohi"));
-        if (this.peli.johdossa().size() > 1) {
-            panel.add(new JLabel("Voittajat: "));
-            for (int i = 0; i < peli.johdossa().size(); i++) {
-                panel.add(new JLabel(peli.johdossa().get(i).toString()));
-            }
-        } else if (this.peli.johdossa().size() == 1) {
-            panel.add(new JLabel("Voittaja: "));
-            panel.add(new JLabel(peli.johdossa().get(0).toString()));
-        }
-        panel.add(new JLabel("Tulokset:"));
-        this.peli.getPelaajat().stream().forEach((p) -> {
-            panel.add(new JLabel(p.toString()));
-        });
-        c.add(panel, BorderLayout.CENTER);
-    }
-
+    
+    /**
+     * Metodi käyttöliittymän pelin kierroksen vaihtamiseen.
+     */
     public void uusiKierros() {
         this.nakymanVaihtaja.valmisteleKierros();
     }
-
+    
+    /**
+     * Metodi asettaa poistettuja kortteja vastaavat korttipaikat tyhjiksi 
+     * korttipaikkoiksi.
+     */
     public void poistaYlimaaraisetKorttipaikat() {
         this.korttipaikat.stream().filter((k) -> (this.peli.getPelialusta().getPoistetutKortit().contains(k.getKortti()))).forEach((k) -> {
             k.setTyhja();
         });
     }
-
+    
+    /**
+     * Metodi asettaa osan käyttöliittymän attribuuteista takaisin 
+     * alkuarvoihinsa.
+     */
     public void nollaa() {
         this.korttipaikat = new ArrayList<>();
         this.peli = null;
@@ -150,7 +97,15 @@ public class Kayttoliittyma implements Runnable {
     public Peli getPeli() {
         return this.peli;
     }
-
+    
+    /**
+     * Metodi palauttaa kysyttyä pelialustan kohtaa vastaavassa kohdassa 
+     * sijaitsevan korttipaikan, tai null, jos kyseisessä kohdassa ei ole 
+     * korttipaikkaa.
+     * @param x x-koordinaatti pelialustalla
+     * @param y y-koordinaatti pelialustalla
+     * @return kysytyssä kohdassa sijaitseva korttipaikka
+     */
     public Korttipaikka getKorttipaikka(int x, int y) {
         for (Korttipaikka kp : this.korttipaikat) {
             if (kp.getXkoord() == x && kp.getYkoord() == y) {
@@ -163,6 +118,10 @@ public class Kayttoliittyma implements Runnable {
     public Pelinakyma getPelinakyma() {
         return this.pelinakyma;
     }
+    
+    public void setPelinakyma(Pelinakyma pelinakyma) {
+        this.pelinakyma = pelinakyma;
+    }
 
     public JFrame getFrame() {
         return this.frame;
@@ -170,6 +129,10 @@ public class Kayttoliittyma implements Runnable {
 
     public VuoronNayttaja getVuoronNayttaja() {
         return this.vuoronNayttaja;
+    }
+    
+    public void setVuoronNayttaja(VuoronNayttaja vuoronNayttaja) {
+        this.vuoronNayttaja = vuoronNayttaja;
     }
 
     public NakymanVaihtaja getNakymanVaihtaja() {
@@ -190,5 +153,9 @@ public class Kayttoliittyma implements Runnable {
 
     public TekoalynVuoro getTekoalynVuoro() {
         return this.tekoalynVuoro;
+    }
+    
+    public NakymanRakentaja getNakymanRakentaja() {
+        return this.nakymanRakentaja;
     }
 }
