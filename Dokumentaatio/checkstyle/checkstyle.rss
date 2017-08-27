@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 14,
+      <title>File: 18,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -89,6 +89,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#muistipeli.domain.PeliKortti.java">muistipeli/domain/PeliKortti.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#muistipeli.domain.Tekoaly.java">muistipeli/domain/Tekoaly.java</a>
                 </td>
                 <td>
                   0
@@ -200,7 +214,35 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#muistipeli.gui.NakymanRakentaja.java">muistipeli/gui/NakymanRakentaja.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#muistipeli.Main.java">muistipeli/Main.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#muistipeli.gui.TekoalynVuoro.java">muistipeli/gui/TekoalynVuoro.java</a>
                 </td>
                 <td>
                   0
@@ -229,6 +271,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#muistipeli.gui.Pelinakyma.java">muistipeli/gui/Pelinakyma.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#muistipeli.gui.ValintaPaneeli.java">muistipeli/gui/ValintaPaneeli.java</a>
                 </td>
                 <td>
                   0
