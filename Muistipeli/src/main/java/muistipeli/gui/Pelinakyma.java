@@ -1,12 +1,18 @@
 package muistipeli.gui;
 
+/**
+ * Luokka tarjoaa metodeita käyttöliittymän pelinäkymän asetuksiin liittyen.
+ */
 public class Pelinakyma {
 
     private int korkeus;
     private int leveys;
     private int pelaajia;
     private int tekoalyja;
-
+    
+    /**
+     * Konstruktori pelinäkymälle. Asettaa pelinäkymään oletusarvot.
+     */
     public Pelinakyma() {
         this.korkeus = 2;
         this.leveys = 2;

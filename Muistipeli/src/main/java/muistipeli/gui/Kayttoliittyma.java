@@ -12,6 +12,9 @@ import muistipeli.domain.Pelaaja;
 import muistipeli.domain.Tekoaly;
 import muistipeli.logiikka.Peli;
 
+/**
+ * Käyttöliittymä pelille.
+ */
 public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
@@ -22,7 +25,10 @@ public class Kayttoliittyma implements Runnable {
     private NakymanVaihtaja nakymanVaihtaja;
     private boolean tekoalyllaVuoroKesken;
     private TekoalynVuoro tekoalynVuoro;
-
+    
+    /**
+     * Konstruktori käyttöliittymälle.
+     */
     public Kayttoliittyma() {
         this.korttipaikat = new ArrayList<>();
         this.peli = null;

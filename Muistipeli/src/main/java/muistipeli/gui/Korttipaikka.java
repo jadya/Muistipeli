@@ -10,6 +10,9 @@ import muistipeli.domain.PeliKortti;
 import muistipeli.domain.Pelialusta;
 import muistipeli.domain.Tekoaly;
 
+/**
+ * Luokka tarjoaa pelin käyttöliittymän korttipaikkoihin liittyviä metodeita.
+ */
 public class Korttipaikka extends JButton implements ActionListener {
 
     private PeliKortti kortti;
@@ -22,7 +25,14 @@ public class Korttipaikka extends JButton implements ActionListener {
     private final ImageIcon tyhja;
     private boolean onTyhja;
     private final Kayttoliittyma kayttoliittyma;
-
+    
+    /**
+     * Konstruktori korttipaikalle.
+     * @param kl käyttöliittymä, johon korttipaikka liittyy
+     * @param pelikortti korttipaikkaan asetettava pelikortti
+     * @param pelialusta pelialusta, jonka kohtaa korttipaikka esittää 
+     * käyttöliittymässä
+     */
     public Korttipaikka(Kayttoliittyma kl, PeliKortti pelikortti, Pelialusta pelialusta) {
         this.kortti = pelikortti;
         this.xKoord = pelikortti.getX();
@@ -58,11 +68,17 @@ public class Korttipaikka extends JButton implements ActionListener {
         }
         SwingUtilities.updateComponentTreeUI(kayttoliittyma.getFrame());
     }
-
+    
+    /**
+     * Metodi asettaa kortin selkää vastaavan kuvan näkyville käyttöliittymässä.
+     */
     public void setSelka() {
         this.setIcon(selka);
     }
-
+    
+    /**
+     * Metodi asettaa tyhjää kohtaa vastaavan kuvan näkyville käyttöliittymässä.
+     */
     public void setTyhja() {
         this.onTyhja = true;
         this.setIcon(tyhja);

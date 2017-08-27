@@ -4,13 +4,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
+/**
+ * Luokka tarjoaa käyttöliittymän valintapainikkeisiin liittyviä metodeita.
+ */
 public class ValintaPainike extends JButton implements ActionListener {
 
     private int numero;
     private String kohde;
     private Kayttoliittyma kayttoliittyma;
     private ValintaPaneeli valintaPaneeli;
-
+    
+    /**
+     * Konstruktori valintaPainikkeelle.
+     * @param kayttoliittyma käyttöliittymä, johon valintaPainike liittyy
+     * @param vp valintapaneeli, johon valintapainike lisätään
+     * @param numero valintapainikkeen numero
+     * @param kohde kohde, jonka arvon valitsemiseen valintapainiketta käytetään
+     */
     public ValintaPainike(Kayttoliittyma kayttoliittyma, ValintaPaneeli vp, int numero, String kohde) {
         this.numero = numero;
         this.valintaPaneeli = vp;
