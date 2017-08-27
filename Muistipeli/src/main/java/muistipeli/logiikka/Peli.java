@@ -127,7 +127,7 @@ public class Peli {
     /**
      * Metodi lopettaa pelin asettamalla kaynnissa atribuutin arvoon false.
      */
-    public void lopeta() {
+    public void lopetaPeli() {
         this.kaynnissa = false;
     }
 

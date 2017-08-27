@@ -29,7 +29,7 @@ public class Kaynnistys extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (this.toiminto.equals("Lopeta peli")) {
-            this.kayttoliittyma.getPeli().lopeta();
+            this.kayttoliittyma.getPeli().lopetaPeli();
             Collections.sort(this.kayttoliittyma.getPeli().getPelaajat());
             this.kayttoliittyma.getNakymanVaihtaja().siirryPistenakymaan();
         }

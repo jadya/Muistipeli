@@ -244,7 +244,7 @@ public class PeliTest {
         Pelaaja p1 = new Pelaaja("p1", 1);
         peli.lisaaPelaaja(p1);
         peli.aloitaPeli();
-        peli.lopeta();
+        peli.lopetaPeli();
         assertFalse(peli.getKaynnissa());
     }
 
@@ -268,7 +268,7 @@ public class PeliTest {
         p3.lisaaPiste();
         p4.lisaaPiste();
         p2.lisaaPiste();
-        peli.lopeta();
+        peli.lopetaPeli();
         assertEquals(peli.johdossa().get(0), p3);
         assertEquals(peli.johdossa().size(), 1);
     }
@@ -293,7 +293,7 @@ public class PeliTest {
         p3.lisaaPiste();
         p4.lisaaPiste();
         p2.lisaaPiste();
-        peli.lopeta();
+        peli.lopetaPeli();
         assertTrue(peli.johdossa().contains(p1));
         assertTrue(peli.johdossa().contains(p3));
         assertEquals(peli.johdossa().size(), 2);
