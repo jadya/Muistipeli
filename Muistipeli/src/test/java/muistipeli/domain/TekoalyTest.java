@@ -1,17 +1,10 @@
 package muistipeli.domain;
 
 import muistipeli.logiikka.Peli;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TekoalyTest {
-
-    public TekoalyTest() {
-    }
 
     @Test
     public void konstruktoriToimii() {
@@ -32,7 +25,7 @@ public class TekoalyTest {
         Tekoaly t = new Tekoaly("t", 1, peli);
         peli.lisaaPelaaja(t);
         peli.aloitaPeli();
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100; i++) {
             assertTrue(t.satunnainenKohta()[0] < 20);
             assertTrue(t.satunnainenKohta()[1] < 20);
             assertTrue(t.satunnainenKohta()[0] >= 0);
@@ -46,7 +39,7 @@ public class TekoalyTest {
         Tekoaly t = new Tekoaly("t", 1, peli);
         peli.lisaaPelaaja(t);
         peli.aloitaPeli();
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100; i++) {
             assertTrue(t.teeSiirto()[0] < 20);
             assertTrue(t.teeSiirto()[1] < 20);
             assertTrue(t.teeSiirto()[0] >= 0);
@@ -60,7 +53,7 @@ public class TekoalyTest {
         Tekoaly t = new Tekoaly("t", 1, peli);
         peli.lisaaPelaaja(t);
         peli.aloitaPeli();
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100; i++) {
             assertTrue(t.teeSiirto().length == 2);
         }
     }
@@ -134,6 +127,25 @@ public class TekoalyTest {
         assertTrue(t.getMuisti().contains(pk));
         assertTrue(t.getMuisti().contains(pelikortti2));
         assertFalse(t.getMuisti().contains(p));
+    }
+    
+    @Test
+    public void kaannettyKorttiLoytyyAlustaltaKaannettyaKorttiaEtsittaessa() {
+        Peli p = new Peli(4,4);
+        Tekoaly t = new Tekoaly("t",1,p);
+        p.lisaaPelaaja(t);
+        p.aloitaPeli();
+        p.getPelialusta().kaannaKortti(0, 0);
+        assertEquals(t.etsiAlustaltaKaannettyKortti(),p.getPelialusta().getKortti(0, 0));
+    }
+    
+    @Test
+    public void kaantamatonKorttiEiLoydyAlustaltaKaannettynaKorttina() {
+        Peli p = new Peli(4,4);
+        Tekoaly t = new Tekoaly("t",1,p);
+        p.lisaaPelaaja(t);
+        p.aloitaPeli();
+        assertEquals(t.etsiAlustaltaKaannettyKortti(), null);
     }
 
 }

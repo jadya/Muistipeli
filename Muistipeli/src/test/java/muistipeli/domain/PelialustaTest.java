@@ -151,6 +151,25 @@ public class PelialustaTest {
         assertEquals(alusta.getKortit().size(), 7);
         assertTrue(kortti3 != null);
     }
+    
+    @Test
+    public void tiettyjenKorttienPoistoNakyyTekoalynMuistissa() {
+        Peli p =new Peli(2,4);
+        Tekoaly t = new Tekoaly("t",1,p);
+        p.lisaaPelaaja(t);
+        p.aloitaPeli();
+        p.getPelialusta().kaannaKortti(0, 0);
+        p.getPelialusta().kaannaKortti(0, 1);
+        p.getPelialusta().kaannaKortti(0, 0);
+        p.getPelialusta().kaannaKortti(0, 1);
+        p.getPelialusta().kaannaKortti(1, 0);
+        p.getPelialusta().kaannaKortti(1, 1);
+        p.getPelialusta().poistaKortti(p.getPelialusta().getKortti(1, 0));
+        p.getPelialusta().poistaKortti(p.getPelialusta().getKortti(1, 1));
+        assertEquals(t.getMuisti().size(),2);
+        assertTrue(t.getMuisti().contains(p.getPelialusta().getKortti(0, 0)));
+        assertTrue(t.getMuisti().contains(p.getPelialusta().getKortti(0, 1)));
+    }
 
     @Test
     public void yhdenKortinPoistoOnnistuuKunKorttejaLisattyAlustalleKaksi() {
@@ -181,7 +200,7 @@ public class PelialustaTest {
     }
 
     @Test
-    public void kortiPoistoNakyyTaulukoissa() {
+    public void kortinPoistoNakyyTaulukoissa() {
         Pelialusta alusta = new Pelialusta(new Peli(2,4), 2, 4);
         PeliKortti kortti = new PeliKortti(1);
         alusta.lisaaKortti(kortti);
@@ -245,6 +264,18 @@ public class PelialustaTest {
         alusta.lisaaKortti(kortti);
         alusta.kaannaKortti(kortti.getX(), kortti.getY());
         assertTrue(alusta.getKaantotilanne()[kortti.getX()][kortti.getY()] == 1);
+    }
+    
+    @Test
+    public void kortinKaantaminenOnnistuuKunMukanaOnTekoaly() {
+        Peli p = new Peli(2,4);
+        Tekoaly t = new Tekoaly("t",1,p);
+        p.lisaaPelaaja(t);
+        p.aloitaPeli();
+        p.getPelialusta().kaannaKortti(0, 1);
+        assertEquals(t.getMuisti().size(),1);
+        assertTrue(t.getMuisti().contains(p.getPelialusta().getKortti(0, 1)));
+        assertTrue(p.getPelialusta().getKaantotilanne()[0][1] == 1);
     }
 
     @Test
