@@ -19,3 +19,18 @@ Pelin alussa pelialustalla on parillinen määrä kortteja selkäpuoli näkyvill
 ## Luokkakaavio
 
 ![Luokkakaavio](/Dokumentaatio/luokkakaavio.PNG "Luokkakaavio")
+
+## Sekvenssikaavioita
+
+
+Pelin aloittaminen
+
+![Sekvenssikaavio](/Dokumentaatio/sekvenssikaavio_aloitapeli.PNG "Sekvenssikaavio")
+
+Kortin kääntäminen
+
+![Sekvenssikaavio](/Dokumentaatio/sekvenssikaavio_kaannakortti.PNG "Sekvenssikaavio")
+
+Vuoron vaihto
+
+![Sekvenssikaavio](/Dokumentaatio/sekvenssikaavio_vaihdavuoro.PNG "Sekvenssikaavio")
