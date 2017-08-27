@@ -19,4 +19,4 @@ Päivä | Tunnit | Kuvaus
 23.08.2017 | 8.5 h | Ohjelmointia, tekoälymahdollisuuden lisääminen käyttöliittymään
 24.08.2017 | 1 h | Ohjelmointia
 26.08.2017 | 6 h | Tekoälyn kehittäminen, JavaDoc-lisäys Checkstyleen, JavaDocin kirjoittamista, testejä ja ohjelmointia, luokkakaavion päivittäminen
-27.08.2017 | 5 h | Ohjelmointia, luokkakaavion päivitys, testejä ja JavaDocin kirjoittamista, uudet PIT- ja Checkstyle-raportit
+27.08.2017 | 8 h | Ohjelmointia, luokkakaavion päivitys, testejä ja JavaDocin kirjoittamista, uudet PIT- ja Checkstyle-raportit, sekvenssikaavioiden piirtäminen
