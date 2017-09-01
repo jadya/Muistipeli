@@ -33,9 +33,7 @@ public class ValintaPaneeli extends JPanel {
     public ValintaPaneeli(Kayttoliittyma k, String valinnanKohde, int alku, int loppu) throws IOException {
         this.valintaPainikkeet = new ArrayList<>();
         this.kayttoliittyma = k;
-        InputStream is = getClass().getClassLoader().getResourceAsStream("kuvat/valinta.png");
-        BufferedImage bf = ImageIO.read(is);
-        this.valintaKuva = new ImageIcon((Image) bf);
+        this.valintaKuva = new ImageIcon((Image) ImageIO.read(getClass().getClassLoader().getResourceAsStream("kuvat/valinta.png")));
         this.setLayout(new GridLayout(1, loppu - alku + 1));
         for (int i = alku; i <= loppu; i++) {
             ValintaPainike painike = new ValintaPainike(this.kayttoliittyma, this, i, valinnanKohde);
