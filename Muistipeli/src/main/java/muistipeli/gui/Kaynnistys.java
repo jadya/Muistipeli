@@ -15,11 +15,12 @@ public class Kaynnistys extends JButton implements ActionListener {
 
     private String toiminto;
     private final Kayttoliittyma kayttoliittyma;
-    
+
     /**
      * Konstruktori käynnistykselle.
+     *
      * @param kayttoliittyma käyttöliittymä, johon käynnistys-painike liittyy
-     * @param toiminto toiminto, joka toteutetaan käynnistys-painiketta 
+     * @param toiminto toiminto, joka toteutetaan käynnistys-painiketta
      * klikatessa
      */
     public Kaynnistys(Kayttoliittyma kayttoliittyma, String toiminto) {
@@ -48,7 +49,7 @@ public class Kaynnistys extends JButton implements ActionListener {
             try {
                 this.kayttoliittyma.getNakymanVaihtaja().siirryValikkoon();
             } catch (IOException ex) {
-                
+
             }
             this.setToiminto("Aloita peli");
         }
@@ -57,10 +58,11 @@ public class Kaynnistys extends JButton implements ActionListener {
     public String getToiminto() {
         return this.toiminto;
     }
-    
+
     /**
-     * Metodi asettaa käynnistys-painikkeelle toiminnon ja muuttaa painikkeen 
+     * Metodi asettaa käynnistys-painikkeelle toiminnon ja muuttaa painikkeen
      * tekstin sitä vastaavaksi.
+     *
      * @param toiminto toiminto, joka käynnistys-painikkeeseen asetetaan
      */
     public void setToiminto(String toiminto) {

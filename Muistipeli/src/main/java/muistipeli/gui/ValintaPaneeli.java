@@ -20,20 +20,21 @@ public class ValintaPaneeli extends JPanel {
     private ArrayList<ValintaPainike> valintaPainikkeet;
     private Kayttoliittyma kayttoliittyma;
     private ImageIcon valintaKuva;
-    
+
     /**
      * Konstruktori valintaPaneelille.
+     *
      * @param k käyttöliittymä, johon valintaPaneeli liittyy
      * @param valinnanKohde valintaPaneelin valinnan kohde
      * @param alku pienin kokonaislukuarvo, joka kohteelle voidaan valita
      * @param loppu suurin kokonaislukuarvo, joka kohteelle voidaan valita
-     * @throws java.io.IOException
+     * @throws java.io.IOException keskeytys
      */
     public ValintaPaneeli(Kayttoliittyma k, String valinnanKohde, int alku, int loppu) throws IOException {
         this.valintaPainikkeet = new ArrayList<>();
         this.kayttoliittyma = k;
-        InputStream is = getClass().getClassLoader().getResourceAsStream("kuvat/valinta.png"); 
-        BufferedImage bf = ImageIO.read(is); 
+        InputStream is = getClass().getClassLoader().getResourceAsStream("kuvat/valinta.png");
+        BufferedImage bf = ImageIO.read(is);
         this.valintaKuva = new ImageIcon((Image) bf);
         this.setLayout(new GridLayout(1, loppu - alku + 1));
         for (int i = alku; i <= loppu; i++) {
@@ -45,10 +46,11 @@ public class ValintaPaneeli extends JPanel {
             }
         }
     }
-    
+
     /**
      * Metodi valinnan vahvistamiseen. Siirtää valintakuvan valitun arvon
      * kohdalle.
+     *
      * @param numero valintapainikkeen numero, johon valintakuva siirretään
      */
     public void vahvistaValinta(int numero) {

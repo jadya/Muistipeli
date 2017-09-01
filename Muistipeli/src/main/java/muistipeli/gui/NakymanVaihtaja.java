@@ -1,4 +1,3 @@
-
 package muistipeli.gui;
 
 import java.awt.Container;
@@ -9,21 +8,23 @@ import javax.swing.SwingUtilities;
  * Luokka tarjoaa käyttöliittymän näkymän vaihtamiseen liittyviä metodeita.
  */
 public class NakymanVaihtaja {
-    
+
     private final Kayttoliittyma kayttoliittyma;
-    
+
     /**
      * Konstruktori nakymanVaihtajalle.
+     *
      * @param kayttoliittyma käyttöliittymä, johon nakymanVaihtaja liittyy
      */
     public NakymanVaihtaja(Kayttoliittyma kayttoliittyma) {
         this.kayttoliittyma = kayttoliittyma;
     }
-    
+
     /**
-     * Metodi pelinäkymään siirtymiseen. Päivittää käyttöliittymän näyttämään 
+     * Metodi pelinäkymään siirtymiseen. Päivittää käyttöliittymän näyttämään
      * pelinäkymän.
-     * @throws java.io.IOException
+     *
+     * @throws java.io.IOException keskeytys
      */
     public void siirryPelinakymaan() throws IOException {
         kayttoliittyma.valmistelePeli();
@@ -37,9 +38,9 @@ public class NakymanVaihtaja {
         kayttoliittyma.getNakymanRakentaja().rakennaPelinakyma(kayttoliittyma.getPeli().getPelialusta().getLeveys(), kayttoliittyma.getPeli().getPelialusta().getKorkeus(), kayttoliittyma.getFrame().getContentPane());
         SwingUtilities.updateComponentTreeUI(kayttoliittyma.getFrame());
     }
-    
+
     /**
-     * Metodi pistenäkymään siirtymiseen. Päivittää käyttöliittymän näyttämään 
+     * Metodi pistenäkymään siirtymiseen. Päivittää käyttöliittymän näyttämään
      * pistenäkymän.
      */
     public void siirryPistenakymaan() {
@@ -50,11 +51,12 @@ public class NakymanVaihtaja {
         kayttoliittyma.getNakymanRakentaja().rakennaPistenakyma(kayttoliittyma.getFrame().getContentPane());
         SwingUtilities.updateComponentTreeUI(kayttoliittyma.getFrame());
     }
-    
+
     /**
-     * Metodi valikkoon siirtymiseen. Päivittää käyttöliittymän näyttämään 
+     * Metodi valikkoon siirtymiseen. Päivittää käyttöliittymän näyttämään
      * valikon.
-     * @throws java.io.IOException
+     *
+     * @throws java.io.IOException keskeytys
      */
     public void siirryValikkoon() throws IOException {
         Container c = kayttoliittyma.getFrame().getContentPane();
@@ -65,9 +67,9 @@ public class NakymanVaihtaja {
         this.kayttoliittyma.getNakymanRakentaja().rakennaValikko(kayttoliittyma.getFrame().getContentPane());
         SwingUtilities.updateComponentTreeUI(kayttoliittyma.getFrame());
     }
-    
+
     /**
-     * Metodi tekee uuden kierroksen alkuun tarvittavat käyttöliittymän 
+     * Metodi tekee uuden kierroksen alkuun tarvittavat käyttöliittymän
      * päivitystoimenpiteet eli asettaa korttien selkäpuolet näkyville.
      */
     public void valmisteleKierros() {
@@ -78,5 +80,5 @@ public class NakymanVaihtaja {
         this.kayttoliittyma.getFrame().validate();
         this.kayttoliittyma.getFrame().repaint();
     }
-    
+
 }

@@ -3,9 +3,7 @@ package muistipeli.gui;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -30,20 +28,21 @@ public class Korttipaikka extends JButton implements ActionListener {
     private final ImageIcon tyhja;
     private boolean onTyhja;
     private final Kayttoliittyma kayttoliittyma;
-    
+
     /**
      * Konstruktori korttipaikalle.
+     *
      * @param kl käyttöliittymä, johon korttipaikka liittyy
      * @param pelikortti korttipaikkaan asetettava pelikortti
-     * @param pelialusta pelialusta, jonka kohtaa korttipaikka esittää 
+     * @param pelialusta pelialusta, jonka kohtaa korttipaikka esittää
      * käyttöliittymässä
-     * @throws java.io.IOException
+     * @throws java.io.IOException keskeytys
      */
     public Korttipaikka(Kayttoliittyma kl, PeliKortti pelikortti, Pelialusta pelialusta) throws IOException {
         this.kortti = pelikortti;
         this.xKoord = pelikortti.getX();
         this.yKoord = pelikortti.getY();
-        this.alusta = pelialusta; 
+        this.alusta = pelialusta;
         this.kuva = new ImageIcon((Image) ImageIO.read(getClass().getClassLoader().getResourceAsStream("kuvat/kuva" + pelikortti.getKuvanNumero() + ".png")));
         this.selka = new ImageIcon((Image) ImageIO.read(getClass().getClassLoader().getResourceAsStream("kuvat/selka.png")));
         this.tyhja = new ImageIcon((Image) ImageIO.read(getClass().getClassLoader().getResourceAsStream("kuvat/tyhja.png")));
@@ -73,14 +72,14 @@ public class Korttipaikka extends JButton implements ActionListener {
         }
         SwingUtilities.updateComponentTreeUI(kayttoliittyma.getFrame());
     }
-    
+
     /**
      * Metodi asettaa kortin selkää vastaavan kuvan näkyville käyttöliittymässä.
      */
     public void setSelka() {
         this.setIcon(selka);
     }
-    
+
     /**
      * Metodi asettaa tyhjää kohtaa vastaavan kuvan näkyville käyttöliittymässä.
      */

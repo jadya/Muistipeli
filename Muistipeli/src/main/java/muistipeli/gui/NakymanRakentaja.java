@@ -1,4 +1,3 @@
-
 package muistipeli.gui;
 
 import java.awt.BorderLayout;
@@ -12,24 +11,26 @@ import javax.swing.JPanel;
  * Luokka tarjoaa käyttöliittymän näkymien rakentamiseen liittyviä metodeita.
  */
 public class NakymanRakentaja {
-    
+
     private final Kayttoliittyma kayttoliittyma;
-    
+
     /**
      * Konstruktori nakymanRakentajalle.
+     *
      * @param kl käyttöliittymä, johon näkymän rakentaja liittyy
      */
     public NakymanRakentaja(Kayttoliittyma kl) {
         this.kayttoliittyma = kl;
     }
-    
+
     /**
      * Metodi pelinäkymän rakentamiseen. Lisää pelinäkymän komponentit annettuun
      * säiliöön.
+     *
      * @param leveys pelinäkymän pelin pelialustan leveys
      * @param korkeus pelinäkymän pelin pelialustan korkeus
      * @param c säiliö, johon luodut komponentit lisätään
-     * @throws java.io.IOException
+     * @throws java.io.IOException keskeytys
      */
     public void rakennaPelinakyma(int leveys, int korkeus, Container c) throws IOException {
         this.kayttoliittyma.setTekoalyllaVuoroKesken(false);
@@ -50,12 +51,13 @@ public class NakymanRakentaja {
         }
         c.add(panel, BorderLayout.CENTER);
     }
-    
+
     /**
      * Metodi valikon rakentamiseen. Lisää valikon komponentit annettuun
      * säiliöön.
+     *
      * @param c säiliö, johon luodut komponentit lisätään
-     * @throws java.io.IOException
+     * @throws java.io.IOException keskeytys
      */
     public void rakennaValikko(Container c) throws IOException {
         for (int i = 0; i < c.getComponentCount(); i++) {
@@ -76,10 +78,11 @@ public class NakymanRakentaja {
         panel.add(new ValintaPaneeli(this.kayttoliittyma, "tekoalyjen maara", 0, 10));
         c.add(panel, BorderLayout.CENTER);
     }
-    
+
     /**
-     * Metodi pistenäkymän rakentamiseen. Lisää pistenäkymän komponentit annettuun
-     * säiliöön.
+     * Metodi pistenäkymän rakentamiseen. Lisää pistenäkymän komponentit
+     * annettuun säiliöön.
+     *
      * @param c säiliö, johon luodut komponentit lisätään
      */
     public void rakennaPistenakyma(Container c) {
@@ -106,5 +109,5 @@ public class NakymanRakentaja {
         });
         c.add(panel, BorderLayout.CENTER);
     }
-    
+
 }

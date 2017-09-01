@@ -13,9 +13,10 @@ public class ValintaPainike extends JButton implements ActionListener {
     private String kohde;
     private Kayttoliittyma kayttoliittyma;
     private ValintaPaneeli valintaPaneeli;
-    
+
     /**
      * Konstruktori valintaPainikkeelle.
+     *
      * @param kayttoliittyma käyttöliittymä, johon valintaPainike liittyy
      * @param vp valintapaneeli, johon valintapainike lisätään
      * @param numero valintapainikkeen numero
@@ -37,11 +38,11 @@ public class ValintaPainike extends JButton implements ActionListener {
             this.kayttoliittyma.getPelinakyma().setKorkeus(numero);
         }
         if (this.kohde.equals("leveys")) {
-            if((this.kayttoliittyma.getPelinakyma().getKorkeus() * numero) % 2 == 0) {
+            if ((this.kayttoliittyma.getPelinakyma().getKorkeus() * numero) % 2 == 0) {
                 this.kayttoliittyma.getPelinakyma().setLeveys(numero);
             } else {
-                this.kayttoliittyma.getPelinakyma().setLeveys(numero+1);
-                this.valintaPaneeli.vahvistaValinta(numero+1);
+                this.kayttoliittyma.getPelinakyma().setLeveys(numero + 1);
+                this.valintaPaneeli.vahvistaValinta(numero + 1);
                 ok = false;
             }
         }
@@ -49,17 +50,17 @@ public class ValintaPainike extends JButton implements ActionListener {
             this.kayttoliittyma.getPelinakyma().setPelaajienMaara(numero);
         }
         if (this.kohde.equals("tekoalyjen maara")) {
-            if(this.kayttoliittyma.getPelinakyma().getPelaajienMaara() >= numero) {
+            if (this.kayttoliittyma.getPelinakyma().getPelaajienMaara() >= numero) {
                 this.kayttoliittyma.getPelinakyma().setTekoalyjenMaara(numero);
             } else {
                 ok = false;
             }
         }
-        if(ok) {
+        if (ok) {
             this.valintaPaneeli.vahvistaValinta(this.numero);
         }
     }
-    
+
     public int getNumero() {
         return this.numero;
     }

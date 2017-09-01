@@ -24,7 +24,7 @@ public class Kayttoliittyma implements Runnable {
     private NakymanRakentaja nakymanRakentaja;
     private boolean tekoalyllaVuoroKesken;
     private TekoalynVuoro tekoalynVuoro;
-    
+
     /**
      * Konstruktori käyttöliittymälle.
      */
@@ -48,12 +48,12 @@ public class Kayttoliittyma implements Runnable {
         try {
             this.nakymanRakentaja.rakennaValikko(frame.getContentPane());
         } catch (IOException ex) {
-            
+
         }
     }
-    
+
     /**
-     * Metodi valmistelee pelin luomalla sen ja lisäämällä pelaajat ja 
+     * Metodi valmistelee pelin luomalla sen ja lisäämällä pelaajat ja
      * mahdollisen tekoälyn vuoron.
      */
     public void valmistelePeli() {
@@ -69,16 +69,16 @@ public class Kayttoliittyma implements Runnable {
             this.tekoalynVuoro = new TekoalynVuoro(this, null);
         }
     }
-    
+
     /**
      * Metodi käyttöliittymän pelin kierroksen vaihtamiseen.
      */
     public void uusiKierros() {
         this.nakymanVaihtaja.valmisteleKierros();
     }
-    
+
     /**
-     * Metodi asettaa poistettuja kortteja vastaavat korttipaikat tyhjiksi 
+     * Metodi asettaa poistettuja kortteja vastaavat korttipaikat tyhjiksi
      * korttipaikkoiksi.
      */
     public void poistaYlimaaraisetKorttipaikat() {
@@ -86,9 +86,9 @@ public class Kayttoliittyma implements Runnable {
             k.setTyhja();
         });
     }
-    
+
     /**
-     * Metodi asettaa osan käyttöliittymän attribuuteista takaisin 
+     * Metodi asettaa osan käyttöliittymän attribuuteista takaisin
      * alkuarvoihinsa.
      */
     public void nollaa() {
@@ -104,11 +104,12 @@ public class Kayttoliittyma implements Runnable {
     public Peli getPeli() {
         return this.peli;
     }
-    
+
     /**
-     * Metodi palauttaa kysyttyä pelialustan kohtaa vastaavassa kohdassa 
-     * sijaitsevan korttipaikan, tai null, jos kyseisessä kohdassa ei ole 
+     * Metodi palauttaa kysyttyä pelialustan kohtaa vastaavassa kohdassa
+     * sijaitsevan korttipaikan, tai null, jos kyseisessä kohdassa ei ole
      * korttipaikkaa.
+     *
      * @param x x-koordinaatti pelialustalla
      * @param y y-koordinaatti pelialustalla
      * @return kysytyssä kohdassa sijaitseva korttipaikka
@@ -125,7 +126,7 @@ public class Kayttoliittyma implements Runnable {
     public Pelinakyma getPelinakyma() {
         return this.pelinakyma;
     }
-    
+
     public void setPelinakyma(Pelinakyma pelinakyma) {
         this.pelinakyma = pelinakyma;
     }
@@ -137,7 +138,7 @@ public class Kayttoliittyma implements Runnable {
     public VuoronNayttaja getVuoronNayttaja() {
         return this.vuoronNayttaja;
     }
-    
+
     public void setVuoronNayttaja(VuoronNayttaja vuoronNayttaja) {
         this.vuoronNayttaja = vuoronNayttaja;
     }
@@ -161,7 +162,7 @@ public class Kayttoliittyma implements Runnable {
     public TekoalynVuoro getTekoalynVuoro() {
         return this.tekoalynVuoro;
     }
-    
+
     public NakymanRakentaja getNakymanRakentaja() {
         return this.nakymanRakentaja;
     }
