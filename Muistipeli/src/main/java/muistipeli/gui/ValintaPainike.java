@@ -37,7 +37,13 @@ public class ValintaPainike extends JButton implements ActionListener {
             this.kayttoliittyma.getPelinakyma().setKorkeus(numero);
         }
         if (this.kohde.equals("leveys")) {
-            this.kayttoliittyma.getPelinakyma().setLeveys(numero);
+            if((this.kayttoliittyma.getPelinakyma().getKorkeus() * numero) % 2 == 0) {
+                this.kayttoliittyma.getPelinakyma().setLeveys(numero);
+            } else {
+                this.kayttoliittyma.getPelinakyma().setLeveys(numero+1);
+                this.valintaPaneeli.vahvistaValinta(numero+1);
+                ok = false;
+            }
         }
         if (this.kohde.equals("pelaajien maara")) {
             this.kayttoliittyma.getPelinakyma().setPelaajienMaara(numero);
