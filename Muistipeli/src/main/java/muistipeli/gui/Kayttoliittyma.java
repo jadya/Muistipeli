@@ -1,6 +1,9 @@
 package muistipeli.gui;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import muistipeli.domain.Pelaaja;
@@ -42,7 +45,11 @@ public class Kayttoliittyma implements Runnable {
         frame.setSize(700, 700);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        this.nakymanRakentaja.rakennaValikko(frame.getContentPane());
+        try {
+            this.nakymanRakentaja.rakennaValikko(frame.getContentPane());
+        } catch (IOException ex) {
+            
+        }
     }
     
     /**

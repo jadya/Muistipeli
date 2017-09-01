@@ -4,6 +4,7 @@ package muistipeli.gui;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridLayout;
+import java.io.IOException;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -28,8 +29,9 @@ public class NakymanRakentaja {
      * @param leveys pelinäkymän pelin pelialustan leveys
      * @param korkeus pelinäkymän pelin pelialustan korkeus
      * @param c säiliö, johon luodut komponentit lisätään
+     * @throws java.io.IOException
      */
-    public void rakennaPelinakyma(int leveys, int korkeus, Container c) {
+    public void rakennaPelinakyma(int leveys, int korkeus, Container c) throws IOException {
         this.kayttoliittyma.setTekoalyllaVuoroKesken(false);
         for (int i = 0; i < c.getComponentCount(); i++) {
             c.remove(i);
@@ -53,8 +55,9 @@ public class NakymanRakentaja {
      * Metodi valikon rakentamiseen. Lisää valikon komponentit annettuun
      * säiliöön.
      * @param c säiliö, johon luodut komponentit lisätään
+     * @throws java.io.IOException
      */
-    public void rakennaValikko(Container c) {
+    public void rakennaValikko(Container c) throws IOException {
         for (int i = 0; i < c.getComponentCount(); i++) {
             c.remove(i);
         }

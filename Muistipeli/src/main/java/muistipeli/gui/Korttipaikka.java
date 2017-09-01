@@ -1,14 +1,16 @@
 package muistipeli.gui;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
-import javax.swing.Timer;
 import muistipeli.domain.PeliKortti;
 import muistipeli.domain.Pelialusta;
 import muistipeli.domain.Tekoaly;
@@ -35,16 +37,16 @@ public class Korttipaikka extends JButton implements ActionListener {
      * @param pelikortti korttipaikkaan asetettava pelikortti
      * @param pelialusta pelialusta, jonka kohtaa korttipaikka esittää 
      * käyttöliittymässä
+     * @throws java.io.IOException
      */
-    public Korttipaikka(Kayttoliittyma kl, PeliKortti pelikortti, Pelialusta pelialusta) {
+    public Korttipaikka(Kayttoliittyma kl, PeliKortti pelikortti, Pelialusta pelialusta) throws IOException {
         this.kortti = pelikortti;
         this.xKoord = pelikortti.getX();
         this.yKoord = pelikortti.getY();
-        this.alusta = pelialusta;
-        String sijainti = "kuvat/kuva" + pelikortti.getKuvanNumero() + ".png";
-        this.kuva = new ImageIcon(sijainti);
-        this.selka = new ImageIcon("kuvat/selka.png");
-        this.tyhja = new ImageIcon("kuvat/tyhja.png");
+        this.alusta = pelialusta; 
+        this.kuva = new ImageIcon((Image) ImageIO.read(getClass().getClassLoader().getResourceAsStream("kuvat/kuva" + pelikortti.getKuvanNumero() + ".png")));
+        this.selka = new ImageIcon((Image) ImageIO.read(getClass().getClassLoader().getResourceAsStream("kuvat/selka.png")));
+        this.tyhja = new ImageIcon((Image) ImageIO.read(getClass().getClassLoader().getResourceAsStream("kuvat/tyhja.png")));
         this.setIcon(selka);
         this.onTyhja = false;
         this.addActionListener(this);

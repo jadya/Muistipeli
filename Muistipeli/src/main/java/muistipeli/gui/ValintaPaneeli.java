@@ -1,7 +1,14 @@
 package muistipeli.gui;
 
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -20,11 +27,14 @@ public class ValintaPaneeli extends JPanel {
      * @param valinnanKohde valintaPaneelin valinnan kohde
      * @param alku pienin kokonaislukuarvo, joka kohteelle voidaan valita
      * @param loppu suurin kokonaislukuarvo, joka kohteelle voidaan valita
+     * @throws java.io.IOException
      */
-    public ValintaPaneeli(Kayttoliittyma k, String valinnanKohde, int alku, int loppu) {
+    public ValintaPaneeli(Kayttoliittyma k, String valinnanKohde, int alku, int loppu) throws IOException {
         this.valintaPainikkeet = new ArrayList<>();
         this.kayttoliittyma = k;
-        this.valintaKuva = new ImageIcon("kuvat/valinta.png");
+        InputStream is = getClass().getClassLoader().getResourceAsStream("kuvat/valinta.png"); 
+        BufferedImage bf = ImageIO.read(is); 
+        this.valintaKuva = new ImageIcon((Image) bf);
         this.setLayout(new GridLayout(1, loppu - alku + 1));
         for (int i = alku; i <= loppu; i++) {
             ValintaPainike painike = new ValintaPainike(this.kayttoliittyma, this, i, valinnanKohde);

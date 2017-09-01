@@ -2,6 +2,7 @@
 package muistipeli.gui;
 
 import java.awt.Container;
+import java.io.IOException;
 import javax.swing.SwingUtilities;
 
 /**
@@ -22,8 +23,9 @@ public class NakymanVaihtaja {
     /**
      * Metodi pelinäkymään siirtymiseen. Päivittää käyttöliittymän näyttämään 
      * pelinäkymän.
+     * @throws java.io.IOException
      */
-    public void siirryPelinakymaan() {
+    public void siirryPelinakymaan() throws IOException {
         kayttoliittyma.valmistelePeli();
         kayttoliittyma.getPeli().aloitaPeli();
         kayttoliittyma.getPelinakyma().setKorkeus(kayttoliittyma.getPeli().getPelialusta().getKorkeus());
@@ -52,8 +54,9 @@ public class NakymanVaihtaja {
     /**
      * Metodi valikkoon siirtymiseen. Päivittää käyttöliittymän näyttämään 
      * valikon.
+     * @throws java.io.IOException
      */
-    public void siirryValikkoon() {
+    public void siirryValikkoon() throws IOException {
         Container c = kayttoliittyma.getFrame().getContentPane();
         for (int i = 0; i < c.getComponentCount(); i++) {
             c.remove(i);

@@ -2,7 +2,10 @@ package muistipeli.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Collections;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 
 /**
@@ -34,11 +37,19 @@ public class Kaynnistys extends JButton implements ActionListener {
             this.kayttoliittyma.getNakymanVaihtaja().siirryPistenakymaan();
         }
         if (this.toiminto.equals("Aloita peli")) {
-            this.kayttoliittyma.getNakymanVaihtaja().siirryPelinakymaan();
+            try {
+                this.kayttoliittyma.getNakymanVaihtaja().siirryPelinakymaan();
+            } catch (IOException ex) {
+                Logger.getLogger(Kaynnistys.class.getName()).log(Level.SEVERE, null, ex);
+            }
             this.setToiminto("Lopeta peli");
         }
         if (this.toiminto.equals("Uusi peli")) {
-            this.kayttoliittyma.getNakymanVaihtaja().siirryValikkoon();
+            try {
+                this.kayttoliittyma.getNakymanVaihtaja().siirryValikkoon();
+            } catch (IOException ex) {
+                
+            }
             this.setToiminto("Aloita peli");
         }
     }
