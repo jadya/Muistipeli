@@ -32,7 +32,7 @@ public class ValintaPainike extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        boolean ok = true;
         if (this.kohde.equals("korkeus")) {
             this.kayttoliittyma.getPelinakyma().setKorkeus(numero);
         }
@@ -43,9 +43,15 @@ public class ValintaPainike extends JButton implements ActionListener {
             this.kayttoliittyma.getPelinakyma().setPelaajienMaara(numero);
         }
         if (this.kohde.equals("tekoalyjen maara")) {
-            this.kayttoliittyma.getPelinakyma().setTekoalyjenMaara(numero);
+            if(this.kayttoliittyma.getPelinakyma().getPelaajienMaara() >= numero) {
+                this.kayttoliittyma.getPelinakyma().setTekoalyjenMaara(numero);
+            } else {
+                ok = false;
+            }
         }
-        this.valintaPaneeli.vahvistaValinta(this.numero);
+        if(ok) {
+            this.valintaPaneeli.vahvistaValinta(this.numero);
+        }
     }
     
     public int getNumero() {

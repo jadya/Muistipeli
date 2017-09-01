@@ -70,7 +70,7 @@ public class NakymanRakentaja {
         panel.add(new JLabel("Valitse pelaajien maara:"));
         panel.add(new ValintaPaneeli(this.kayttoliittyma, "pelaajien maara", 2, 10));
         panel.add(new JLabel("Tekoalyjen maara pelaajista:"));
-        panel.add(new ValintaPaneeli(this.kayttoliittyma, "tekoalyjen maara", 0, 1));
+        panel.add(new ValintaPaneeli(this.kayttoliittyma, "tekoalyjen maara", 0, 10));
         c.add(panel, BorderLayout.CENTER);
     }
     
