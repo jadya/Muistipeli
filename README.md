@@ -11,3 +11,5 @@ Muistipelissä pelaajat etsivät korttien joukosta kääntämällä samanlaisist
 -  [pit-raportti](https://htmlpreview.github.io/?https://github.com/jadya/Muistipeli/blob/master/Dokumentaatio/pit/201708271754/index.html) 
 
 - [checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/jadya/Muistipeli/blob/master/Dokumentaatio/checkstyle/checkstyle.html) 
+
+- [JavaDoc](https://htmlpreview.github.io/?https://github.com/jadya/Muistipeli/blob/master/apidocs/index.html) 
