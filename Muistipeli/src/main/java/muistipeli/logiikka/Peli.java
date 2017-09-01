@@ -165,5 +165,5 @@ public class Peli {
     public ArrayList<Tekoaly> getTekoalyt() {
         return this.tekoalyt;
     }
-
+    
 }

@@ -147,5 +147,5 @@ public class TekoalyTest {
         p.aloitaPeli();
         assertEquals(t.etsiAlustaltaKaannettyKortti(), null);
     }
-
+    
 }

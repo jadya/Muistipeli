@@ -1,12 +1,13 @@
 package muistipeli.gui;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.Collections;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  * Luokka tarjoaa käyttöliittymän käynnistyspainikkeeseen liittyviä metodeita.
@@ -41,7 +42,8 @@ public class Kaynnistys extends JButton implements ActionListener {
             try {
                 this.kayttoliittyma.getNakymanVaihtaja().siirryPelinakymaan();
             } catch (IOException ex) {
-                Logger.getLogger(Kaynnistys.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog((Component) e.getSource(), "Jotain meni nyt pahasti pieleen.");
+                this.kayttoliittyma.getFrame().dispatchEvent(new WindowEvent(this.kayttoliittyma.getFrame(), WindowEvent.WINDOW_CLOSING));
             }
             this.setToiminto("Lopeta peli");
         }
@@ -49,7 +51,8 @@ public class Kaynnistys extends JButton implements ActionListener {
             try {
                 this.kayttoliittyma.getNakymanVaihtaja().siirryValikkoon();
             } catch (IOException ex) {
-
+                JOptionPane.showMessageDialog((Component) e.getSource(), "Jotain meni nyt pahasti pieleen.");
+                this.kayttoliittyma.getFrame().dispatchEvent(new WindowEvent(this.kayttoliittyma.getFrame(), WindowEvent.WINDOW_CLOSING));
             }
             this.setToiminto("Aloita peli");
         }

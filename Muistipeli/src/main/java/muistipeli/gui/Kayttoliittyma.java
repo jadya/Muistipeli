@@ -1,10 +1,11 @@
 package muistipeli.gui;
 
+import java.awt.Component;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import muistipeli.domain.Pelaaja;
 import muistipeli.domain.Tekoaly;
@@ -48,7 +49,8 @@ public class Kayttoliittyma implements Runnable {
         try {
             this.nakymanRakentaja.rakennaValikko(frame.getContentPane());
         } catch (IOException ex) {
-
+            JOptionPane.showMessageDialog((Component) frame, "Jotain meni nyt pahasti pieleen.");
+            frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
         }
     }
 
@@ -86,7 +88,7 @@ public class Kayttoliittyma implements Runnable {
             k.setTyhja();
         });
     }
-
+    
     /**
      * Metodi asettaa osan käyttöliittymän attribuuteista takaisin
      * alkuarvoihinsa.
