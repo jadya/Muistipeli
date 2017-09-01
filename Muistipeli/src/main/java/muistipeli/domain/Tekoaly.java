@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Random;
 import muistipeli.logiikka.Peli;
 
+/**
+ * Luokka tarjoaa muistipelin tekoalyyn liittyviä metodeita.
+ */
 public class Tekoaly extends Pelaaja {
 
     private ArrayList<PeliKortti> muisti;
