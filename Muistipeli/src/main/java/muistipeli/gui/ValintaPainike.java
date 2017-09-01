@@ -48,6 +48,10 @@ public class ValintaPainike extends JButton implements ActionListener {
         }
         if (this.kohde.equals("pelaajien maara")) {
             this.kayttoliittyma.getPelinakyma().setPelaajienMaara(numero);
+            if (this.kayttoliittyma.getPelinakyma().getTekoalyjenMaara() > numero) {
+                this.kayttoliittyma.getPelinakyma().setTekoalyjenMaara(numero);
+                this.kayttoliittyma.getTekoalyvalinta().vahvistaValinta(numero);
+            }
         }
         if (this.kohde.equals("tekoalyjen maara")) {
             if (this.kayttoliittyma.getPelinakyma().getPelaajienMaara() >= numero) {

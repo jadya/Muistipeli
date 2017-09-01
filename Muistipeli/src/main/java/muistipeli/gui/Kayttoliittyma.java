@@ -25,6 +25,7 @@ public class Kayttoliittyma implements Runnable {
     private NakymanRakentaja nakymanRakentaja;
     private boolean tekoalyllaVuoroKesken;
     private TekoalynVuoro tekoalynVuoro;
+    private ValintaPaneeli tekoalyvalinta;
 
     /**
      * Konstruktori käyttöliittymälle.
@@ -38,6 +39,7 @@ public class Kayttoliittyma implements Runnable {
         this.nakymanRakentaja = new NakymanRakentaja(this);
         this.tekoalyllaVuoroKesken = false;
         this.tekoalynVuoro = null;
+        this.tekoalyvalinta = null;
     }
 
     @Override
@@ -167,5 +169,13 @@ public class Kayttoliittyma implements Runnable {
 
     public NakymanRakentaja getNakymanRakentaja() {
         return this.nakymanRakentaja;
+    }
+    
+    public void setTekoalyvalinta(ValintaPaneeli p) {
+        this.tekoalyvalinta = p;
+    }
+    
+    public ValintaPaneeli getTekoalyvalinta() {
+        return this.tekoalyvalinta;
     }
 }
