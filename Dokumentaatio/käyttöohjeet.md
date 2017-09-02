@@ -2,7 +2,7 @@
 
 ### Valikko
 
-Valikossa voi valita pelille pelialustan korkeuden ja leveyden klikkaamalla numerovaihtoehtoja. Vain alusta, jolle mahtuu parillinen määrä kortteja on mahdollista valita. Jos leveyttä yritetään valita niin, että se tuottaisi valitun korkeuden kanssa parittomankokoisen pelialustan, leveydeksi valikoituu yhtä suurempi leveys kuin mitä vaihtoehtoa on klikattu. Korkeus ja leveys on kumpikin mahdollista valita lukuarvoista 2-10, kuitenkin vain niin, että niiden tulo on parillinen.
+Valikossa voi valita pelille pelialustan korkeuden ja leveyden klikkaamalla numerovaihtoehtoja. Vain alusta, jolle mahtuu parillinen määrä kortteja on mahdollista valita. Jos leveyttä yritetään valita niin, että se tuottaisi valitun korkeuden kanssa parittomankokoisen pelialustan, leveydeksi valikoituu yhtä suurempi leveys kuin mitä vaihtoehtoa on klikattu, vastaavasti korkeuden kohdalla. Korkeus ja leveys on kumpikin mahdollista valita lukuarvoista 2-10, kuitenkin vain niin, että niiden tulo on parillinen.
 
 Valikossa voi valita myös pelaajien määrän ja tekoälyjen määrän pelaajista. Tekoälyjä on mahdollista valita korkeintaan niin monta kuin mitä pelaajia on valittuna. Jos tekoälyjä yrittää valita enemmän, edellinen sopiva valinta tai vaihtoehtoisesti suurin mahdollinen tekoälymäärä jää voimaan. Pelaajia on mahdollista valita 2-10 ja tekoälyjä nollasta pelaajien määrään.
 
