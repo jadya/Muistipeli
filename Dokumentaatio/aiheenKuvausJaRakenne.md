@@ -20,7 +20,7 @@ Pelin alussa pelialustalla on parillinen määrä kortteja selkäpuoli näkyvill
 
 Pelissä on seitsemän luokkaa ja käyttöliittymäluokat. Graafinen käyttöliittymä muodostuu käyttöliittymäluokista. Itse peliin liittyvät luokat Peli, Pelaaja, Pelialusta, Vuoro, PeliKortti, Nakyma ja Tekoaly.
 
-Keskeinen luokka on Peli, johon kytkeytyvät luokat Pelialusta, Pelaaja, Vuoro ja Tekoaly. Luokat Nakyma ja PeliKortti kytkeytyvät Pelialustaan. Vuoro kytkeytyy myös luokkaan Pelaaja ja Tekoaly on Pelaajan aliluokka.
+Keskeinen luokka on Peli, johon kytkeytyvät luokat Pelialusta, Pelaaja, Vuoro ja Tekoaly. Luokat Nakyma ja PeliKortti kytkeytyvät Pelialustaan. Vuoro kytkeytyy myös luokkaan Pelaaja ja Tekoaly on Pelaajan aliluokka. Peliin liittyy yksi pelikohtainen Pelialusta ja Pelialustaan yksi vain siihen liittyvä Nakyma. Pelialustaan liittyy useita PeliKortteja ja jokainen PeliKortti liittyy ainoastaan kyseiseen Pelialustaan. Peliin liittyy yksi pelikohtainen Vuoro, johon liittyy useita Pelaajia, jotka kaikki liittyvät yhteen Vuoroon. Tekoalyt ovat lisäksi suoraan yhteydessä peliin.
 
 ## Luokkakaavio
 
