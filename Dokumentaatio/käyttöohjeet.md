@@ -23,3 +23,5 @@ Peli lopetetaan painamalla "Lopeta peli"-painiketta. Pelin voi lopettaa, kun kai
 Pisteet näkyvät pistenäkymästä pelin lopettamisen jälkeen. Näkymässä kerrotaan voittaja(t) ja sen jälkeen kaikkien pelaajien pisteet järjestettynä eniten pisteitä saaneesta pelaajasta vähiten pisteitä saaneeseen pelaajaan.
 
 Pistenäkymästä voi siirtyä uuteen valikkoon painamalla alareunasta "Uusi peli"-painketta.
+
+Ohjelman voi sulkea painamalla oikeassa yläkulmassa olevasta rastista.
