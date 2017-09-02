@@ -35,7 +35,13 @@ public class ValintaPainike extends JButton implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         boolean ok = true;
         if (this.kohde.equals("korkeus")) {
-            this.kayttoliittyma.getPelinakyma().setKorkeus(numero);
+            if((this.kayttoliittyma.getPelinakyma().getLeveys() * numero) % 2 == 0) {
+                this.kayttoliittyma.getPelinakyma().setKorkeus(numero);
+            } else {
+                this.kayttoliittyma.getPelinakyma().setKorkeus(numero + 1);
+                this.valintaPaneeli.vahvistaValinta(numero + 1);
+                ok = false;
+            }
         }
         if (this.kohde.equals("leveys")) {
             if ((this.kayttoliittyma.getPelinakyma().getKorkeus() * numero) % 2 == 0) {
